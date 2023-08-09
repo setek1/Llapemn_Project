@@ -13,11 +13,12 @@ class UserApiViewSet(ModelViewSet):
     permission_classes= [IsAdminUser]
     serializer_class= UserSerializer
     queryset=User.objects.all()
-
+    #Encryptacion de password;a al crear usuario
     def create(self, request, *args, **kwargs):
         request.data['password']=make_password(request.data['password'])
         return super().create(request, *args, **kwargs)
     
+    #Encryptacion de contrase;a al modificar usuario(password)
     def partial_update(self, request, *args, **kwargs):
         password=request.data['password']
         if(password):
@@ -26,7 +27,7 @@ class UserApiViewSet(ModelViewSet):
             request.data['password']=request.user.password
         return super().update(request, *args, **kwargs)
     
-
+#Muestra infromacion del usuario que esta logeado , esta pasa a urls
 class UserView(APIView):
     permission_classes= [IsAuthenticated]
 
