@@ -21,3 +21,19 @@ export async function loginApi(formValue) {
     throw error;
   }
 }
+
+export async function getMeApi(token) {
+  try {
+    const url = `${BASE_API}/api/auth/me/`;
+    const params = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const responde = await fetch(url, params);
+    const result = await responde.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
