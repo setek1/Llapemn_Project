@@ -26,7 +26,7 @@ export function LoginForm() {
   return (
     <div className="mb-8 flex justify-center font-leca">
       <form onSubmit={formik.handleSubmit}>
-        <img src={url} className="mx-auto w-1/3 " />
+        <img src={url} className="mx-auto w-1/3  " />
 
         <h1 className="mb-6 text-center font-leca text-5xl text-white">
           Iniciar Sesión
