@@ -1,16 +1,29 @@
 import React from "react";
+import { useAuth } from "../../../hooks";
 
-export function TopMenu() {
+export function TopMenu(props) {
+  const { children } = props;
+  const { auth } = useAuth();
+
+  const renderName = () => {
+    if (auth.me?.first_name && auth.me?.last_name) {
+      return `${auth.me.first_name} ${auth.me.last_name}`;
+    }
+    return auth.me?.email;
+  };
   return (
-    <nav className="w-screen bg-blue-500 p-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-lg font-semibold text-white">Logo</div>
-        <div className="space-x-4">
-          <a className="text-white hover:text-blue-300">Inicio</a>
-          <a className="text-white hover:text-blue-300">Acerca</a>
-          <a className="text-white hover:text-blue-300">Contacto</a>
+    <div>
+      <header className="flex items-center justify-between bg-white p-3">
+        <div>
+          <h1 className=" font-bold">Bienvenido</h1>
+          <p className="">{renderName()}</p>
         </div>
-      </div>
-    </nav>
+        <div>
+          <h1 className=" text-right font-bold">Dia</h1>
+          <p className="">xx Mes ANO</p>
+        </div>
+      </header>
+      <div className="bg-gray-100 p-4">{children}</div>
+    </div>
   );
 }
