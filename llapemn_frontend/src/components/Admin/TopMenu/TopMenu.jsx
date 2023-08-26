@@ -23,7 +23,9 @@ export function TopMenu(props) {
           <p className="">xx Mes ANO</p>
         </div>
       </header>
-      <div className="bg-gray-100 p-4">{children}</div>
+      <div className=" p-4">
+        <div className="m-5 rounded-lg bg-white p-6">{children}</div>
+      </div>
     </div>
   );
 }

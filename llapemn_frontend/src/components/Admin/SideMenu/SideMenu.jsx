@@ -23,7 +23,7 @@ export function SideMenu(props) {
 
 function MenuLeft(props) {
   const { auth, logout } = useAuth();
-  console.log(auth);
+
   const [sidebar, setSidebar] = useState(false);
   const handleSidebar = () => {
     setSidebar(!sidebar);

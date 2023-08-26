@@ -8,7 +8,7 @@ import { useAuth } from "../../../hooks";
 let url = "https://www.llapemn.cl/images/logoBlanco.png";
 export function LoginForm() {
   const { login } = useAuth();
-  console.log(useAuth());
+
   const formik = useFormik({
     initialValues: intialValues(),
     validationSchema: Yup.object(validationSchema()),
