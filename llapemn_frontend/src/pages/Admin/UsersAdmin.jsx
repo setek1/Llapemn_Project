@@ -6,26 +6,31 @@ import { HeaderPage } from "../../components/Admin/HeaderPage";
 export function UsersAdmin() {
   const { loading, users, getUsers } = useUser();
 
-  const [showModal, setShowModal] = useState(false);
-  const [titleModal, setTitleModal] = useState(null);
+  const [showModal, setshowModal] = useState(false);
+  const [titleModal, setTtitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
+  const openCloseModal = () => setshowModal((prev) => !prev);
 
   useEffect(() => {
     getUsers();
   }, []);
 
-  const openCloseModal = () => setShowModal((prev) => !prev);
-
   return (
     <div>
-      <HeaderPage title="Trabajadores" btnTitle="Agregar Trabajador" />
+      <HeaderPage
+        title="Trabajadores"
+        btnTitle="Agregar Trabajador"
+        btnClick={openCloseModal}
+      />
       {loading ? <h1>"CARGANDO XUXETUMARE"</h1> : <TableUsers users={users} />}
-      {/* <ModalBasic
-        show={true}
+      <ModalBasic
         title="Crear Usuario"
-        children={<h2>Content</h2>}
+        isVisible={showModal}
         onClose={openCloseModal}
-      /> */}
+        children={<h1>Hola</h1>}
+      >
+        <h1>TITULOS</h1>
+      </ModalBasic>
     </div>
   );
 }
