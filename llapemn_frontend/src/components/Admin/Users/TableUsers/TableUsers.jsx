@@ -4,7 +4,7 @@ import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
 import { HeaderPage } from "../../HeaderPage";
 
 export function TableUsers(props) {
-  const { users } = props;
+  const { users, updateUser, deleteUser } = props;
   return (
     <div>
       <table className="mt-5 w-full ">
@@ -44,7 +44,11 @@ export function TableUsers(props) {
                 {user.date_joined.toString().split("T")[1].split("Z")[0]}
               </td>
 
-              <Actions user={user} />
+              <Actions
+                user={user}
+                updateUser={updateUser}
+                deleteUser={deleteUser}
+              />
             </tr>
           ))}
         </tbody>
@@ -54,16 +58,16 @@ export function TableUsers(props) {
 }
 
 function Actions(props) {
-  const { user } = props;
+  const { user, updateUser, deleteUser } = props;
   return (
     <>
       <td>
-        <button onClick={() => console.log(`Editar usuario ${user.id}`)}>
+        <button onClick={() => updateUser(user)}>
           <IoBuildOutline />
         </button>
       </td>
       <td>
-        <button onClick={() => console.log(`Eliminar usuario ${user.id}`)}>
+        <button onClick={() => deleteUser(user)}>
           <IoTrashBinOutline />
         </button>
       </td>

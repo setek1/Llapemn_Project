@@ -3,20 +3,35 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useUser } from "../../../../hooks";
 
-export function AddEditUserForm() {
-  const { addUser } = useUser();
+export function AddEditUserForm(props) {
+  const { onClose, onRefetch, user } = props;
+  const { addUser, updateUser } = useUser();
   const formik = useFormik({
-    initialValues: initialValues(),
-    validationSchema: Yup.object(newSchame()),
+    initialValues: initialValues(user),
+    validationSchema: Yup.object(user ? updateSchame() : newSchame()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        await addUser(formValue);
-        console.log("Usuario Creado correctamente");
+        if (user) {
+          await updateUser(user.id, formValue);
+        } else {
+          await addUser(formValue);
+        }
+
+        onRefetch();
+        onClose();
       } catch (error) {
         console.error(error);
       }
     },
+    // onSubmit: (formValue) => {
+    //   try {
+    //     console.log("formulario enviado");
+    //     console.log(formValue);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
   });
 
   return (
@@ -96,22 +111,22 @@ export function AddEditUserForm() {
           type="submit"
           className="rounded bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600"
         >
-          Acción
+          {user ? "Actualizar" : "Crear"}
         </button>
       </div>
     </form>
   );
 }
 
-function initialValues() {
+function initialValues(data) {
   return {
-    username: "",
-    email: "",
-    first_name: "",
-    last_name: "",
+    username: data?.username || "",
+    email: data?.email || "",
+    first_name: data?.first_name || "",
+    last_name: data?.last_name || "",
     password: "",
-    is_active: true,
-    is_staff: false,
+    is_active: data?.is_active ? true : false,
+    is_staff: data?.is_staff ? true : false,
   };
 }
 
@@ -122,6 +137,18 @@ function newSchame() {
     first_name: Yup.string(),
     last_name: Yup.string(),
     password: Yup.string().required(true),
+    is_active: Yup.bool().required(true),
+    is_staff: Yup.bool().required(true),
+  };
+}
+
+function updateSchame() {
+  return {
+    username: Yup.string().required(true),
+    email: Yup.string().email(true).required(true),
+    first_name: Yup.string(),
+    last_name: Yup.string(),
+    password: Yup.string(),
     is_active: Yup.bool().required(true),
     is_staff: Yup.bool().required(true),
   };
