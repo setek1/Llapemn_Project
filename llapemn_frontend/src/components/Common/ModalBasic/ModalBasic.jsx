@@ -55,11 +55,11 @@ export function ModalBasic(props) {
         <hr className="my-4 border-t-2 border-gray-300" />
         <div className="mb-4">{children}</div>
         <hr className="my-4 border-t-2 border-gray-300" />
-        <div className="flex justify-end">
+        {/* <div className="flex justify-end">
           <button className="rounded bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600">
             Acción
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
 

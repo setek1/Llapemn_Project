@@ -3,6 +3,7 @@ import { useUser } from "../../hooks";
 import { TableUsers } from "../../components/Admin/Users/TableUsers/TableUsers";
 import { ModalBasic } from "../../components/Common";
 import { HeaderPage } from "../../components/Admin/HeaderPage";
+import { AddEditUserForm } from "../../components/Admin/Users";
 export function UsersAdmin() {
   const { loading, users, getUsers } = useUser();
 
@@ -10,6 +11,12 @@ export function UsersAdmin() {
   const [titleModal, setTtitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
   const openCloseModal = () => setshowModal((prev) => !prev);
+
+  const addUser = () => {
+    setTtitleModal("Nuevo Usuario");
+    setContentModal(<AddEditUserForm />);
+    openCloseModal();
+  };
 
   useEffect(() => {
     getUsers();
@@ -20,16 +27,16 @@ export function UsersAdmin() {
       <HeaderPage
         title="Trabajadores"
         btnTitle="Agregar Trabajador"
-        btnClick={openCloseModal}
+        btnClick={addUser}
       />
       {loading ? <h1>"CARGANDO XUXETUMARE"</h1> : <TableUsers users={users} />}
       <ModalBasic
-        title="Crear Usuario"
+        title={titleModal}
         isVisible={showModal}
         onClose={openCloseModal}
-        children={<h1>Hola</h1>}
+        children={contentModal}
       >
-        <h1>TITULOS</h1>
+        {/* <h1>TITULOS</h1> */}
       </ModalBasic>
     </div>
   );
