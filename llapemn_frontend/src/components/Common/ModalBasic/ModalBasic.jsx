@@ -27,8 +27,8 @@ export function ModalBasic(props) {
     //   </div>
     // </div>
 
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative w-96 rounded bg-white p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center  bg-black bg-opacity-50">
+      <div className="relative w-96  rounded-lg bg-white p-6">
         <button
           className="absolute right-2 top-2 text-gray-600 hover:text-gray-800"
           onClick={onClose}
@@ -54,7 +54,7 @@ export function ModalBasic(props) {
         </div>
         <hr className="my-4 border-t-2 border-gray-300" />
         <div className="mb-4">{children}</div>
-        <hr className="my-4 border-t-2 border-gray-300" />
+
         {/* <div className="flex justify-end">
           <button className="rounded bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600">
             Acción

@@ -26,30 +26,32 @@ export function UserDelete(props) {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-4xl">{titleDelete}</h2>
-        </div>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center">
+      <div>
+        <h2 className="text-xl">{titleDelete}</h2>
+        <span className=" border-t-2 border-gray-300">
+          <hr className="mt-4 border-t-2 border-gray-300" />
+        </span>
+        {/* <hr className="mt-4 border-t-2 border-gray-300" /> */}
+      </div>
 
-        <div>
-          {btnTitleD && (
-            <button
-              className="rounded-md bg-red-700 p-2 text-white"
-              type="submit"
-            >
-              {btnTitleD}
-            </button>
-          )}
-          {btnTitleD2 && (
-            <button
-              className="rounded-md bg-red-700 p-2 text-white"
-              onClick={btnClickD2}
-            >
-              {btnTitleD2}
-            </button>
-          )}
-        </div>
+      <div className="mt-4 flex w-full justify-between">
+        {btnTitleD && (
+          <button
+            className="flex-grow rounded-md bg-red-700 p-2 text-white"
+            type="submit"
+          >
+            {btnTitleD}
+          </button>
+        )}
+        {btnTitleD2 && (
+          <button
+            className="ml-4 flex-grow rounded-md bg-gray-300 p-2 text-white"
+            onClick={btnClickD2}
+          >
+            {btnTitleD2}
+          </button>
+        )}
       </div>
     </form>
   );

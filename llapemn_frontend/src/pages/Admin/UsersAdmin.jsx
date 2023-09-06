@@ -38,7 +38,7 @@ export function UsersAdmin() {
     setTtitleModal("Eliminar  Usuario");
     setContentModal(
       <UserDelete
-        titleDelete={`Eliminar Trabajador ${data.first_name} (${data.last_name})`}
+        titleDelete={`¿Esta Seguro que de desea Eliminar a ${data.first_name} ${data.last_name}?`}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}
