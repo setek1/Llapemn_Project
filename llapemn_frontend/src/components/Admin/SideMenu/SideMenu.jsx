@@ -69,8 +69,10 @@ function MenuLeft(props) {
                 : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
             }
           >
-            <IoPeople />
-            Trabajadores
+            <div className="flex flex-row items-center truncate">
+              <IoPeople />
+              <p className="truncate pl-2">Trabajadores</p>
+            </div>
           </NavLink>
         </li>
         <li>
