@@ -1,0 +1,15 @@
+# Ignorar archivos de construcción y caches
+**/*.log
+**/*.log.*
+**/*.db
+**/*.sqlite
+**/__pycache__/
+**/.cache/
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/build/
+**/dist/
+**/.vscode/
