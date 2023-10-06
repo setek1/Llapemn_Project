@@ -66,7 +66,7 @@ export function UsersAdmin() {
         btnClick={addUser}
       />
       {loading ? (
-        <h1>"CARGANDO XUXETUMARE"</h1>
+        <h1>"CARGANDO"</h1>
       ) : (
         <TableUsers
           users={users}
