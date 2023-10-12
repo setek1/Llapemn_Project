@@ -2,9 +2,12 @@ import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
 import { HeaderPage } from "../../HeaderPage";
+import { useAuth } from "../../../../hooks";
 
 export function TableUsers(props) {
   const { users, updateUser, deleteUser } = props;
+  console.log(users);
+
   return (
     <div>
       <table className="mt-5 w-full ">
@@ -25,7 +28,7 @@ export function TableUsers(props) {
               <td className="pb-6 pr-6 pt-6 text-left">
                 {user.first_name + " " + user.last_name}
                 <br />
-                Rol/Especialidad
+                {user.is_staff ? "Admin" : "Trabajador"}/{user.especialidad}
               </td>
               <td>{user.email}</td>
               <td className="text-white">
@@ -38,11 +41,7 @@ export function TableUsers(props) {
                 </span>
               </td>
 
-              <td>
-                {user.date_joined.toString().split("T")[0]}
-                <br />
-                {user.date_joined.toString().split("T")[1].split("Z")[0]}
-              </td>
+              <td>{user.fecha}</td>
 
               <Actions
                 user={user}

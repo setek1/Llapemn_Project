@@ -1,20 +1,24 @@
-import React from "react";
-import { useFormik } from "formik";
+import { useFormik, ErrorMessage, FormikProvider } from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
 import { useUser } from "../../../../hooks";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 export function AddEditUserForm(props) {
   const { onClose, onRefetch, user } = props;
+
   const { addUser, updateUser } = useUser();
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: initialValues(user),
     validationSchema: Yup.object(user ? updateSchame() : newSchame()),
-    validateOnChange: false,
+
     onSubmit: async (formValue) => {
       try {
         if (user) {
           await updateUser(user.id, formValue);
         } else {
+          console.log(formValue);
           await addUser(formValue);
         }
 
@@ -35,102 +39,139 @@ export function AddEditUserForm(props) {
   });
 
   return (
-    <div className="mb-8 flex justify-center ">
-      <form onSubmit={formik.handleSubmit}>
-        <div className=" ">
-          <input
-            name="username"
-            placeholder="Ingrese su Nick"
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            error={formik.errors.username}
-          ></input>
-          <input
-            name="email"
-            placeholder="Ingrese su email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            error={formik.errors.email}
-          ></input>
-          <input
-            name="first_name"
-            placeholder="Ingrese su Nombre"
-            value={formik.values.first_name}
-            onChange={formik.handleChange}
-            className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            error={formik.errors.first_name}
-          ></input>
-          <input
-            name="last_name"
-            placeholder="Ingrese sus Apellidos"
-            value={formik.values.last_name}
-            onChange={formik.handleChange}
-            className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            error={formik.errors.last_name}
-          ></input>
-          <input
-            type="password"
-            placeholder="Ingrese su Contraseña"
-            name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            error={formik.errors.password}
-          ></input>
-          <div className="flex items-center">
+    <FormikProvider value={formik}>
+      <div className="mb-8 flex w-auto justify-center">
+        <form onSubmit={formik.handleSubmit}>
+          <div className="">
             <input
-              type="checkbox"
-              checked={formik.values.is_active}
-              onChange={(event) =>
-                formik.setFieldValue("is_active", !formik.values.is_active)
-              }
-              name="is_active"
-              className="h-4 w-4 rounded border-gray-300  accent-[#59167F] "
+              name="especialidad"
+              placeholder="Ingrese su Especialidad"
+              value={formik.values.especialidad}
+              onChange={formik.handleChange}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+                formik.errors.username ? "" : "mb-2"
+              }`}
             />
-            <label
-              htmlFor="aceptarTerminos"
-              className="ml-2 block text-sm text-gray-900"
-            >
-              Usuario Activo
-            </label>
-          </div>
-          <div className="flex items-center">
+            <span>
+              <ErrorMessage
+                name="especialidad"
+                className=" text-red-700"
+                component="div"
+              />
+            </span>
             <input
-              type="checkbox"
-              checked={formik.values.is_staff}
-              onChange={(event) =>
-                formik.setFieldValue("is_staff", !formik.values.is_staff)
-              }
-              name="is_staff"
-              className="h-4 w-4 rounded border-gray-300  accent-[#59167F] "
+              name="email"
+              placeholder="Ingrese su email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            ></input>
+            <ErrorMessage
+              name="email"
+              className="text-red-700"
+              component="div"
             />
-            <label
-              htmlFor="aceptarTerminos"
-              className="ml-2 block text-sm text-gray-900 "
-            >
-              Usuario Administrador
-            </label>
+            <input
+              name="first_name"
+              placeholder="Ingrese su Nombre"
+              value={formik.values.first_name}
+              onChange={formik.handleChange}
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            ></input>
+            <ErrorMessage
+              name="first_name"
+              className="text-red-700"
+              component="div"
+            />
+            <input
+              name="last_name"
+              placeholder="Ingrese sus Apellidos"
+              value={formik.values.last_name}
+              onChange={formik.handleChange}
+              className="mb-2 w-full  rounded-lg  border border-[#CDCDCD] bg-white  px-4 py-2   placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            ></input>
+            <ErrorMessage
+              name="last_name"
+              className="text-red-700"
+              component="div"
+            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Ingrese su Contraseña"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+              ></input>
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer  text-[#59167F]"
+              >
+                {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+              </button>
+            </div>
+            <ErrorMessage
+              name="password"
+              className="text-red-700"
+              component="div"
+            />
+
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                checked={formik.values.is_active}
+                onChange={(event) =>
+                  formik.setFieldValue("is_active", !formik.values.is_active)
+                }
+                name="is_active"
+                className="h-4 w-4 rounded border-gray-300  accent-[#59167F] "
+              />
+              <label
+                htmlFor="aceptarTerminos"
+                className="ml-2 block text-sm text-gray-900"
+              >
+                Usuario Activo
+              </label>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                checked={formik.values.is_staff}
+                onChange={(event) =>
+                  formik.setFieldValue("is_staff", !formik.values.is_staff)
+                }
+                name="is_staff"
+                className="h-4 w-4 rounded border-gray-300  accent-[#59167F] "
+              />
+              <label
+                htmlFor="aceptarTerminos"
+                className="ml-2 block text-sm text-gray-900 "
+              >
+                Usuario Administrador
+              </label>
+            </div>
           </div>
-        </div>
-        <hr className="my-4 border-t-2 border-gray-300" />
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white "
-          >
-            {user ? "Actualizar" : "Crear"}
-          </button>
-        </div>
-      </form>
-    </div>
+          <hr className="my-4 border-t-2 border-gray-300" />
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white "
+            >
+              {user ? "Actualizar" : "Crear"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </FormikProvider>
   );
 }
 
 function initialValues(data) {
   return {
-    username: data?.username || "",
+    especialidad: data?.especialidad || "",
     email: data?.email || "",
     first_name: data?.first_name || "",
     last_name: data?.last_name || "",
@@ -142,11 +183,29 @@ function initialValues(data) {
 
 function newSchame() {
   return {
-    username: Yup.string().required(true),
-    email: Yup.string().email(true).required(true),
-    first_name: Yup.string(),
-    last_name: Yup.string(),
-    password: Yup.string().required(true),
+    especialidad: Yup.string()
+      .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
+      .required("Porfavor Ingrese una Especialidad"),
+    email: Yup.string()
+      .email("Ingrese un Correo Valido")
+      .required("Porfavor Ingrese un Correo")
+      .matches(
+        /^[a-zA-Z0-9@._-]+$/,
+        "El correo electrónico no puede contener signos",
+      ),
+    first_name: Yup.string()
+      .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
+      .required("Porfavor Ingrese un Nombre"),
+    last_name: Yup.string()
+      .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
+      .required("Porfavor Ingrese un Apellido"),
+    password: Yup.string()
+      .required("La contraseña es obligatoria")
+      .min(8, "La contraseña debe tener al menos 8 caracteres")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial",
+      ),
     is_active: Yup.bool().required(true),
     is_staff: Yup.bool().required(true),
   };
@@ -154,7 +213,7 @@ function newSchame() {
 
 function updateSchame() {
   return {
-    username: Yup.string().required(true),
+    especialidad: Yup.string().required(true),
     email: Yup.string().email(true).required(true),
     first_name: Yup.string(),
     last_name: Yup.string(),
