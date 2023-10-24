@@ -35,7 +35,7 @@ export function AdminLayout(props) {
         {sidebar ? <IoClose /> : <IoMenu />}
       </button>
       {/* Contenido */}
-      <div className="col-span-5 bg-[#F0F0F0]">
+      <div className="col-span-5  bg-[#F0F0F0]">
         <TopMenu>{children}</TopMenu>
       </div>
     </div>

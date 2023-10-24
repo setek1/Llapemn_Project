@@ -9,9 +9,9 @@ export function TableUsers(props) {
   console.log(users);
 
   return (
-    <div>
-      <table className="mt-5 w-full ">
-        <thead className="  bg-[#F0F0F0] ">
+    <div className="">
+      <table className="mt-5  w-full ">
+        <thead className="bg-[#F0F0F0]">
           <tr>
             <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left">Nombre</th>
             <th>Email</th>
