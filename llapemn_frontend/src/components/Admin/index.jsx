@@ -4,3 +4,4 @@ export * from "./SideMenu";
 export * from "./HeaderPage";
 export * from "./Users";
 export * from "./Salas";
+export * from "./Insumos";
