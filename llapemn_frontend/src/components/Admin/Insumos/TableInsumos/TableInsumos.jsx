@@ -3,7 +3,7 @@ import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
 
 export function TableInsumos(props) {
-  const { insumos } = props;
+  const { insumos, deleteInsumos, updateInsumo } = props;
   const estadosI = {
     C: "Consuntivo",
     NC: "No Consuntivo",
@@ -32,23 +32,28 @@ export function TableInsumos(props) {
             <td>{estadosI[insumo.tipoIn]}</td>
             <td>{insumo.precioUIn}</td>
             <td>{insumo.totalIn}</td>
-            <Actions />
+            <Actions
+              insumo={insumo}
+              updateInsumo={updateInsumo}
+              deleteInsumos={deleteInsumos}
+            />
           </tr>
         ))}
       </tbody>
     </table>
   );
 }
-function Actions() {
+function Actions(props) {
+  const { insumo, updateInsumo, deleteInsumos } = props;
   return (
     <>
       <td>
-        <button onClick={() => console.log("eddit")}>
+        <button onClick={() => updateInsumo(insumo)}>
           <IoBuildOutline />
         </button>
       </td>
       <td>
-        <button onClick={() => console.log("borrar")}>
+        <button onClick={() => deleteInsumos(insumo)}>
           <IoTrashBinOutline />
         </button>
       </td>

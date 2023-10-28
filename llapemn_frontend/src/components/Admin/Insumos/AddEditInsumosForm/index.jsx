@@ -1,2 +1,2 @@
-export * from "./TableInsumos";
 export * from "./AddEditInsumosForm";
+export * from "./DeleteInsumosForm";
