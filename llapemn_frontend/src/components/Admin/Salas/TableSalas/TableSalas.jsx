@@ -1,6 +1,7 @@
 import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export function TableSalas(props) {
   const { salas, updateSala, deleteSalas } = props;
@@ -25,7 +26,10 @@ export function TableSalas(props) {
       <tbody className="text-center">
         {map(salas, (sala, index) => (
           <tr key={index}>
-            <td className="pb-6 pr-6 pt-6 text-left">{sala.nombre}</td>
+            <td className="pb-6 pr-6 pt-6 text-left">
+              <Link to={`/Salas/${sala.id}`}>{sala.nombre} </Link>
+            </td>
+
             <td>{sala.descripcion}</td>
 
             <td>{estadosT[sala.estado]}</td>

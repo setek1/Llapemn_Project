@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'users',
     'salas',
     'insumo',
+    'inventario',
+    'django_filters',
 
 ]
 

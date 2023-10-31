@@ -5,4 +5,4 @@ from insumo.models import Insumo
 class InsumoSerializer(ModelSerializer):
     class Meta:
         model=Insumo
-        fields='__all__'
+        fields=['id','nombreIn','id_sala','stockIn','tipoIn','precioUIn','totalIn']

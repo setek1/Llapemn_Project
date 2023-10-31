@@ -64,6 +64,21 @@ function MenuLeft(props) {
             </div>
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to={"/Inventario"}
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+            }
+          >
+            <div className="flex flex-row items-center truncate">
+              <IoGrid />
+              <p className="truncate pl-2">Inventario</p>
+            </div>
+          </NavLink>
+        </li>
         {auth.me.is_staff && (
           <li>
             <NavLink

@@ -4,6 +4,8 @@ import {
   UsersAdmin,
   SalasAdmin,
   InsumosAdmin,
+  InventarioAdmin,
+  DetalleInventario,
 } from "../pages/Admin/";
 
 const routesAdmin = [
@@ -26,6 +28,16 @@ const routesAdmin = [
     path: "/Productos",
     layout: AdminLayout,
     component: InsumosAdmin,
+  },
+  {
+    path: "/Inventario",
+    layout: AdminLayout,
+    component: InventarioAdmin,
+  },
+  {
+    path: "/Salas/:id",
+    layout: AdminLayout,
+    component: DetalleInventario,
   },
 ];
 

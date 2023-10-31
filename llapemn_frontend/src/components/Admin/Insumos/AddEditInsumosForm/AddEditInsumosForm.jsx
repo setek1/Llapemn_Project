@@ -1,11 +1,17 @@
 import React from "react";
 import { useFormik, ErrorMessage, FormikProvider, Field } from "formik";
 import * as Yup from "yup";
-import { useInsumos } from "../../../../hooks";
+import { useInsumos, useSalas } from "../../../../hooks";
+import { useEffect, useState } from "react";
+import { map } from "lodash";
 
 export function AddEditInsumosForm(props) {
   const { insumo, onClose, onRefetch } = props;
   const { addInsumo, updateInsumo } = useInsumos();
+  const { getSalas, salas } = useSalas();
+  useEffect(() => {
+    getSalas();
+  }, []);
 
   const formik = useFormik({
     initialValues: initialValues(insumo),
@@ -55,6 +61,27 @@ export function AddEditInsumosForm(props) {
                 component="div"
               />
             </span>
+            <Field
+              placeholder="asdsad"
+              as="select"
+              onChange={formik.handleChange}
+              name="id_sala"
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            >
+              {formik.values.id_sala ? null : (
+                <option value="" disabled hidden>
+                  Seleccione una sala
+                </option>
+              )}
+              {/* <option value="" disabled>
+            Seleccione un cliente
+          </option> */}
+              {map(salas, (sala, index) => (
+                <option key={index} value={sala.id}>
+                  {sala.nombre}
+                </option>
+              ))}
+            </Field>
             <input
               name="stockIn"
               placeholder="Ingrese el stock"
@@ -133,6 +160,7 @@ export function AddEditInsumosForm(props) {
 function initialValues(data) {
   return {
     nombreIn: data?.nombreIn || "",
+    id_sala: data?.id_sala || "",
     stockIn: data?.stockIn || "",
     tipoIn: data?.tipoIn || "",
     precioUIn: data?.precioUIn || "",
