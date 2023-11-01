@@ -14,7 +14,7 @@ export function AdminLayout(props) {
 
   if (!auth) return <LoginAdmin />;
   return (
-    <div className="grid-col-1 grid min-h-screen lg:grid-cols-6">
+    <div className="grid-col-1 grid min-h-screen  lg:grid-cols-6">
       {/* Menu */}
       <div
         className={`fixed  top-0 ${
@@ -35,7 +35,7 @@ export function AdminLayout(props) {
         {sidebar ? <IoClose /> : <IoMenu />}
       </button>
       {/* Contenido */}
-      <div className="col-span-5  overflow-x-auto bg-[#F0F0F0]">
+      <div className="col-span-5  overflow-x-auto bg-[#F0F0F0] dark:bg-[#715084]">
         <TopMenu>{children}</TopMenu>
       </div>
     </div>

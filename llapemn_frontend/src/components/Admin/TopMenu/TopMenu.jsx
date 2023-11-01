@@ -23,13 +23,13 @@ export function TopMenu(props) {
     return auth.me?.email;
   };
   return (
-    <div>
+    <>
       <header className="flex items-center justify-between bg-white p-3 dark:bg-[#59167F]">
-        <div>
+        <div className="dark:text-white">
           <h1 className=" font-bold">Bienvenido</h1>
           <p className="">{renderName()}</p>
         </div>
-        <div>
+        <div className="dark:text-white">
           <h1 className=" text-right font-bold">{DiaDeLaSemana}</h1>
           <p className="">
             {dia} {mes} {ano}
@@ -37,8 +37,10 @@ export function TopMenu(props) {
         </div>
       </header>
       <div className=" p-4">
-        <div className="m-5 rounded-lg bg-white p-6">{children}</div>
+        <div className="m-5 rounded-lg bg-white p-6 dark:bg-[#59167F]">
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

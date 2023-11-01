@@ -5,13 +5,13 @@ export function HeaderPage(props) {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h2 className="text-xl">{title}</h2>
+        <h2 className="text-xl dark:text-white">{title}</h2>
       </div>
 
       <div>
         {btnTitle && (
           <button
-            className="rounded-md bg-[#59167F] p-2 text-white"
+            className="rounded-md bg-[#59167F] p-2 text-white dark:bg-[#715084]"
             onClick={btnClick}
           >
             {btnTitle}

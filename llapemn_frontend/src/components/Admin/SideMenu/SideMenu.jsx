@@ -147,13 +147,26 @@ function MenuLeft(props) {
             </div>
           </NavLink>
         </li>
-        <li>
-          <button
+
+        <li className=" gap-2 p-4">
+          {/* <button
             onClick={() => setDarkMode(!darkMode)}
             className="relative inline-flex cursor-pointer items-center"
           >
             {darkMode ? "Desactivar" : "Activar"}
-          </button>
+          </button> */}
+          <label className="relative inline-flex cursor-pointer items-center">
+            <input
+              type="checkbox"
+              value=""
+              className="peer sr-only"
+              onClick={() => setDarkMode(!darkMode)}
+            />
+            <div className="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-[#715084] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#59167F] dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-white"></div>
+            <span className="ml-3 text-sm font-medium text-[#CDCDCD] dark:text-white">
+              Dark Mode
+            </span>
+          </label>
         </li>
       </ul>
     </div>

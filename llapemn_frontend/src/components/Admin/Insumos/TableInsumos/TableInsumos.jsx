@@ -9,22 +9,26 @@ export function TableInsumos(props) {
     NC: "No Consuntivo",
   };
   return (
-    <div className="overflow-x-scroll">
+    <div className="overflow-x-scroll md:overflow-x-auto">
       <table className="mt-5  w-full ">
         <thead className="bg-[#F0F0F0]">
-          <tr>
-            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left">Nombre</th>
+          <tr className="dark:bg-[#715084] dark:text-white">
+            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#715084]">
+              Nombre
+            </th>
 
             <th>Stock</th>
             <th>Tipo</th>
             <th>Precio Unitario</th>
             <th>Total</th>
 
-            <th className=" bg-[#F0F0F0]">Editar</th>
-            <th className="rounded-r-lg bg-[#F0F0F0]">Eliminar</th>
+            <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
+            <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#715084]">
+              Eliminar
+            </th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody className="text-center dark:text-white">
           {map(insumos, (insumo, index) => (
             <tr key={index}>
               <td className="pb-6 pr-6 pt-6 text-left">{insumo.nombreIn}</td>
