@@ -9,7 +9,7 @@ export function TableUsers(props) {
   console.log(users);
 
   return (
-    <div className="">
+    <div className="overflow-x-scroll">
       <table className="mt-5  w-full ">
         <thead className="bg-[#F0F0F0]">
           <tr>

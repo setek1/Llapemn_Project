@@ -19,7 +19,7 @@ export function AdminLayout(props) {
       <div
         className={`fixed  top-0 ${
           sidebar ? "-left-o" : "-left-full"
-        }  z-50 col-span-1 h-full w-[80%]    bg-white p-8 transition-all md:w-[40%] lg:static lg:w-full`}
+        }  z-50 col-span-1 h-full w-[80%]    bg-white p-8 transition-all dark:bg-[#59167F] md:w-[40%] lg:static lg:w-full`}
       >
         <div className="p-8 text-center font-bold tracking-[4px]">
           <h1>LLapemn</h1>
@@ -35,7 +35,7 @@ export function AdminLayout(props) {
         {sidebar ? <IoClose /> : <IoMenu />}
       </button>
       {/* Contenido */}
-      <div className="col-span-5  bg-[#F0F0F0]">
+      <div className="col-span-5  overflow-x-auto bg-[#F0F0F0]">
         <TopMenu>{children}</TopMenu>
       </div>
     </div>

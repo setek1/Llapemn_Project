@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 
@@ -10,12 +10,13 @@ import {
   IoReader,
   IoLogOut,
 } from "react-icons/io5";
+const inicialStateDarkMode = localStorage.getItem("theme") === "dark";
 
 export function SideMenu(props) {
   const { children } = props;
 
   return (
-    <div>
+    <div className="">
       <MenuLeft />
     </div>
   );
@@ -28,6 +29,18 @@ function MenuLeft(props) {
   const handleSidebar = () => {
     setSidebar(!sidebar);
   };
+
+  const [darkMode, setDarkMode] = useState(inicialStateDarkMode);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   return (
     <div className="">
@@ -133,6 +146,14 @@ function MenuLeft(props) {
               <p className="truncate pl-2">Cerrar Sesion</p>
             </div>
           </NavLink>
+        </li>
+        <li>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="relative inline-flex cursor-pointer items-center"
+          >
+            {darkMode ? "Desactivar" : "Activar"}
+          </button>
         </li>
       </ul>
     </div>

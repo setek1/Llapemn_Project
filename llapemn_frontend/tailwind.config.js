@@ -7,5 +7,6 @@ export default {
       leca: ["Lexend Deca", " sans-serif"],
     },
   },
+  darkMode: "class",
   plugins: [],
 };

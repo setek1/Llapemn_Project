@@ -24,7 +24,7 @@ export function TopMenu(props) {
   };
   return (
     <div>
-      <header className="flex items-center justify-between bg-white p-3">
+      <header className="flex items-center justify-between bg-white p-3 dark:bg-[#59167F]">
         <div>
           <h1 className=" font-bold">Bienvenido</h1>
           <p className="">{renderName()}</p>

@@ -1,3 +1,5 @@
+//Recomendable que el darkMode quede por encima de App.jsx
+import "./utils/darkMode";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";

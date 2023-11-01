@@ -11,37 +11,39 @@ export function TableSalas(props) {
     ER: "En Reparacion",
   };
   return (
-    <table className="mt-5  w-full ">
-      <thead className="bg-[#F0F0F0]">
-        <tr>
-          <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left">Nombre</th>
+    <div className="overflow-x-scroll">
+      <table className="mt-5  w-full ">
+        <thead className="bg-[#F0F0F0]">
+          <tr>
+            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left">Nombre</th>
 
-          <th>Descripcion</th>
-          <th>Estado</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
 
-          <th className=" bg-[#F0F0F0]">Editar</th>
-          <th className="rounded-r-lg bg-[#F0F0F0]">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody className="text-center">
-        {map(salas, (sala, index) => (
-          <tr key={index}>
-            <td className="pb-6 pr-6 pt-6 text-left">
-              <Link to={`/Salas/${sala.id}`}>{sala.nombre} </Link>
-            </td>
-
-            <td>{sala.descripcion}</td>
-
-            <td>{estadosT[sala.estado]}</td>
-            <Actions
-              sala={sala}
-              updateSala={updateSala}
-              deleteSalas={deleteSalas}
-            />
+            <th className=" bg-[#F0F0F0]">Editar</th>
+            <th className="rounded-r-lg bg-[#F0F0F0]">Eliminar</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className="text-center">
+          {map(salas, (sala, index) => (
+            <tr key={index}>
+              <td className="pb-6 pr-6 pt-6 text-left">
+                <Link to={`/Salas/${sala.id}`}>{sala.nombre} </Link>
+              </td>
+
+              <td>{sala.descripcion}</td>
+
+              <td>{estadosT[sala.estado]}</td>
+              <Actions
+                sala={sala}
+                updateSala={updateSala}
+                deleteSalas={deleteSalas}
+              />
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
