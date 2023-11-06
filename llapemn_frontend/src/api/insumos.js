@@ -22,6 +22,17 @@ export async function getInsumosBySalasApi(id_sala) {
     throw error;
   }
 }
+export async function getInsumosByIdApi(id) {
+  const filter = `id=${id}`;
+  try {
+    const url = `${BASE_API}/api/insumos/?${filter}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function addInsumoApi(data, token) {
   try {

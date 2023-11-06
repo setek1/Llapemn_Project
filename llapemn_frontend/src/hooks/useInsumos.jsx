@@ -5,6 +5,7 @@ import {
   deleteInsumoApi,
   updateInsumoApi,
   getInsumosBySalasApi,
+  getInsumosByIdApi,
 } from "../api/insumos";
 import { useAuth } from ".";
 
@@ -28,6 +29,16 @@ export function useInsumos() {
     try {
       setLoading(true);
       const response = await getInsumosBySalasApi(id_sala);
+      setLoading(false);
+      setInsumos(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+  const getInsumosById = async (id) => {
+    try {
+      setLoading(true);
+      const response = await getInsumosByIdApi(id);
       setLoading(false);
       setInsumos(response);
     } catch (error) {
@@ -76,5 +87,6 @@ export function useInsumos() {
     updateInsumo,
     deleteInsumo,
     getInsumosBySala,
+    getInsumosById,
   };
 }

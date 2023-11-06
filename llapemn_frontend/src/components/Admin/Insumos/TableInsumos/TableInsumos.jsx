@@ -1,6 +1,7 @@
 import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export function TableInsumos(props) {
   const { insumos, deleteInsumos, updateInsumo } = props;
@@ -31,7 +32,9 @@ export function TableInsumos(props) {
         <tbody className="text-center dark:text-white">
           {map(insumos, (insumo, index) => (
             <tr key={index}>
-              <td className="pb-6 pr-6 pt-6 text-left">{insumo.nombreIn}</td>
+              <td className="pb-6 pr-6 pt-6 text-left">
+                <Link to={`/Productos/${insumo.id}`}>{insumo.nombreIn} </Link>
+              </td>
               <td>{insumo.stockIn}</td>
 
               <td>{estadosI[insumo.tipoIn]}</td>

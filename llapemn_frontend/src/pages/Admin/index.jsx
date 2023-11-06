@@ -5,3 +5,4 @@ export * from "./SalasAdmin";
 export * from "./InsumosAdmin";
 export * from "./InventarioAdmin";
 export * from "./DetalleInventario";
+export * from "./DetalleInsumos";

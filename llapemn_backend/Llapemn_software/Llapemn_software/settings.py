@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'insumo',
     'inventario',
     'django_filters',
+    'historial',
 
 ]
 

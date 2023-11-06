@@ -10,6 +10,6 @@ class InsumoApiViewSet(ModelViewSet):
     serializer_class=InsumoSerializer
     queryset=Insumo.objects.all()
     filter_backends=[DjangoFilterBackend]
-    filterset_fields=['id_sala']
+    filterset_fields=['id_sala','id']
 
     
