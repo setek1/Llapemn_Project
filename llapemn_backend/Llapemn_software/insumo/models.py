@@ -13,8 +13,8 @@ class Insumo(models.Model):
     precioUIn=models.IntegerField()
     totalIn=models.IntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return self.nombreIn
+    def __int__(self):
+        return self.id
     
     def get_total(self):
         return self.stockIn *self.precioUIn

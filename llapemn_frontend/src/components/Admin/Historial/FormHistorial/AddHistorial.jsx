@@ -28,6 +28,7 @@ export function AddHistorial(props) {
       id_insumo: history[0].id,
       id_sala: history[0].id_sala,
       operacion: operacion,
+      cantidad: "",
       descripcion: "",
     },
     validationSchema: Yup.object(newSchame()),
@@ -60,7 +61,7 @@ export function AddHistorial(props) {
               name="id_user"
               placeholder="Id user"
               value={formik.values.id_user}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+              className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
                 formik.errors.username ? "" : "mb-2"
               }`}
             />
@@ -79,17 +80,15 @@ export function AddHistorial(props) {
           className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
         ></input> */}
 
-            {map(insumos, (ins) => (
-              <input
-                name="id_sala"
-                placeholder="Ingrese nombre de la Sala"
-                value={formik.values.id_sala}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
-                  formik.errors.username ? "" : "mb-2"
-                }`}
-              />
-            ))}
+            <input
+              name="id_sala"
+              placeholder="Ingrese nombre de la Sala"
+              value={formik.values.id_sala}
+              onChange={formik.handleChange}
+              className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+                formik.errors.username ? "" : "mb-2"
+              }`}
+            />
 
             <ErrorMessage
               name="id_insumo"
@@ -100,6 +99,15 @@ export function AddHistorial(props) {
               name="id_insumo"
               placeholder="id_insumo"
               value={formik.values.id_insumo}
+              onChange={formik.handleChange}
+              className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+                formik.errors.username ? "" : "mb-2"
+              }`}
+            />
+            <input
+              name="cantidad"
+              placeholder="cantidad"
+              value={formik.values.cantidad}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
                 formik.errors.username ? "" : "mb-2"

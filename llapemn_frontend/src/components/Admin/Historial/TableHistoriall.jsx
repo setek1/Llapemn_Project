@@ -21,9 +21,9 @@ export function TableHistoriall(props) {
         {map(historial, (his, index) => (
           <tr key={index}>
             <td className="pb-6 pr-6 pt-6 text-left">
-              {auth.me.first_name + " " + auth.me.last_name}
+              {his.user_data.first_name + " " + his.user_data.last_name}
             </td>
-            <td>{his.insumo_data.stockIn}</td>
+            <td>{his.cantidad}</td>
             <td>{his.fecha}</td>
             <td>{his.descripcion}</td>
           </tr>
