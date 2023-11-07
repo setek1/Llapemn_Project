@@ -68,6 +68,10 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
 
                 elif serializer.validated_data['operacion'] == 'R':
                     serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Resta realizada'
+                    TotalC = insumo.stockIn - serializer.validated_data['cantidad']
+                    serializer.validated_data['cantidad'] = TotalC
+                    insumo.stockIn = TotalC
+                    insumo.save()
                 elif serializer.validated_data['operacion'] == 'C':
                     serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Cambio realizada'
                 

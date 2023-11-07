@@ -2,7 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useHistorial, useInsumos } from "../../hooks";
 import { useParams } from "react-router-dom";
-import { TableHistoriall, Button, AddHistorial } from "../../components/Admin";
+import {
+  TableHistoriall,
+  Button,
+  AddHistorial,
+  InfHistorial,
+} from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 
 export function DetalleInsumos() {
@@ -61,6 +66,7 @@ export function DetalleInsumos() {
 
   return (
     <>
+      <InfHistorial />
       <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
       <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
       <Button btnTitle={"Mover Insumo"} btnClick={MoverHistorial} />
