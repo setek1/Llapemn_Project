@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'inventario',
     'django_filters',
     'historial',
+    'paciente',
 
 ]
 

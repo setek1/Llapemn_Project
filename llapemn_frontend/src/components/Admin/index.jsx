@@ -7,3 +7,4 @@ export * from "./Salas";
 export * from "./Insumos";
 export * from "./Inventario";
 export * from "./Historial";
+export * from "./Paciente";

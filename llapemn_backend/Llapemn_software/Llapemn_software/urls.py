@@ -24,6 +24,7 @@ from salas.api.router import router_salas
 from insumo.api.router import router_insumo
 from inventario.api.router import router_inventario
 from historial.api.router import router_historial
+from paciente.api.router import router_paciente
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -48,5 +49,6 @@ urlpatterns = [
     path('api/', include(router_insumo.urls)),
     path('api/', include(router_inventario.urls)),
     path('api/', include(router_historial.urls)),
+    path('api/', include(router_paciente.urls)),
    
 ]
