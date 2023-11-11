@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks";
+import { FaUserInjured } from "react-icons/fa6";
 
 import {
   IoAnalyticsOutline,
@@ -74,6 +75,21 @@ function MenuLeft(props) {
             <div className="flex flex-row items-center truncate">
               <IoGrid />
               <p className="truncate pl-2">Productos</p>
+            </div>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/Paciente"}
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+            }
+          >
+            <div className="flex flex-row items-center truncate">
+              <FaUserInjured />
+              <p className="truncate pl-2">Paciente</p>
             </div>
           </NavLink>
         </li>
