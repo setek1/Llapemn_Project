@@ -32,6 +32,16 @@ export async function getInsumosLowApi() {
     throw error;
   }
 }
+export async function getInsumosPieApi() {
+  try {
+    const url = `${BASE_API}/api/insumos/get_pie_chart/`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function getInsumosBySalasApi(id_sala) {
   const filter = `id_sala=${id_sala}`;

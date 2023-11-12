@@ -8,6 +8,7 @@ import {
   getInsumosByIdApi,
   getInsumosOrderApi,
   getInsumosLowApi,
+  getInsumosPieApi,
 } from "../api/insumos";
 import { useAuth } from ".";
 
@@ -42,6 +43,16 @@ export function useInsumos() {
     try {
       setLoading(true);
       const response = await getInsumosLowApi();
+      setLoading(false);
+      setInsumos(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+  const getInsumosPie = async () => {
+    try {
+      setLoading(true);
+      const response = await getInsumosPieApi();
       setLoading(false);
       setInsumos(response);
     } catch (error) {
@@ -113,5 +124,6 @@ export function useInsumos() {
     getInsumosById,
     getInsumosOrder,
     getInsumosLow,
+    getInsumosPie,
   };
 }

@@ -1,11 +1,8 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-
-const data = [
-  { name: "Male", value: 540 },
-  { name: "Female", value: 620 },
-  { name: "Other", value: 210 },
-];
+import { useEffect, useState } from "react";
+import { useInsumos } from "../../../hooks";
+import _ from "lodash";
 
 const RADIAN = Math.PI / 180;
 const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
@@ -36,6 +33,16 @@ const renderCustomizedLabel = ({
 };
 
 export function Charts2() {
+  const { getInsumosPie, insumos } = useInsumos();
+  useEffect(() => {
+    getInsumosPie();
+  }, []);
+  console.log(insumos);
+  const data = _.map(insumos, (insumo) => ({
+    name: insumo.nombreIn,
+    value: insumo.stockIn,
+  }));
+
   return (
     <div className="flex h-[22rem] w-[20rem] flex-col rounded-sm border border-gray-200 bg-white p-4">
       <strong className="font-medium text-gray-700">Insumos Totales</strong>
