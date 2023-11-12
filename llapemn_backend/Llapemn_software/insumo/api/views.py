@@ -26,3 +26,9 @@ class InsumoApiViewSet(ModelViewSet):
         low_insumos=Insumo.objects.filter(stockIn__lt=5)
         serializer=InsumoSerializer(low_insumos, many=True)
         return Response(serializer.data, status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['GET'])
+    def get_pie_chart(self, request):
+         queryset = Insumo.objects.values('nombreIn', 'stockIn')
+         resultados = list(queryset)
+         return Response(resultados)

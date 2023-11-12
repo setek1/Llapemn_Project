@@ -10,6 +10,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Sum
+from django.db.models.functions import TruncMonth
+from django.utils import timezone
+from django.db.models import Case, When, Value, IntegerField
 
 
 
@@ -51,6 +55,29 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    @action(detail=False, methods=['GET'])
+    def get_chart(self, request):
+            year_actual = 2023
+
+        # Obtener la suma de insumos por mes para todas las operaciones de suma en el año actual
+            queryset = Historial.objects.filter(
+            operacion='R',
+            fecha__year=year_actual
+            ).annotate(month=TruncMonth('fecha')).values('month').annotate(suma_insumos=Sum('cantidad'))
+
+        # Formatear los datos según sea necesario
+            data = [
+            {
+                'month': resultado['month'],
+                'suma_insumos': resultado['suma_insumos']
+            }
+            for resultado in queryset
+        ]
+
+        # Devolver la respuesta JSON
+            return Response(data, status=status.HTTP_200_OK)
+           
 
         # if request.method == 'POST':
         #     serializer = HistorialSerializer(data=request.data)
