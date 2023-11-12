@@ -12,6 +12,7 @@ class Insumo(models.Model):
     tipoIn=models.CharField(max_length=2,choices=TIPO_CHOICES)
     precioUIn=models.IntegerField()
     totalIn=models.IntegerField(null=True, blank=True)
+    fechaIn = models.DateField(auto_now_add=True)
 
     def __int__(self):
         return self.id
