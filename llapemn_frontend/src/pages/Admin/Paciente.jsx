@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HeaderPage, TablePaciente, AddPaciente } from "../../components/Admin";
 import { usePaciente } from "../../hooks";
-import { ModalBasic } from "../../components/Common";
+import { ModalPaciente2 } from "../../components/Common";
 export function Paciente() {
   const { loading, paciente, getPaciente } = usePaciente();
   const [showModal, setShowModal] = useState(false);
@@ -59,7 +59,7 @@ export function Paciente() {
         updatePaciente={updatePaciente}
         deletePaciente={deletePaciente}
       />
-      <ModalBasic
+      <ModalPaciente2
         isVisible={showModal}
         onClose={openCloseModal}
         title={titleModal}
