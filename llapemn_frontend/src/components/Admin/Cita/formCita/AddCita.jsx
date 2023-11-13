@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik, ErrorMessage, FormikProvider, Field } from "formik";
 import * as Yup from "yup";
-import { useCita, usePaciente,useUser } from "../../../../hooks";
+import { useCita, usePaciente,useUser,useSalas } from "../../../../hooks";
 import {useEffect} from 'react'
 import { map } from "lodash";
 
@@ -9,6 +9,7 @@ export function AddCita(props) {
   const { citas, onClose, onRefetch } = props;
   const{getPaciente,paciente}=usePaciente();
   const{getUsers,users}=useUser();
+  const{getSalas,salas}=useSalas();
   const { addCita, updateCita} = useCita();
   useEffect(() => {
     getPaciente()
@@ -18,7 +19,10 @@ export function AddCita(props) {
     getUsers()
     
   }, [])
-  console.log(users)
+  useEffect(() => {
+    getSalas()
+    
+  }, [])
   
   const formik = useFormik({
     initialValues: initialValues(citas),
@@ -210,7 +214,27 @@ export function AddCita(props) {
                 component="div"
               />
             </span>
-
+            <Field
+              placeholder="Seleccione la sala"
+              as="select"
+              onChange={formik.handleChange}
+              name="sala_cita"
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            >
+              {formik.values.sala_cita ? null : (
+                <option value="" disabled hidden>
+                  Seleccione la sala
+                </option>
+              )}
+              {/* <option value="" disabled>
+            Seleccione un cliente
+          </option> */}
+              {map(salas, (sala, index) => (
+                <option key={index} value={sala.nombre}>
+                  {sala.nombre}
+                </option>
+              ))}
+            </Field>
             
           </div>
           <hr className="my-4 border-t-2 border-gray-300" />
@@ -235,7 +259,9 @@ function initialValues(data) {
     descripcion: data?.descripcion || "",
     fecha_hora: data?.fecha_hora || "",
     estado: data?.estado || "",
+    sala_cita: data?.sala_cita || "",
   };
+
 }
 function newSchame() {
   return {
@@ -245,7 +271,7 @@ function newSchame() {
     descripcion: Yup.string(),
     fecha_hora: Yup.string(),
     estado: Yup.string(),
-    
+    sala_cita: yupToFormErrors.string(),
   };
 }
 function updateSchame() {

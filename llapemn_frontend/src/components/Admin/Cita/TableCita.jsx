@@ -18,6 +18,7 @@ export function TableCita(props) {
             <th>Descripción</th>
             <th>Fecha y hora</th>
             <th>Estado</th>
+            <th>Sala</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
             <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#715084]">
               Eliminar
@@ -34,6 +35,7 @@ export function TableCita(props) {
               <td>{citas.descripcion}</td>
               <td>{citas.fecha_hora}</td>
               <td>{citas.estado}</td>
+              <td>{citas.sa_data.nombre}</td>
               <Actions
                 cita={citas}
                 updateCita={updateCita}
