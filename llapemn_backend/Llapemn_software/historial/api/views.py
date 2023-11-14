@@ -10,7 +10,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
-<<<<<<< HEAD
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
 from django.utils import timezone
@@ -20,8 +19,6 @@ from django.db.models.functions import Coalesce
 from django.db.models import OuterRef, Subquery
 from django.db.models import Q
 from django.db.models.functions import Coalesce, ExtractMonth
-=======
->>>>>>> 0d1d04e38371f88d8a37df9aa2070297f1e5b088
 
 
 
@@ -98,7 +95,6 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
         else:
             return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-<<<<<<< HEAD
     @action(detail=False, methods=['GET'])
     def get_chart(self, request):
         #     year_actual = 2023
@@ -193,8 +189,6 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
         return Response(combined_data, status=status.HTTP_200_OK)
 
 
-=======
->>>>>>> 0d1d04e38371f88d8a37df9aa2070297f1e5b088
         # if request.method == 'POST':
         #     serializer = HistorialSerializer(data=request.data)
         #     if serializer.is_valid():
@@ -203,7 +197,6 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
         #     else:
         #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         # else:
-<<<<<<< HEAD
         #     return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
         #/////////////////////////////////
@@ -242,6 +235,3 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
         queryset = Historial.objects.filter(operacion='A').order_by('-fecha')[:5]
         serializer = HistorialSerializer(queryset, many=True)
         return Response(serializer.data)
-=======
-        #     return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
->>>>>>> 0d1d04e38371f88d8a37df9aa2070297f1e5b088
