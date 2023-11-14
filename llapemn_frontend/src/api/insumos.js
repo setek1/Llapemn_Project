@@ -87,7 +87,7 @@ export async function addInsumoApi(data, token) {
 
 export async function updateInsumoApi(id, data, token) {
   try {
-    const url = `${BASE_API}/api/insumos/${id}/`;
+    const url = `${BASE_API}/api/insumos/patchSala/${id}/`;
     const params = {
       method: "PATCH",
       headers: {

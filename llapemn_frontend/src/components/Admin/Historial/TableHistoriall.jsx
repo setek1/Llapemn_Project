@@ -1,6 +1,7 @@
 import React from "react";
 import { map } from "lodash";
 import { useAuth } from "../../../hooks";
+import { FaExchangeAlt } from "react-icons/fa";
 export function TableHistoriall(props) {
   const { historial } = props;
   const { auth } = useAuth();
@@ -23,7 +24,15 @@ export function TableHistoriall(props) {
             <td className="pb-6 pr-6 pt-6 text-left">
               {his.user_data.first_name + " " + his.user_data.last_name}
             </td>
-            <td>{his.cantidad}</td>
+            <td className="">
+              {his.operacion == "C" ? (
+                <div className="align-content-center flex justify-center">
+                  <FaExchangeAlt />
+                </div>
+              ) : (
+                his.cantidad
+              )}
+            </td>
             <td>{his.fecha}</td>
             <td>{his.descripcion}</td>
           </tr>

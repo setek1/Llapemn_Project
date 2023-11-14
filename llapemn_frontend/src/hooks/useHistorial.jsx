@@ -5,6 +5,7 @@ import {
   addHistorialApi,
   getHistorialChartApi,
   getHistorialApi2,
+  updateHistorialApi,
 } from "../api/historial";
 import { useAuth } from ".";
 
@@ -67,6 +68,17 @@ export function useHistorial() {
     }
   };
 
+  const updateHistorial = async (id, data) => {
+    try {
+      setLoading(true);
+      await updateHistorialApi(id, data, auth.token);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
   return {
     loading,
     error,
@@ -76,5 +88,6 @@ export function useHistorial() {
     addHistorial,
     getHistorialChart,
     getHistorial2,
+    updateHistorial,
   };
 }

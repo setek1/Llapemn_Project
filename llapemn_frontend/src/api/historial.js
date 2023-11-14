@@ -62,3 +62,21 @@ export async function addHistorialApi(data, token) {
     throw error;
   }
 }
+export async function updateHistorialApi(id, data, token) {
+  try {
+    const url = `${BASE_API}/api/historial/${id}/`;
+    const params = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}

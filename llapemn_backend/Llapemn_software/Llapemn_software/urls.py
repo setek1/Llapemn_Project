@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from insumo.api.views import InsumoApiViewSet
 
 from users.api.router import router_user
 from salas.api.router import router_salas
@@ -52,5 +53,5 @@ urlpatterns = [
     path('api/', include(router_historial.urls)),
     path('api/', include(router_paciente.urls)),
     path('api/', include(router_cita2.urls)),
-   
+    path('api/insumos/patchSala/<int:pk>/', InsumoApiViewSet.as_view({'patch': 'patchSala'}), name='insumo-patchSala'),
 ]

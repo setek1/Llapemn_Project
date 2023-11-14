@@ -7,6 +7,7 @@ import {
   Button,
   AddHistorial,
   InfHistorial,
+  AddSalaHistorial,
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 
@@ -23,24 +24,26 @@ export function DetalleInsumos() {
   useEffect(() => {
     getHistorialByInsumo(id);
   }, [refetch]);
+
   useEffect(() => {
     getInsumosById(id);
-  }, []);
+  }, [refetch]);
 
   const addHistorial = (data) => {
-    setTitleModal("Sumar");
+    setTitleModal("Ingresar Insumo");
     setContentModal(
       <AddHistorial
         onClose={openCloseModal}
         onRefetch={onRefetch}
         history={insumos}
         operacion={"S"}
+        params={id}
       />,
     );
     openCloseModal();
   };
   const RestarHistorial = (data) => {
-    setTitleModal("Restar");
+    setTitleModal("Utilizar Insumo");
     setContentModal(
       <AddHistorial
         onClose={openCloseModal}
@@ -51,14 +54,14 @@ export function DetalleInsumos() {
     );
     openCloseModal();
   };
-  const MoverHistorial = (data) => {
+  const MoverHistorial = () => {
     setTitleModal("Mover");
     setContentModal(
-      <AddHistorial
+      <AddSalaHistorial
         onClose={openCloseModal}
         onRefetch={onRefetch}
-        history={insumos}
         operacion={"C"}
+        params={historial}
       />,
     );
     openCloseModal();
@@ -66,11 +69,10 @@ export function DetalleInsumos() {
 
   return (
     <>
-      <InfHistorial historial={historial} />
+      <InfHistorial params={id} onRefetch={onRefetch} />
       <div className="flex w-full flex-col">
         <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
         <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
-        <Button btnTitle={"Mover Insumo"} btnClick={MoverHistorial} />
       </div>
       <TableHistoriall historial={historial} />
       <ModalBasic

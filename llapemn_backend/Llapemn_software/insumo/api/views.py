@@ -64,3 +64,25 @@ class InsumoApiViewSet(ModelViewSet):
          return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         
          
+    @action(detail=False, methods=['patch'])
+    def patchSala(self, request, pk):
+        try:
+            print(request.data)
+            objeto = Insumo.objects.get(id=pk)
+        except Insumo.DoesNotExist:
+            return Response({"error": "El objeto no existe"}, status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == 'PATCH':
+            serializer = InsumoSerializer(objeto, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                insumo_instance = objeto
+                Historial.objects.create(
+                    id_user=request.user,
+                    id_insumo=insumo_instance,
+                    id_sala=serializer.validated_data.get('id_sala'),
+                    operacion='C',
+                    descripcion='Se cambio de sala',
+                )
+                return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

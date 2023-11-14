@@ -11,17 +11,16 @@ export function AddHistorial(props) {
   const { id } = useParams();
   const { auth } = useAuth();
   const { onClose, onRefetch, operacion, history } = props;
-  console.log(operacion);
+  console.log("Operacion", operacion);
   const { insumos, getInsumosById } = useInsumos();
   const { addHistorial } = useHistorial();
-  console.log("ID ACTUAL", auth.me.id);
+
   console.log(id);
   useEffect(() => {
     getInsumosById(id);
   }, []);
-  console.log("aaaaaaaaaaaaaaaaaaaa");
-  console.log("historial", history);
-  console.log("aaaaaaaaaaaaaaaaaaaa");
+  console.log(insumos);
+  console.log("form history", history);
   const formik = useFormik({
     initialValues: {
       id_user: auth.me.id,
@@ -43,6 +42,20 @@ export function AddHistorial(props) {
       } catch (error) {
         console.error(error);
       }
+    },
+    validate: (formValue) => {
+      const errors = {};
+
+      if (formValue.operacion === "R") {
+        if (
+          formValue.cantidad !== "" &&
+          parseInt(formValue.cantidad, 10) > history[0].stockIn
+        ) {
+          errors.cantidad = `La cantidad no puede ser mayor a ${history[0].stockIn}.`;
+        }
+      }
+
+      return errors;
     },
     // onSubmit: (formValue) => {
     //   try {
@@ -114,6 +127,11 @@ export function AddHistorial(props) {
                 formik.errors.username ? "" : "mb-2"
               }`}
             />
+            <ErrorMessage
+              name="cantidad"
+              className="text-red-700"
+              component="div"
+            />
             <input
               name="cantidaU"
               placeholder="cantidad"
@@ -129,7 +147,7 @@ export function AddHistorial(props) {
               placeholder="Operacion"
               value={formik.values.operacion}
               onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+              className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
                 formik.errors.username ? "" : "mb-2"
               }`}
             />
@@ -169,6 +187,9 @@ export function AddHistorial(props) {
 function newSchame() {
   return {
     id_user: Yup.number(),
+    cantidad: Yup.string()
+      .matches(/^[0-9]+$/, "Porfavor solo ingrese numeros")
+      .required("La cantidad debe ser un número."),
     id_insumo: Yup.number(),
     id_sala: Yup.number(),
     operacion: Yup.string(),
