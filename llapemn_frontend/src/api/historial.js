@@ -11,6 +11,28 @@ export async function getHistorialApi() {
   }
 }
 
+export async function getHistorialApi2() {
+  try {
+    const url = `${BASE_API}/api/historial/get_A/`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getHistorialChartApi() {
+  try {
+    const url = `${BASE_API}/api/historial/get_chart/`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getHistorialByInsumoApi(id_insumo) {
   const filter = `id_insumo=${id_insumo}`;
   try {

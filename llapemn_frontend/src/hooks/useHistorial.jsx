@@ -3,6 +3,8 @@ import {
   getHistorialApi,
   getHistorialByInsumoApi,
   addHistorialApi,
+  getHistorialChartApi,
+  getHistorialApi2,
 } from "../api/historial";
 import { useAuth } from ".";
 
@@ -16,6 +18,28 @@ export function useHistorial() {
     try {
       setLoading(true);
       const response = await getHistorialApi();
+      setLoading(false);
+      setHistorial(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getHistorial2 = async () => {
+    try {
+      setLoading(true);
+      const response = await getHistorialApi2();
+      setLoading(false);
+      setHistorial(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getHistorialChart = async () => {
+    try {
+      setLoading(true);
+      const response = await getHistorialChartApi();
       setLoading(false);
       setHistorial(response);
     } catch (error) {
@@ -50,5 +74,7 @@ export function useHistorial() {
     getHistorial,
     getHistorialByInsumo,
     addHistorial,
+    getHistorialChart,
+    getHistorial2,
   };
 }

@@ -29,6 +29,7 @@ export function AddHistorial(props) {
       id_sala: history[0].id_sala,
       operacion: operacion,
       cantidad: "",
+      cantidadU: "",
       descripcion: "",
     },
     validationSchema: Yup.object(newSchame()),
@@ -113,6 +114,16 @@ export function AddHistorial(props) {
                 formik.errors.username ? "" : "mb-2"
               }`}
             />
+            <input
+              name="cantidaU"
+              placeholder="cantidad"
+              value={formik.values.cantidadU}
+              onChange={formik.handleChange}
+              className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
+                formik.errors.username ? "" : "mb-2"
+              }`}
+            />
+
             <input
               name="operacion"
               placeholder="Operacion"

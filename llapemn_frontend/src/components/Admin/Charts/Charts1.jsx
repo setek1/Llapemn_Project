@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -9,6 +9,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useHistorial } from "../../../hooks";
+import _ from "lodash";
 
 const data = [
   {
@@ -74,6 +76,32 @@ const data = [
 ];
 
 export function Charts1() {
+  const { historial, getHistorialChart } = useHistorial();
+  const monthNames = {
+    1: "Enero",
+    2: "Febrero",
+    3: "Marzo",
+    4: "Abril",
+    5: "Mayo",
+    6: "Junio",
+    7: "Julio",
+    8: "Agosto",
+    9: "Septiembre",
+    10: "Octubre",
+    11: "Noviembre",
+    12: "Diciembre",
+  };
+
+  useEffect(() => {
+    getHistorialChart();
+  }, []);
+  console.log(historial);
+  const data2 = _.map(historial, (history) => ({
+    name: monthNames[history.month],
+    Utilizado: history.suma_insumos_r,
+    Ingresado: history.suma_insumos_s,
+  }));
+  console.log("data2", data2);
   return (
     <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4">
       <strong className="font-medium text-gray-700">Insumos Usados</strong>
@@ -82,7 +110,7 @@ export function Charts1() {
           <BarChart
             width={500}
             height={300}
-            data={data}
+            data={data2}
             margin={{
               top: 20,
               right: 10,
@@ -95,8 +123,8 @@ export function Charts1() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Income" fill="#0ea5e9" />
-            <Bar dataKey="Expense" fill="#ea580c" />
+            <Bar dataKey="Ingresado" fill="#0ea5e9" />
+            <Bar dataKey="Utilizado" fill="#ea580c" />
           </BarChart>
         </ResponsiveContainer>
       </div>

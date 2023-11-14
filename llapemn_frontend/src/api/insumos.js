@@ -68,7 +68,7 @@ export async function getInsumosByIdApi(id) {
 
 export async function addInsumoApi(data, token) {
   try {
-    const url = `${BASE_API}/api/insumos/`;
+    const url = `${BASE_API}/api/insumos/post_w_h/`;
     const params = {
       method: "POST",
       headers: {

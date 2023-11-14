@@ -53,7 +53,8 @@ export function Low() {
   useEffect(() => {
     getInsumosLow();
   }, []);
-  console.log(insumos);
+
+  console.log("insumos", insumos);
   return (
     <div className="w-[20rem] rounded-sm border border-gray-200 bg-white p-4">
       <strong className="font-medium text-gray-700">Insumos Escasos</strong>

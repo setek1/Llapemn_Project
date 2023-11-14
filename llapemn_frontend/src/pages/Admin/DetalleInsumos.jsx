@@ -66,10 +66,12 @@ export function DetalleInsumos() {
 
   return (
     <>
-      <InfHistorial />
-      <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
-      <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
-      <Button btnTitle={"Mover Insumo"} btnClick={MoverHistorial} />
+      <InfHistorial historial={historial} />
+      <div className="flex w-full flex-col">
+        <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
+        <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
+        <Button btnTitle={"Mover Insumo"} btnClick={MoverHistorial} />
+      </div>
       <TableHistoriall historial={historial} />
       <ModalBasic
         isVisible={showModal}

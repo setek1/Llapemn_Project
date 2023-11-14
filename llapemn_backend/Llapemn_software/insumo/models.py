@@ -7,7 +7,7 @@ TIPO_CHOICES=[
     ]
 class Insumo(models.Model):
     nombreIn=models.CharField(max_length=50)
-    id_sala=models.ForeignKey('salas.Salas', on_delete=models.SET_NULL, null=True, blank=True)
+    id_sala=models.ForeignKey('salas.Salas', on_delete=models.CASCADE, null=True, blank=True)
     stockIn=models.IntegerField()
     tipoIn=models.CharField(max_length=2,choices=TIPO_CHOICES)
     precioUIn=models.IntegerField()
