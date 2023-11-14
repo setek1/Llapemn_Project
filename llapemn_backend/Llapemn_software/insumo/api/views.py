@@ -4,9 +4,6 @@ from insumo.models import Insumo
 from historial.models import Historial
 from insumo.api.serializers import InsumoSerializer
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import status
 
 
 class InsumoApiViewSet(ModelViewSet):
@@ -16,6 +13,7 @@ class InsumoApiViewSet(ModelViewSet):
     filter_backends=[DjangoFilterBackend]
     filterset_fields=['id_sala','id']
 
+<<<<<<< HEAD
     @action(detail=False, methods=['GET'])
     def get_recent(self, request):
         recent_insumos=Insumo.objects.all().order_by('fechaIn')[:5]
@@ -64,3 +62,6 @@ class InsumoApiViewSet(ModelViewSet):
          return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         
          
+=======
+    
+>>>>>>> 0d1d04e38371f88d8a37df9aa2070297f1e5b088

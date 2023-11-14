@@ -7,3 +7,4 @@ export * from "./InventarioAdmin";
 export * from "./DetalleInventario";
 export * from "./DetalleInsumos";
 export * from "./Paciente";
+export * from "./Cita";

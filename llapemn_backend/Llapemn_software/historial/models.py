@@ -15,7 +15,11 @@ class Historial(models.Model):
     cantidadU=models.IntegerField(null=True, blank=True)
     operacion=models.CharField(max_length=20, choices=OPER_CHOICES,null=True, blank=True)
     descripcion=models.TextField(null=True, blank=True)
+<<<<<<< HEAD
     fecha = models.DateField(auto_now_add=True,null=True, blank=True)
+=======
+    fecha = models.DateField(auto_now_add=True)
+>>>>>>> 0d1d04e38371f88d8a37df9aa2070297f1e5b088
 
     def __str__(self):
         return self.operacion

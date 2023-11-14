@@ -7,7 +7,8 @@ import {
   InventarioAdmin,
   DetalleInventario,
   DetalleInsumos,
-  Paciente
+  Paciente,
+  Cita,
 } from "../pages/Admin/";
 
 const routesAdmin = [
@@ -50,6 +51,11 @@ const routesAdmin = [
     path: "/Paciente",
     layout: AdminLayout,
     component: Paciente,
+  },
+  {
+    path: "/Cita",
+    layout: AdminLayout,
+    component: Cita,
   },
 ];
 
