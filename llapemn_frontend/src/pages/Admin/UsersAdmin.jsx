@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../../hooks";
 import { TableUsers } from "../../components/Admin/Users/TableUsers/TableUsers";
-import { ModalBasic } from "../../components/Common";
+import { ModalBasic, Loading } from "../../components/Common";
 import { HeaderPage } from "../../components/Admin/HeaderPage";
 import { AddEditUserForm, UserDelete } from "../../components/Admin/Users";
 export function UsersAdmin() {
@@ -66,7 +66,9 @@ export function UsersAdmin() {
         btnClick={addUser}
       />
       {loading ? (
-        <h1>"CARGANDO"</h1>
+        <div className="flex justify-center">
+          <Loading />
+        </div>
       ) : (
         <TableUsers
           users={users}

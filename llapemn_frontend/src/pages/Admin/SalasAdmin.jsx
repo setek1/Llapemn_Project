@@ -6,7 +6,7 @@ import {
   DeleteSalasForm,
 } from "../../components/Admin";
 import { useSalas } from "../../hooks";
-import { ModalBasic } from "../../components/Common";
+import { ModalBasic, Loading } from "../../components/Common";
 
 export function SalasAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -61,7 +61,9 @@ export function SalasAdmin() {
     <>
       <HeaderPage title="Salas" btnTitle="Agregar Sala" btnClick={addSalas} />
       {loading ? (
-        "cargando"
+        <div className="flex justify-center">
+          <Loading />
+        </div>
       ) : (
         <TableSalas
           salas={salas}

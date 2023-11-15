@@ -6,7 +6,7 @@ import {
   DeleteInsumosForm,
 } from "../../components/Admin";
 import { useInsumos } from "../../hooks";
-import { ModalBasic } from "../../components/Common";
+import { ModalBasic, Loading } from "../../components/Common";
 
 export function InsumosAdmin() {
   const { loading, insumos, getInsumos } = useInsumos();
@@ -67,7 +67,9 @@ export function InsumosAdmin() {
       />
 
       {loading ? (
-        "cargando"
+        <div className="flex justify-center">
+          <Loading />
+        </div>
       ) : (
         <TableInsumos
           insumos={insumos}
