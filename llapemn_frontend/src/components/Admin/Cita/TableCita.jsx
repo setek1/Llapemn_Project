@@ -16,7 +16,7 @@ export function TableCita(props) {
             <th>Esp. primario</th>
             <th>Esp. secundario</th>
             <th>Descripción</th>
-            <th>Fecha y hora</th>
+            <th>Fecha </th><th> hora</th>
             <th>Estado</th>
             <th>Sala</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
@@ -28,14 +28,14 @@ export function TableCita(props) {
         <tbody className="text-center dark:text-white">
           {map(cita, (citas, index) => (
             <tr key={index}>
-              <td className="pb-6 pr-6 pt-6 text-left">{citas.pa_data.nombre}</td>
+              <td className="pb-6 pr-6 pt-6 text-left">{citas.nombre_paciente}</td>
 
-              <td>{citas.ep_data.username}</td>
-              <td>{citas.es_data.username}</td>
+              <td>{citas.especialista_primario}</td>
+              <td>{citas.especialista_secundario}</td>
               <td>{citas.descripcion}</td>
               <td>{citas.fecha_hora}</td>
               <td>{citas.estado}</td>
-              <td>{citas.sa_data.nombre}</td>
+              <td>{citas.sala_cita}</td>
               <Actions
                 cita={citas}
                 updateCita={updateCita}
@@ -50,7 +50,7 @@ export function TableCita(props) {
 }
 
 function Actions(props) {
-  const { cita, deleteCita, updateCita } = props;
+  const { cita, updateCita, deleteCita } = props;
   return (
     <>
       <td>
