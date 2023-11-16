@@ -153,10 +153,10 @@ export function AddCita(props) {
             
 
             <input
-              type="datetime-local"
-              name="fecha_hora"
-              placeholder="Ingrese la fecha y hora de la cita"
-              value={formik.values.fecha_hora}
+              type="date"
+              name="fecha"
+              placeholder="Ingrese la fecha de la cita"
+              value={formik.values.fecha}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
                 formik.errors.username ? "" : "mb-2"
@@ -164,12 +164,12 @@ export function AddCita(props) {
             />
             <span>
               <ErrorMessage
-                name="fecha_hora"
+                name="fecha"
                 className=" text-red-700"
                 component="div"
               />
             </span>
-
+            
             <Field
               value={formik.values.estado}
               as="select"
@@ -200,8 +200,8 @@ export function AddCita(props) {
             <textarea
               
               name="descripcion"
-              placeholder="Ingrese la descripcion de la cita"
-              value={formik.values.fecha_nacimiento}
+              placeholder="Ingrese la descripción de la cita"
+              value={formik.values.descripcion}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
                 formik.errors.username ? "" : "mb-2"
@@ -257,7 +257,7 @@ function initialValues(data) {
     especialista_primario: data?.especialista_primario || "",
     especialista_secundario: data?.especialista_secundario || "",
     descripcion: data?.descripcion || "",
-    fecha_hora: data?.fecha_hora || "",
+    fecha: data?.fecha || "",
     estado: data?.estado || "",
     sala_cita: data?.sala_cita || "",
   };
@@ -266,12 +266,12 @@ function initialValues(data) {
 function newSchame() {
   return {
     nombre_paciente: Yup.string().required("Por favor, ponga un nombre"),
-    especialista_primario: Yup.string(),
+    especialista_primario: Yup.string().required(""),
     especialista_secundario: Yup.string(),
     descripcion: Yup.string(),
-    fecha_hora: Yup.string(),
+    fecha: Yup.string(),
     estado: Yup.string(),
-    sala_cita: yupToFormErrors.string(),
+    sala_cita: Yup.string(),
   };
 }
 function updateSchame() {

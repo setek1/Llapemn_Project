@@ -11,4 +11,5 @@ class Cita2Serializer(ModelSerializer):
     sa_data=SalasSerializer(source= 'sals_cita', read_only=True)
     class Meta:
         model=Cita2
-        fields=['nombre_paciente','especialista_primario','especialista_secundario','descripcion','fecha_hora','estado','sala_cita','ep_data','es_data','pa_data','sa_data']
+        fields=['nombre_paciente','especialista_primario','especialista_secundario','descripcion','fecha','hora'
+        ,'estado','sala_cita','ep_data','es_data','pa_data','sa_data']

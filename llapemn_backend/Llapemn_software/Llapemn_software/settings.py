@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django_filters',
     'historial',
     'paciente',
-    'cita2'
+    'cita2',
+    'especialista'
 
 ]
 

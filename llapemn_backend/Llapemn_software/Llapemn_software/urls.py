@@ -27,6 +27,7 @@ from inventario.api.router import router_inventario
 from historial.api.router import router_historial
 from paciente.api.router import router_paciente
 from cita2.api.router import router_cita2
+from especialista.api.router import router_especialista
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -53,5 +54,6 @@ urlpatterns = [
     path('api/', include(router_historial.urls)),
     path('api/', include(router_paciente.urls)),
     path('api/', include(router_cita2.urls)),
+    path('api/', include(router_especialista.urls)),
     path('api/insumos/patchSala/<int:pk>/', InsumoApiViewSet.as_view({'patch': 'patchSala'}), name='insumo-patchSala'),
 ]
