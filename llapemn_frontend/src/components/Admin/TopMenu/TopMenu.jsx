@@ -30,8 +30,8 @@ export function TopMenu(props) {
           <p className="">{renderName()}</p>
         </div>
         <div className="dark:text-white">
-          <h1 className=" text-right font-bold">{DiaDeLaSemana}</h1>
-          <p className="">
+          <h1 className=" text-right font-bold capitalize">{DiaDeLaSemana}</h1>
+          <p className="capitalize">
             {dia} {mes} {ano}
           </p>
         </div>

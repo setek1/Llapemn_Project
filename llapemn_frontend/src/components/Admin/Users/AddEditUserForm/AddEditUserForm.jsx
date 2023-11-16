@@ -45,7 +45,7 @@ export function AddEditUserForm(props) {
           <div className="">
             <input
               name="especialidad"
-              placeholder="Ingrese su Especialidad"
+              placeholder="Ingrese su especialidad"
               value={formik.values.especialidad}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -73,7 +73,7 @@ export function AddEditUserForm(props) {
             />
             <input
               name="first_name"
-              placeholder="Ingrese su Nombre"
+              placeholder="Ingrese su nombre"
               value={formik.values.first_name}
               onChange={formik.handleChange}
               className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
@@ -85,7 +85,7 @@ export function AddEditUserForm(props) {
             />
             <input
               name="last_name"
-              placeholder="Ingrese sus Apellidos"
+              placeholder="Ingrese sus apellidos"
               value={formik.values.last_name}
               onChange={formik.handleChange}
               className="mb-2 w-full  rounded-lg  border border-[#CDCDCD] bg-white  px-4 py-2   placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]"
@@ -98,7 +98,7 @@ export function AddEditUserForm(props) {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Ingrese su Contraseña"
+                placeholder="Ingrese su contraseña"
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -185,20 +185,20 @@ function newSchame() {
   return {
     especialidad: Yup.string()
       .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
-      .required("Porfavor Ingrese una Especialidad"),
+      .required("Por favor ingrese una especialidad"),
     email: Yup.string()
-      .email("Ingrese un Correo Valido")
-      .required("Porfavor Ingrese un Correo")
+      .email("Ingrese un correo válido")
+      .required("Por favor ingrese un correo")
       .matches(
         /^[a-zA-Z0-9@._-]+$/,
         "El correo electrónico no puede contener signos",
       ),
     first_name: Yup.string()
-      .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
-      .required("Porfavor Ingrese un Nombre"),
+      .matches(/^[A-Za-z\s]+$/, "Ingrese solo letras")
+      .required("Por favor ingrese un nombre"),
     last_name: Yup.string()
-      .matches(/^[A-Za-z]+$/, "Ingrese solo letras")
-      .required("Porfavor Ingrese un Apellido"),
+      .matches(/^[A-Za-z\s]+$/, "Ingrese solo letras")
+      .required("Por favor ingrese un apellido"),
     password: Yup.string()
       .required("La contraseña es obligatoria")
       .min(8, "La contraseña debe tener al menos 8 caracteres")

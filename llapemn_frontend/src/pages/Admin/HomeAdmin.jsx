@@ -1,10 +1,9 @@
 import React from "react";
 import { useAuth } from "../../hooks";
 import { Charts1, Charts2, Recent, Low } from "../../components/Admin/Charts";
-
 export function HomeAdmin() {
   return (
-    <div>
+    <div className="overflow-x-scroll md:overflow-x-auto">
       <div className="flex w-full flex-row gap-4">
         <Charts1 className="h-full w-full" />
         <Charts2 />

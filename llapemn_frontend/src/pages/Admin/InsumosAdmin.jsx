@@ -42,10 +42,10 @@ export function InsumosAdmin() {
   };
 
   const deleteInsumos = (data) => {
-    setTitleModal("Eliminar  Sala");
+    setTitleModal("Eliminar Insumo");
     setContentModal(
       <DeleteInsumosForm
-        titleDelete={`¿Esta Seguro que de desea Eliminar a la ${data.nombreIn}?`}
+        titleDelete={`¿Está seguro que desea eliminar el insumo ${data.nombreIn}?`}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}
@@ -67,7 +67,7 @@ export function InsumosAdmin() {
       />
 
       {loading ? (
-        <div className="flex justify-center">
+        <div className="mt-2 flex justify-center">
           <Loading />
         </div>
       ) : (

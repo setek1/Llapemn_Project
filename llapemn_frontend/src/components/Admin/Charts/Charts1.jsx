@@ -103,8 +103,10 @@ export function Charts1() {
   }));
   console.log("data2", data2);
   return (
-    <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4">
-      <strong className="font-medium text-gray-700">Insumos Usados</strong>
+    <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4 dark:bg-[#715084] dark:text-white">
+      <strong className="font-medium text-gray-700 dark:text-white">
+        Insumos Usados
+      </strong>
       <div className="mt-3 w-full flex-1 text-xs">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -123,8 +125,8 @@ export function Charts1() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Ingresado" fill="#0ea5e9" />
-            <Bar dataKey="Utilizado" fill="#ea580c" />
+            <Bar dataKey="Ingresado" fill="#59167F" />
+            <Bar dataKey="Utilizado" fill="#EDEDED" />
           </BarChart>
         </ResponsiveContainer>
       </div>
