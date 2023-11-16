@@ -8,14 +8,16 @@ export function TableHistoriall(props) {
   console.log(auth);
   console.log(historial);
   return (
-    <table className="mt-5  w-full ">
+    <table className="mt-5  w-full dark:text-white">
       <thead className="bg-[#F0F0F0]">
-        <tr>
-          <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left">Insumo</th>
+        <tr className="dark:bg-[#715084]">
+          <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#715084]">
+            Nombre
+          </th>
 
           <th>Stock </th>
           <th>Fecha</th>
-          <th>Descripcion</th>
+          <th>Descripción</th>
         </tr>
       </thead>
       <tbody className="text-center">

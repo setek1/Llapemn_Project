@@ -13,15 +13,15 @@ export function Recent() {
   console.log("historial", historial);
 
   return (
-    <div className="flex-1 rounded-sm border border-gray-200 bg-white px-4 pb-4 pt-3">
-      <strong className="font-medium text-gray-700">
+    <div className="flex-1 rounded-sm border border-gray-200 bg-white px-4 pb-4 pt-3 dark:bg-[#59167F]">
+      <strong className="font-medium text-gray-700 dark:text-white">
         Añadidos Recientemente
       </strong>
-      <div className="mt-3 rounded-sm  border-gray-200">
+      <div className="mt-3 rounded-sm  border-gray-200 dark:text-white">
         {map(historial, (historia, index) => (
           <div
             key={index}
-            className="mt-2 flex w-full gap-10 rounded-lg bg-[#F0F0F0] p-4 "
+            className="mt-2 flex w-full gap-10 rounded-lg bg-[#F0F0F0] p-4 dark:bg-[#715084]"
           >
             <>
               <div className="w-[10%]">
@@ -39,7 +39,7 @@ export function Recent() {
                     historia.user_data.last_name}
                 </h1>
               </div>
-              <div className="w-[20%]">
+              <div className="w-[20%]  text-center">
                 <p>Cantidad</p>
                 <h1>{historia.cantidad}</h1>
               </div>
