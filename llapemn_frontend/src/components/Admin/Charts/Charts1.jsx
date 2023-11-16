@@ -103,30 +103,32 @@ export function Charts1() {
   }));
   console.log("data2", data2);
   return (
-    <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4 dark:bg-[#59167F] dark:text-white">
+    <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4 dark:bg-[#715084] dark:text-white">
       <strong className="font-medium text-gray-700 dark:text-white">
         Insumos Usados
       </strong>
       <div className="mt-3 w-full flex-1 text-xs">
-        <BarChart
-          width={500}
-          height={300}
-          data={data2}
-          margin={{
-            top: 20,
-            right: 10,
-            left: -10,
-            bottom: 0,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3 0 0" vertical={false} />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Ingresado" fill="#59167F" />
-          <Bar dataKey="Utilizado" fill="#EDEDED" />
-        </BarChart>
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            width={500}
+            height={300}
+            data={data2}
+            margin={{
+              top: 20,
+              right: 10,
+              left: -10,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3 0 0" vertical={false} />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Ingresado" fill="#59167F" />
+            <Bar dataKey="Utilizado" fill="#EDEDED" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
