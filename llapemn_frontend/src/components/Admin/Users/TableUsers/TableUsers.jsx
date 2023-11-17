@@ -11,17 +11,17 @@ export function TableUsers(props) {
   return (
     <div className="overflow-x-scroll  md:overflow-x-auto">
       <table className="mt-5  w-full ">
-        <thead className="bg-[#F0F0F0]">
-          <tr className="dark:bg-[#715084] dark:text-white">
-            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#715084]">
+        <thead className="bg-[#F0F0F0] dark:bg-[#2E3C4A]">
+          <tr className="dark:bg-[#2E3C4A] dark:text-white">
+            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#2E3C4A]">
               Nombre
             </th>
             <th>Email</th>
             <th>Estado</th>
             <th>Fecha de Ingreso</th>
 
-            <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
-            <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#715084]">
+            <th className=" bg-[#F0F0F0] dark:bg-[#2E3C4A]">Editar</th>
+            <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#2E3C4A]">
               Eliminar
             </th>
           </tr>

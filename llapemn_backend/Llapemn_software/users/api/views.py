@@ -5,6 +5,9 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
 from users.models import User
 from users.api.serializers import UserSerializer
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.db.models import Count
 
 
 
@@ -33,6 +36,8 @@ class UserApiViewSet(ModelViewSet):
         # else:
         #     request.data['password']=request.user.password
         # return super().update(request, *args, **kwargs)
+    
+    
     
 #Muestra infromacion del usuario que esta logeado , esta pasa a urls
 class UserView(APIView):

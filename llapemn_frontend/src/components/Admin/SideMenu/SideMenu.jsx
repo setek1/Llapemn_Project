@@ -3,6 +3,8 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import { FaUserInjured } from "react-icons/fa6";
 import { FaAddressBook } from "react-icons/fa6";
+import { IoMdMoon } from "react-icons/io";
+import { CiLight } from "react-icons/ci";
 
 import {
   IoAnalyticsOutline,
@@ -53,8 +55,8 @@ function MenuLeft(props) {
               to={"/admin"}
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                  : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                  ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                  : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
               }
             >
               <div className="flex flex-row items-center truncate">
@@ -69,8 +71,8 @@ function MenuLeft(props) {
             to={"/Productos"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -84,8 +86,8 @@ function MenuLeft(props) {
             to={"/Cita"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -99,8 +101,8 @@ function MenuLeft(props) {
             to={"/Paciente"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -114,8 +116,8 @@ function MenuLeft(props) {
             to={"/Inventario"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]  dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -130,8 +132,8 @@ function MenuLeft(props) {
               to={"/Trabajadores"}
               className={({ isActive }) =>
                 isActive
-                  ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                  : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                  ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                  : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
               }
             >
               <div className="flex flex-row items-center truncate">
@@ -146,8 +148,8 @@ function MenuLeft(props) {
             to={"/Salas"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white "
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -161,8 +163,8 @@ function MenuLeft(props) {
             to={"/Especialista"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -176,8 +178,8 @@ function MenuLeft(props) {
             to={"/Reportes"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors "
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
@@ -187,7 +189,7 @@ function MenuLeft(props) {
           </NavLink>
         </li>
         <li onClick={logout}>
-          <NavLink className="flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]">
+          <NavLink className="flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:font-bold  dark:hover:text-white">
             <div className="flex flex-row items-center truncate">
               <IoLogOut />
               <p className="truncate pl-2">Cerrar Sesion</p>
@@ -195,14 +197,26 @@ function MenuLeft(props) {
           </NavLink>
         </li>
 
-        <li className=" gap-2 p-4">
-          {/* <button
+        <li className=" gap-2 truncate p-4">
+          <button
             onClick={() => setDarkMode(!darkMode)}
-            className="relative inline-flex cursor-pointer items-center"
+            className="relative inline-flex cursor-pointer items-center truncate"
           >
-            {darkMode ? "Desactivar" : "Activar"}
-          </button> */}
-          <label className="relative inline-flex cursor-pointer items-center">
+            {darkMode ? (
+              <div className="flex flex-row items-center truncate text-[#CDCDCD]">
+                <CiLight className="text-2xl font-semibold" />
+                <p className="trucate pl-2 text-2xl font-semibold">
+                  Modo Oscuro
+                </p>
+              </div>
+            ) : (
+              <div className="flex flex-row items-center truncate text-[#59167F]">
+                <IoMdMoon className="text-2xl" />
+                <p className=" pl-2 text-2xl font-semibold "> Modo Normal</p>
+              </div>
+            )}
+          </button>
+          {/* <label className="relative inline-flex cursor-pointer items-center">
             <input
               type="checkbox"
               value=""
@@ -213,7 +227,7 @@ function MenuLeft(props) {
             <span className="ml-3 text-sm font-medium text-[#CDCDCD] dark:text-white">
               Dark Mode
             </span>
-          </label>
+          </label> */}
         </li>
       </ul>
     </div>

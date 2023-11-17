@@ -4,7 +4,7 @@ export function Loading() {
   return (
     <button
       type="button"
-      className="disabled rounded-full bg-[#59167F] p-1 text-3xl text-white"
+      className="disabled mt-3 rounded-full bg-[#59167F] p-1 text-3xl text-white dark:bg-[#B9CC00]"
     >
       <div className="flex items-center">
         <span className="mr-2">

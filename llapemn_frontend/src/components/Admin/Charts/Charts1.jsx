@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { useHistorial } from "../../../hooks";
 import _ from "lodash";
+import { map } from "lodash";
 
 const data = [
   {
@@ -76,7 +77,13 @@ const data = [
 ];
 
 export function Charts1() {
-  const { historial, getHistorialChart } = useHistorial();
+  const {
+    historial,
+    getHistorialChart,
+    getHistorialChartByYear,
+    historialY,
+    getHistorialChartYearsA,
+  } = useHistorial();
   const monthNames = {
     1: "Enero",
     2: "Febrero",
@@ -91,20 +98,41 @@ export function Charts1() {
     11: "Noviembre",
     12: "Diciembre",
   };
-
+  const [years, setYears] = useState(new Date().getFullYear());
   useEffect(() => {
-    getHistorialChart();
+    getHistorialChartByYear(years);
+  }, [years]);
+  useEffect(() => {
+    getHistorialChartYearsA();
   }, []);
-  console.log(historial);
+  console.log("anos", historialY);
+  console.log("getHistorialChartByYear", historial);
   const data2 = _.map(historial, (history) => ({
     name: monthNames[history.month],
     Utilizado: history.suma_insumos_r,
     Ingresado: history.suma_insumos_s,
   }));
   console.log("data2", data2);
+  console.log(new Date().getFullYear());
   return (
-    <div className="flex h-[22rem] flex-1 flex-col rounded-sm border border-gray-200 bg-white p-4">
-      <strong className="font-medium text-gray-700">Insumos Usados</strong>
+    <div className="flex h-[22rem] flex-1 flex-col rounded-lg border border-gray-200 bg-white p-4 dark:bg-[#2E3C4A] dark:text-white">
+      <div className="flex items-center justify-between">
+        <strong className="font-medium text-gray-700 dark:text-white">
+          Insumos Usados
+        </strong>
+
+        <select
+          value={years}
+          onChange={(event) => setYears(event.target.value)}
+          className="rounded-lg bg-[#59167F4D] p-1 font-semibold text-[#59167F] dark:bg-[#1A2B38] dark:text-white"
+        >
+          {map(historialY, (year, index) => (
+            <option key={index} value={year} className="">
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="mt-3 w-full flex-1 text-xs">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -123,8 +151,8 @@ export function Charts1() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Ingresado" fill="#0ea5e9" />
-            <Bar dataKey="Utilizado" fill="#ea580c" />
+            <Bar dataKey="Ingresado" fill="#59167F" />
+            <Bar dataKey="Utilizado" fill="#EDEDED" />
           </BarChart>
         </ResponsiveContainer>
       </div>

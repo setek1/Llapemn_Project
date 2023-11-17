@@ -24,20 +24,20 @@ export function TopMenu(props) {
   };
   return (
     <>
-      <header className="flex items-center justify-between bg-white p-3 dark:bg-[#59167F]">
+      <header className="flex items-center justify-between bg-white p-3 dark:bg-[#2E3C4A]">
         <div className="dark:text-white">
           <h1 className=" font-bold">Bienvenido</h1>
           <p className="">{renderName()}</p>
         </div>
         <div className="dark:text-white">
-          <h1 className=" text-right font-bold">{DiaDeLaSemana}</h1>
-          <p className="">
+          <h1 className=" text-right font-bold capitalize">{DiaDeLaSemana}</h1>
+          <p className="capitalize">
             {dia} {mes} {ano}
           </p>
         </div>
       </header>
       <div className=" p-4">
-        <div className="m-5 rounded-lg bg-white p-6 dark:bg-[#59167F]">
+        <div className="m-5 rounded-lg bg-white p-6 dark:bg-[#24333F]">
           {children}
         </div>
       </div>

@@ -18,30 +18,32 @@ export function InfHistorial(props) {
   console.log("estos son los Insumos", insumos);
 
   return (
-    <div className="mb-2 flex justify-center">
-      <table className="">
-        <tbody>
-          {map(insumos, (ins, index) => (
-            <tr key={index}>
-              <tr>
-                <td className="border p-4" rowSpan="3">
-                  <BiBox className="text-9xl" />
-                </td>
-                <td className="border p-4">Nombre</td>
-                <td className="border p-4">{ins.nombreIn}</td>
+    <div className="overflow-x-scroll md:overflow-x-auto">
+      <div className="mb-2 flex justify-center">
+        <table className="dark:text-white">
+          <tbody>
+            {map(insumos, (ins, index) => (
+              <tr key={index}>
+                <tr>
+                  <td className="border p-4" rowSpan="3">
+                    <BiBox className="text-9xl" />
+                  </td>
+                  <td className="border p-4">Nombre</td>
+                  <td className="border p-4">{ins.nombreIn}</td>
+                </tr>
+                <tr className="border">
+                  <td className="border p-4">Cantidad</td>
+                  <td className="border p-4">{ins.stockIn}</td>
+                </tr>
+                <tr className="border">
+                  <td className="border p-4">Sala</td>
+                  <td className="border p-4">{ins.sala_data.nombre}</td>
+                </tr>
               </tr>
-              <tr className="border">
-                <td className="border p-4">Cantidad</td>
-                <td className="border p-4">{ins.stockIn}</td>
-              </tr>
-              <tr className="border">
-                <td className="border p-4">Sala</td>
-                <td className="border p-4">{ins.sala_data.nombre}</td>
-              </tr>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
