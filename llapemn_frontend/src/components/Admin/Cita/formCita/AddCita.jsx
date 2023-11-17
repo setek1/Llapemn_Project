@@ -171,7 +171,7 @@ export function AddCita(props) {
 
             <input
               type="time"
-              name="horas"
+              name="hora"
               placeholder="Ingrese la hora de la cita"
               value={formik.values.hora}
               onChange={formik.handleChange}
@@ -244,8 +244,8 @@ export function AddCita(props) {
               {/* <option value="" disabled>
             Seleccione un cliente
           </option> */}
-              {map(salas, (sala, index) => (
-                <option key={index} value={sala.nombre}>
+              {salas.map((sala) => (
+                <option key={sala.id} value={sala.id}>
                   {sala.nombre}
                 </option>
               ))}
