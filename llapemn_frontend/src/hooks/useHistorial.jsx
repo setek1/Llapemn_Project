@@ -6,6 +6,8 @@ import {
   getHistorialChartApi,
   getHistorialApi2,
   updateHistorialApi,
+  getHistorialChartYearApi,
+  getHistorialYearsApi,
 } from "../api/historial";
 import { useAuth } from ".";
 
@@ -13,6 +15,7 @@ export function useHistorial() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [historial, setHistorial] = useState(null);
+  const [historialY, setHistorialY] = useState(null);
   const { auth } = useAuth();
 
   const getHistorial = async () => {
@@ -41,6 +44,28 @@ export function useHistorial() {
     try {
       setLoading(true);
       const response = await getHistorialChartApi();
+      setLoading(false);
+      setHistorial(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getHistorialChartYearsA = async () => {
+    try {
+      setLoading(true);
+      const response = await getHistorialYearsApi();
+      setLoading(false);
+      setHistorialY(response);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getHistorialChartByYear = async (year_actual_G) => {
+    try {
+      setLoading(true);
+      const response = await getHistorialChartYearApi(year_actual_G);
       setLoading(false);
       setHistorial(response);
     } catch (error) {
@@ -83,11 +108,14 @@ export function useHistorial() {
     loading,
     error,
     historial,
+    historialY,
     getHistorial,
     getHistorialByInsumo,
     addHistorial,
     getHistorialChart,
     getHistorial2,
     updateHistorial,
+    getHistorialChartByYear,
+    getHistorialChartYearsA,
   };
 }

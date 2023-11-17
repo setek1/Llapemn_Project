@@ -44,7 +44,7 @@ export function Charts2() {
   }));
 
   return (
-    <div className="flex h-[22rem] w-[20rem] flex-col rounded-sm border border-gray-200 bg-white p-4 dark:bg-[#59167F]">
+    <div className="flex h-[22rem] w-[20rem] flex-col rounded-lg border border-gray-200 bg-white p-4 dark:bg-[#2E3C4A]">
       <strong className="font-medium text-gray-700 dark:text-white">
         Insumos Totales
       </strong>

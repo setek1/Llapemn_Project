@@ -19,6 +19,7 @@ from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from insumo.api.views import InsumoApiViewSet
+from historial.api.views import HistorialApiViewSet
 
 from users.api.router import router_user
 from salas.api.router import router_salas
@@ -56,4 +57,5 @@ urlpatterns = [
     path('api/', include(router_cita2.urls)),
     path('api/', include(router_especialista.urls)),
     path('api/insumos/patchSala/<int:pk>/', InsumoApiViewSet.as_view({'patch': 'patchSala'}), name='insumo-patchSala'),
+    path('api/historial/get_chart_y/<int:year_actual_G>/',HistorialApiViewSet.as_view({'get':'get_chart_y'}), name='get-chart-history'),
 ]

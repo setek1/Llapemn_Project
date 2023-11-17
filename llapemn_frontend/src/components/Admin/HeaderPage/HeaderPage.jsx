@@ -11,10 +11,10 @@ export function HeaderPage(props) {
       <div>
         {btnTitle && (
           <button
-            className="rounded-md bg-[#59167F] p-2 text-white dark:bg-[#715084]"
+            className="rounded-md bg-[#59167F] p-2 text-white dark:bg-[#B9CC00]"
             onClick={btnClick}
           >
-            {btnTitle}
+            <h1 className="  font-bold dark:text-white">{btnTitle}</h1>
           </button>
         )}
       </div>

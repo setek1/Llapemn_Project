@@ -8,6 +8,7 @@ export function HomeAdmin() {
         <Charts1 className="h-full w-full" />
         <Charts2 />
       </div>
+
       <div className="mt-5 flex w-full flex-row gap-4">
         <Recent />
         <Low />
