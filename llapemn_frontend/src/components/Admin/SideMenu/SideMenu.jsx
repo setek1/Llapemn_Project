@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks";
-import { FaUserInjured } from "react-icons/fa6";
+import { FaAddressBook, FaUserInjured } from "react-icons/fa6";
 
 import {
   IoAnalyticsOutline,
@@ -90,7 +90,7 @@ function MenuLeft(props) {
             }
           >
             <div className="flex flex-row items-center truncate">
-              <FaUserInjured />
+              <FaAddressBook />
               <p className="truncate pl-2">Citas</p>
             </div>
           </NavLink>
