@@ -51,7 +51,7 @@ export function Paciente() {
     <>
       <HeaderPage
         title="Paciente"
-        btnTitle="Agregar Paciente"
+        btnTitle="agregarPaciente"
         btnClick={addPaciente}
       />
       <TablePaciente

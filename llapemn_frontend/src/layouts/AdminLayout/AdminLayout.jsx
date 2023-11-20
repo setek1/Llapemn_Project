@@ -3,7 +3,6 @@ import { useAuth } from "../../hooks";
 import { TopMenu, SideMenu } from "../../components/Admin";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
-import logo from "../../image/logo_llapemn.png";
 export function AdminLayout(props) {
   const { children } = props;
   const { auth } = useAuth();
@@ -22,8 +21,8 @@ export function AdminLayout(props) {
           sidebar ? "-left-o" : "-left-full"
         }  z-50 col-span-1 h-full w-[80%]    bg-white p-8 transition-all dark:bg-[#59167F] md:w-[40%] lg:static lg:w-full`}
       >
-        <div className=" text-center font-bold tracking-[4px]">
-          <img src={logo} />
+        <div className="p-8 text-center font-bold tracking-[4px]">
+          <h1>LLapemn</h1>
         </div>
         {/* menu se utilizara por mientras la etiqueuita 'a' pero debermeos cambiarla por router dom*/}
         <SideMenu></SideMenu>
@@ -31,7 +30,7 @@ export function AdminLayout(props) {
       {/* Boton Menu Celular */}
       <button
         onClick={handleSidebar}
-        className="absolute bottom-4 right-4 block rounded-full bg-[#59167F] p-2 text-2xl text-white  dark:bg-[#661201] lg:hidden"
+        className="absolute bottom-4 right-4 block rounded-full bg-[#59167F] p-2 text-2xl text-white lg:hidden"
       >
         {sidebar ? <IoClose /> : <IoMenu />}
       </button>

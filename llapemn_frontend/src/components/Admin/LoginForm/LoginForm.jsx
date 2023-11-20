@@ -40,7 +40,7 @@ export function LoginForm() {
             <div className="mb-6 ">
               <input
                 name="email"
-                placeholder="Correo electrónico"
+                placeholder="Correo electronico"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 className={` bg-[#B7C05F] ${
@@ -75,6 +75,16 @@ export function LoginForm() {
                 className="text-red-700"
                 component="div"
               />
+
+              <div className="mt-4 flex w-full items-baseline justify-between">
+                <label className="flex items-center text-sm text-white">
+                  <input type="checkbox" className="mr-2 accent-[#59167F]" />
+                  Recordar
+                </label>
+                <a className="mt-2 block text-right text-sm  text-white">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
             </div>
             <button
               type="submit"
@@ -99,8 +109,8 @@ function intialValues() {
 function validationSchema() {
   return {
     email: Yup.string()
-      .email("Ingrese un correo válido")
-      .required("Por favor ingrese un correo")
+      .email("Ingrese un Correo Valido")
+      .required("Porfavor Ingrese un Correo")
       .matches(
         /^[a-zA-Z0-9@._-]+$/,
         "El correo electrónico no puede contener signos",

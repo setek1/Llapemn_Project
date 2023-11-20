@@ -9,7 +9,7 @@ import {
   InfHistorial,
   AddSalaHistorial,
 } from "../../components/Admin";
-import { ModalBasic, Loading } from "../../components/Common";
+import { ModalBasic } from "../../components/Common";
 
 export function DetalleInsumos() {
   const { id } = useParams();
@@ -74,14 +74,7 @@ export function DetalleInsumos() {
         <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
         <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
       </div>
-      {loading ? (
-        <div className="flex justify-center">
-          <Loading />
-        </div>
-      ) : (
-        <TableHistoriall historial={historial} />
-      )}
-
+      <TableHistoriall historial={historial} />
       <ModalBasic
         isVisible={showModal}
         onClose={openCloseModal}

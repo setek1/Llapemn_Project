@@ -40,7 +40,7 @@ export function AddEditSalasForm(props) {
           <div className="">
             <input
               name="nombre"
-              placeholder="Ingrese nombre de la sala"
+              placeholder="Ingrese nombre de la Sala"
               value={formik.values.nombre}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -69,11 +69,11 @@ export function AddEditSalasForm(props) {
               className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
             >
               <option value="" disabled hidden>
-                Seleccione un estado
+                Seleccione un Estado
               </option>
               <option value="DP">Disponible</option>
-              <option value="FS">Fuera de servicio</option>
-              <option value="ER">En reparación</option>
+              <option value="FS">Fuera de Servicio</option>
+              <option value="ER">En Reparacion</option>
             </Field>
             <ErrorMessage
               name="estado"
@@ -82,7 +82,7 @@ export function AddEditSalasForm(props) {
             />
             <textarea
               name="descripcion"
-              placeholder="Ingrese una descripción"
+              placeholder="Ingrese una descripcion"
               value={formik.values.descripcion}
               onChange={formik.handleChange}
               className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
@@ -117,11 +117,11 @@ function initialValues(data) {
 }
 function newSchame() {
   return {
-    nombre: Yup.string().required("Por favor ingrese un nombre para la sala"),
+    nombre: Yup.string().required("Porfavor Ingrese un nombre para la sala"),
     descripcion: Yup.string().required(
-      "Por favor ingrese una descripción de la sala",
+      "Porfavor Ingrese un Descripcion de la sala",
     ),
-    estado: Yup.string().required("Por favor ingrese un estado"),
+    estado: Yup.string().required("Porfavor Ingrese un Estado"),
   };
 }
 function updateSchame() {

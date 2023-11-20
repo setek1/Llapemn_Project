@@ -19,7 +19,7 @@ export function TableSalas(props) {
               Nombre
             </th>
 
-            <th>Descripción</th>
+            <th>Descripcion</th>
             <th>Estado</th>
 
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>

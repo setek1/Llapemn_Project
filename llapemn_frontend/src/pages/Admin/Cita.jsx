@@ -51,7 +51,7 @@ export function Cita() {
     <>
       <HeaderPage
         title="Cita"
-        btnTitle="Agregar Cita"
+        btnTitle="agregarCita"
         btnClick={addCita}
       />
       <TableCita

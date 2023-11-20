@@ -6,3 +6,4 @@ export * from "./useInventario";
 export * from "./useHistorial";
 export * from "./usePaciente";
 export * from "./useCita";
+export * from "./useEspecialista";

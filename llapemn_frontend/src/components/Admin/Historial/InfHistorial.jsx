@@ -18,7 +18,7 @@ export function InfHistorial(props) {
   console.log("estos son los Insumos", insumos);
 
   return (
-    <div className="mb-2 flex justify-center dark:text-white">
+    <div className="mb-2 flex justify-center">
       <table className="">
         <tbody>
           {map(insumos, (ins, index) => (

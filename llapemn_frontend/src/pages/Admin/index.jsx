@@ -8,3 +8,4 @@ export * from "./DetalleInventario";
 export * from "./DetalleInsumos";
 export * from "./Paciente";
 export * from "./Cita";
+export * from "./Especialista";

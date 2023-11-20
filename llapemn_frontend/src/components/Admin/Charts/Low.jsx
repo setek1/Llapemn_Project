@@ -56,15 +56,13 @@ export function Low() {
 
   console.log("insumos", insumos);
   return (
-    <div className="w-[20rem] rounded-sm border border-gray-200 bg-white p-4 dark:bg-[#59167F]">
-      <strong className="font-medium text-gray-700 dark:text-white">
-        Insumos Escasos
-      </strong>
+    <div className="w-[20rem] rounded-sm border border-gray-200 bg-white p-4">
+      <strong className="font-medium text-gray-700">Insumos Escasos</strong>
       <div className="mt-4 flex flex-col gap-3">
         {map(insumos, (insumo, index) => (
           <div
             key={index}
-            className="mb-2 flex w-full gap-5 rounded-lg bg-[#F0F0F0] p-4 dark:bg-[#715084] dark:text-white"
+            className="mb-2 flex w-full gap-5 rounded-lg bg-[#F0F0F0] p-4"
           >
             <div className="w-[20%]">
               <BiAlarmExclamation className="h-full w-full  object-cover" />
@@ -73,7 +71,7 @@ export function Low() {
               <p>Nombre</p>
               {insumo.nombreIn}
             </div>
-            <div className="w-[40%] text-center">
+            <div className="w-[40%]">
               <p>Cantidad</p>
               {insumo.stockIn}
             </div>
