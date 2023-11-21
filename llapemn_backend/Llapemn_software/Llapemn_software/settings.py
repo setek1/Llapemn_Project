@@ -93,12 +93,13 @@ DATABASES = {
         'NAME': 'llapemnDB',
         'USER': 'postgres',
         'PASSWORD': 'llapemn2023',
-        'HOST': 'database-1.clgafk4bwydi.us-east-2.rds.amazonaws.com',  # O la dirección IP de tu servidor de base de datos
+        # O la dirección IP de tu servidor de base de datos
+        'HOST': 'database-1.clgafk4bwydi.us-east-2.rds.amazonaws.com',
         'PORT': '5432',      # El puerto predeterminado de PostgreSQL es 5432
     }
 }
 
-#Base de datos Normal con SQLite3 default de django
+# Base de datos Normal con SQLite3 default de django
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -107,9 +108,9 @@ DATABASES = {
 # }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,12 +128,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        
+
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
-    
+
 }
 
 # Internationalization
@@ -158,14 +159,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Users
-AUTH_USER_MODEL= 'users.User'
+AUTH_USER_MODEL = 'users.User'
 
-#Permitimos que cualquier dominio pueda entrar a esta API
-CORS_ORIGIN_ALLOW_ALL = True 
-#Permitimos que las solicitudes incluyan credenciales de autenticacion como cookies ** INVESTIGAR PUEDE SER PELIGROSO
+# Permitimos que cualquier dominio pueda entrar a esta API
+CORS_ORIGIN_ALLOW_ALL = True
+# Permitimos que las solicitudes incluyan credenciales de autenticacion como cookies ** INVESTIGAR PUEDE SER PELIGROSO
 CARS_ALLOW_CREDENTIALS = True
 
-#Para aumentar el tiempo del token
-SIMPLE_JWT={
+# Para aumentar el tiempo del token
+SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }

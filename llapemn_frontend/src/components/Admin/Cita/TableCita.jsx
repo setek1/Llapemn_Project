@@ -12,11 +12,11 @@ export function TableCita(props) {
             <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#715084]">
               Paciente
             </th>
-
             <th>Esp. primario</th>
             <th>Esp. secundario</th>
             <th>Descripción</th>
-            <th>Fecha </th><th> hora</th>
+            <th>Fecha </th>
+            <th>Hora</th>
             <th>Estado</th>
             <th>Sala</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
@@ -33,7 +33,8 @@ export function TableCita(props) {
               <td>{citas.especialista_primario}</td>
               <td>{citas.especialista_secundario}</td>
               <td>{citas.descripcion}</td>
-              <td>{citas.fecha_hora}</td>
+              <td>{citas.fecha}</td>
+              <td>{citas.hora}</td>
               <td>{citas.estado}</td>
               <td>{citas.sala_cita}</td>
               <Actions
@@ -55,6 +56,7 @@ function Actions(props) {
     <>
       <td>
         <button onClick={() => updateCita(cita)}>
+
           <IoBuildOutline />
         </button>
       </td>

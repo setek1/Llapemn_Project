@@ -35,6 +35,7 @@ export function useEspecialista() {
   };
   const updateEspecialista = async (id, data) => {
     try {
+      console.log('Actualizando especialista:', id, data);
       setLoading(true);
       await updateEspecialistaApi(id, data, auth.token);
       setLoading(false);
@@ -48,6 +49,7 @@ export function useEspecialista() {
       setLoading(true);
       await deleteEspecialistaApi(id, auth.token);
       setLoading(false);
+
     } catch (error) {
       setLoading(false);
       setError(error);

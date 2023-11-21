@@ -1,29 +1,29 @@
 import React from "react";
 import { useFormik, ErrorMessage, FormikProvider, Field } from "formik";
 import * as Yup from "yup";
-import { useCita, usePaciente,useUser,useSalas } from "../../../../hooks";
-import {useEffect} from 'react'
+import { useCita, usePaciente, useUser, useSalas } from "../../../../hooks";
+import { useEffect } from 'react'
 import { map } from "lodash";
 
 export function AddCita(props) {
   const { citas, onClose, onRefetch } = props;
-  const{getPaciente,paciente}=usePaciente();
-  const{getUsers,users}=useUser();
-  const{getSalas,salas}=useSalas();
-  const { addCita, updateCita} = useCita();
+  const { getPaciente, paciente } = usePaciente();
+  const { getUsers, users } = useUser();
+  const { getSalas, salas } = useSalas();
+  const { addCita, updateCita } = useCita();
   useEffect(() => {
     getPaciente()
-    
+
   }, [])
   useEffect(() => {
     getUsers()
-    
+
   }, [])
   useEffect(() => {
     getSalas()
-    
+
   }, [])
-  
+
   const formik = useFormik({
     initialValues: initialValues(citas),
     validationSchema: Yup.object(citas ? updateSchame() : newSchame()),
@@ -48,7 +48,7 @@ export function AddCita(props) {
           await updateCita(citas.id, formValue);
         } else {
           await addCita(formValue);
-          
+
         }
 
         onRefetch();
@@ -63,7 +63,7 @@ export function AddCita(props) {
       <div className="mb-8 flex w-auto justify-center">
         <form onSubmit={formik.handleSubmit}>
           <div className="">
-          <Field
+            <Field
               placeholder="Seleccione el paciente"
               as="select"
               onChange={formik.handleChange}
@@ -109,7 +109,7 @@ export function AddCita(props) {
           </option> */}
               {map(users, (user, index) => (
                 <option key={index} value={user.id}>
-                  {user.first_name +" "+user.last_name}
+                  {user.first_name + " " + user.last_name}
                 </option>
               ))}
             </Field>
@@ -138,7 +138,7 @@ export function AddCita(props) {
           </option> */}
               {map(users, (user, index) => (
                 <option key={index} value={user.id}>
-                  {user.first_name +" "+user.last_name}
+                  {user.first_name + " " + user.last_name}
                 </option>
               ))}
             </Field>
@@ -150,7 +150,7 @@ export function AddCita(props) {
               />
             </span>
 
-            
+
 
             <input
               type="date"
@@ -158,9 +158,8 @@ export function AddCita(props) {
               placeholder="Ingrese la fecha de la cita"
               value={formik.values.fecha}
               onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
-                formik.errors.username ? "" : "mb-2"
-              }`}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                }`}
             />
             <span>
               <ErrorMessage
@@ -169,7 +168,23 @@ export function AddCita(props) {
                 component="div"
               />
             </span>
-            
+            <input
+              type="time"
+              name="hora"
+              placeholder="Ingrese la hora de la cita"
+              value={formik.values.hora}
+              onChange={formik.handleChange}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                }`}
+            />
+            <span>
+              <ErrorMessage
+                name="hora"
+                className=" text-red-700"
+                component="div"
+              />
+            </span>
+
             <Field
               value={formik.values.estado}
               as="select"
@@ -198,14 +213,13 @@ export function AddCita(props) {
               />
             </span>
             <textarea
-              
+
               name="descripcion"
               placeholder="Ingrese la descripción de la cita"
               value={formik.values.descripcion}
               onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
-                formik.errors.username ? "" : "mb-2"
-              }`}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                }`}
             />
             <span>
               <ErrorMessage
@@ -215,27 +229,23 @@ export function AddCita(props) {
               />
             </span>
             <Field
-              placeholder="Seleccione la sala"
               as="select"
               onChange={formik.handleChange}
               name="sala_cita"
-              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]"
             >
               {formik.values.sala_cita ? null : (
                 <option value="" disabled hidden>
                   Seleccione la sala
                 </option>
               )}
-              {/* <option value="" disabled>
-            Seleccione un cliente
-          </option> */}
-              {map(salas, (sala, index) => (
-                <option key={index} value={sala.nombre}>
+              {salas && salas.map((sala) => (
+                <option key={sala.id} value={sala.id}>
                   {sala.nombre}
                 </option>
               ))}
             </Field>
-            
+
           </div>
           <hr className="my-4 border-t-2 border-gray-300" />
           <div className="flex justify-end">
@@ -258,6 +268,7 @@ function initialValues(data) {
     especialista_secundario: data?.especialista_secundario || "",
     descripcion: data?.descripcion || "",
     fecha: data?.fecha || "",
+    hora: data?.hora || "",
     estado: data?.estado || "",
     sala_cita: data?.sala_cita || "",
   };
@@ -266,10 +277,15 @@ function initialValues(data) {
 function newSchame() {
   return {
     nombre_paciente: Yup.string().required("Por favor, ponga un nombre"),
-    especialista_primario: Yup.string().required(""),
-    especialista_secundario: Yup.string(),
+    especialista_primario: Yup.string().required("Seleccione el especialista primario"),
+    especialista_secundario: Yup.string()
+      .notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario")
+      .required("Seleccione el especialista secundario"),
     descripcion: Yup.string(),
     fecha: Yup.string(),
+    hora: Yup.string()
+      .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Ingrese una hora válida en formato HH:mm")
+      .required("La hora es obligatoria"),
     estado: Yup.string(),
     sala_cita: Yup.string(),
   };

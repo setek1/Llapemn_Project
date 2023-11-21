@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HeaderPage, TableEspecialista , AddEspecialista } from "../../components/Admin";
+import { HeaderPage, TableEspecialista, AddEspecialista } from "../../components/Admin";
 import { useEspecialista } from "../../hooks";
 import { ModalBasic } from "../../components/Common";
 export function Especialista() {
@@ -25,28 +25,28 @@ export function Especialista() {
     setContentModal(
       <AddEspecialista
         onClose={openCloseModal}
-        citas={data}
+        especialistas={data}
         onRefetch={onRefetch}
       />,
     );
     openCloseModal();
   };
   const deleteEspecialista = (data) => {
-    setTitleModal("Eliminar  especialista");
+    setTitleModal("Eliminar especialista");
     setContentModal(
       <AddEspecialista
         titleDelete={"¿Esta Seguro que de desea Eliminar a ${data.nombre}?"}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}
-        citas={data}
+        especialistas={data}
         btnTitleD2="Cerrar"
         btnClickD2={openCloseModal}
       />,
     );
     openCloseModal();
   };
-  
+
   return (
     <>
       <HeaderPage

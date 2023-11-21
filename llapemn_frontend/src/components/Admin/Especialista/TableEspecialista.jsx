@@ -16,8 +16,8 @@ export function TableEspecialista(props) {
             <th>Apellido</th>
             <th>Especialidad</th>
             <th>Codigo Médico</th>
-            <th>Número telefónico</th><th> hora</th>
-            <th>Derección</th>
+            <th>Número telefónico</th>
+            <th>Dirección</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
             <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#715084]">
               Eliminar
@@ -28,12 +28,11 @@ export function TableEspecialista(props) {
           {map(especialista, (especialistas, index) => (
             <tr key={index}>
               <td className="pb-6 pr-6 pt-6 text-left">{especialistas.nombre}</td>
-
               <td>{especialistas.apellido}</td>
               <td>{especialistas.especialidad}</td>
-              <td>{especialidad.codigo_medico}</td>
-              <td>{especialidad.numero_telefono}</td>
-              <td>{especialidad.direccion}</td>
+              <td>{especialistas.codigo_medico}</td>
+              <td>{especialistas.numero_telefono}</td>
+              <td>{especialistas.direccion}</td>
               <Actions
                 especialista={especialistas}
                 updateEspecialista={updateEspecialista}
@@ -42,6 +41,7 @@ export function TableEspecialista(props) {
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
   );

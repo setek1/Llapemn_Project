@@ -11,7 +11,7 @@ import { useAuth } from ".";
 export function useSalas() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [salas, setSalas] = useState(null);
+  const [salas, setSalas] = useState();
   const { auth } = useAuth();
 
   const getSalas = async () => {
