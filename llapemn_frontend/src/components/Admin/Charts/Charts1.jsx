@@ -12,7 +12,7 @@ import {
 import { useHistorial } from "../../../hooks";
 import _ from "lodash";
 import { map } from "lodash";
-
+import { Calendario } from "../../../pages/admin/Calendario";
 const data = [
   {
     name: "Jan",
@@ -120,7 +120,8 @@ export function Charts1() {
         <strong className="font-medium text-gray-700 dark:text-white">
           Insumos Usados
         </strong>
-
+        
+      
         <select
           value={years}
           onChange={(event) => setYears(event.target.value)}

@@ -5,6 +5,7 @@ import { FaUserInjured } from "react-icons/fa6";
 import { FaAddressBook } from "react-icons/fa6";
 import { IoMdMoon } from "react-icons/io";
 import { CiLight } from "react-icons/ci";
+import { GrSchedule } from "react-icons/gr";
 
 import {
   IoAnalyticsOutline,
@@ -93,6 +94,21 @@ function MenuLeft(props) {
             <div className="flex flex-row items-center truncate">
               <FaAddressBook />
               <p className="truncate pl-2">Citas</p>
+            </div>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/Calendario"}
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
+            }
+          >
+            <div className="flex flex-row items-center truncate">
+            <GrSchedule />
+              <p className="truncate pl-2">Calendario</p>
             </div>
           </NavLink>
         </li>

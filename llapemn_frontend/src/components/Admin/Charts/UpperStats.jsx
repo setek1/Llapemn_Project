@@ -5,6 +5,7 @@ import { BsFillDoorClosedFill } from "react-icons/bs";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { useHistorial } from "../../../hooks";
 import { useEffect, useState } from "react";
+import { Calendario } from "../../../pages/admin/Calendario";
 
 export function UpperStats() {
   const { getHistorialUpperData, historial, loading } = useHistorial();
@@ -29,6 +30,7 @@ export function UpperStats() {
           )}
         </div>
       </BoxWrapper>
+      
       <BoxWrapper>
         <div className=" items-center ">
           <FaCartShopping className="text-3xl text-[#5F27CD]" />
@@ -76,7 +78,9 @@ export function UpperStats() {
         </div>
       </BoxWrapper>
     </div>
+    
   );
+  
 }
 function BoxWrapper({ children }) {
   return (

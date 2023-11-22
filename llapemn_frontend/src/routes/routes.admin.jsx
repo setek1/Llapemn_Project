@@ -10,6 +10,7 @@ import {
   Paciente,
   Cita,
   Especialista,
+  Calendario,
 } from "../pages/Admin/";
 
 const routesAdmin = [
@@ -62,6 +63,11 @@ const routesAdmin = [
     path: "/Especialista",
     layout: AdminLayout,
     component: Especialista,
+  },
+  {
+    path: "/Calendario",
+    layout: AdminLayout,
+    component: Calendario,
   },
 ];
 
