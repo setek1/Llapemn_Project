@@ -43,8 +43,11 @@ export function AddCita(props) {
     //   }
     // },
     onSubmit: async (formValue) => {
+
+      console.log('Datos del formulario:', formValue);
+      console.log('ID de la cita:', citas?.id);
       try {
-        if (citas) {
+        if (citas?.id) {
           await updateCita(citas.id, formValue);
         } else {
           await addCita(formValue);

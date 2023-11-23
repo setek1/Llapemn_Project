@@ -57,7 +57,7 @@ function Actions(props) {
         </button>
       </td>
       <td>
-        <button onClick={() => deleteEspecialista(especialista)}>
+        <button onClick={() => deleteEspecialista(especialista.id)}>
           <IoTrashBinOutline />
         </button>
       </td>

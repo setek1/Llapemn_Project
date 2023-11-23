@@ -61,7 +61,7 @@ function Actions(props) {
         </button>
       </td>
       <td>
-        <button onClick={() => deleteCita(cita)}>
+        <button onClick={() => deleteCita(cita.id)}>
           <IoTrashBinOutline />
         </button>
       </td>

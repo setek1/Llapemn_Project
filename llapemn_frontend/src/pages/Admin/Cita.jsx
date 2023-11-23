@@ -31,27 +31,24 @@ export function Cita() {
     );
     openCloseModal();
   };
-  const deleteCita = (data) => {
-    setTitleModal("Eliminar  citas");
-    setContentModal(
-      <AddCita
-        titleDelete={"¿Esta Seguro que de desea Eliminar a la ${data.nombre}?"}
-        btnTitleD="Eliminar"
-        onClose={openCloseModal}
-        onRefetch={onRefetch}
-        citas={data}
-        btnTitleD2="Cerrar"
-        btnClickD2={openCloseModal}
-      />,
-    );
-    openCloseModal();
+  const deleteCita = async (citaId) => {
+    try {
+      setLoading(true);
+      await deleteCitaApi(citaId, auth.token);
+      onRefetch(); // Actualiza la lista de citas
+      setShowModal(false); // Cierra el modal
+    } catch (error) {
+      console.error("Error al eliminar la cita", error);
+    } finally {
+      setLoading(false);
+    }
   };
   console.log(cita);
   return (
     <>
       <HeaderPage
         title="Cita"
-        btnTitle="agregarCita"
+        btnTitle="Agregar Cita"
         btnClick={addCita}
       />
       <TableCita

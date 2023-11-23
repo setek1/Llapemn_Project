@@ -38,7 +38,7 @@ export function AddPaciente(props) {
   return (
     // formulario para ingresar un paciente nuevo
     <FormikProvider value={formik}>
-      <div className="mb-8 flex w-auto justify-center">
+      <div className="mb-8 flex w-auto justify-center overflow-y-auto" style={{ maxHeight: '85vh' }}>
         <form onSubmit={formik.handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div className="">

@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useFormik, ErrorMessage, FormikProvider, Field } from "formik";
 import * as Yup from "yup";
-import { useEspecialista } from "../../../../hooks";
+import { useEspecialista, useUser } from "../../../../hooks";
 import { useEffect } from 'react'
 import { map } from "lodash";
 
 export function AddEspecialista(props) {
   const { especialistas, onClose, onRefetch } = props;
+  const { getUsers, users } = useUser();
   const { getEspecialista, especialista } = useEspecialista();
-
+  const [selectedUser, setSelectedUser] = useState(null);
   const { addEspecialista, updateEspecialista } = useEspecialista();
 
 
   const formik = useFormik({
     initialValues: initialValues(especialistas),
-    validationSchema: Yup.object(especialistas ? updateSchema() : newSchema()),
+    validationSchema: Yup.object(newSchema()),
 
     // onSubmit: (formValue) => {
     //   try {
@@ -46,14 +47,79 @@ export function AddEspecialista(props) {
       }
     },
   });
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const ESPECIALIDADES_MAP_INVERSO = {
+    Psicología: 'PSI',
+    Masoterapia: 'MAS',
+    Doctor: 'DOC',
+    // Aca se añade todas las especialidades con su nombre completo y su clave correspondiente
+  };
+
+  function getUserEspecialidadKey(especialidadNombre) {
+    const especialidadMap = {
+      'Psicología': 'PSI',
+      'Terapia Ocupacional': 'TER',
+      'Masoterapia': 'MAS',
+
+    };
+    return especialidadMap[especialidadNombre] || null;
+  }
+
+  useEffect(() => {
+    if (selectedUser) {
+      const especialidadCodigo = ESPECIALIDADES_MAP_INVERSO[selectedUser.especialidad] || '';
+      formik.setValues({
+        ...formik.values,
+        nombre: selectedUser.first_name || '',
+        apellido: selectedUser.last_name || '',
+        especialidad: especialidadCodigo,
+        userId: selectedUser.id.toString(),
+      });
+    }
+  }, [selectedUser, formik.setValues]);
+
+  const handleUserChange = (e) => {
+    const userId = e.target.value;
+    const user = users.find((u) => u.id.toString() === userId);
+    if (user) {
+      setSelectedUser(user);
+      const userEspecialidadKey = getUserEspecialidadKey(user.especialidad);
+      formik.setValues({
+        ...formik.values,
+        nombre: user.first_name || '',
+        apellido: user.last_name || '',
+        especialidad: userEspecialidadKey || '',
+        userId: user.id.toString(),
+      });
+    }
+  };
   return (
     <FormikProvider value={formik}>
       <div className="mb-8 flex w-auto justify-center">
         <form onSubmit={formik.handleSubmit}>
           <div className="">
+            {/* Dropdown para seleccionar usuario */}
+            {users ? (
+              <Field as="select" name="userId" onChange={handleUserChange} className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]">
+                <option value="">Seleccione un trabajador</option>
+                {users.map((user) => (
+                  <option key={user.id} value={user.id}>
+                    {user.email} - {user.first_name} {user.last_name}
+                  </option>
+                ))}
+              </Field>
+            ) : (
+              <p>Cargando trabajadores...</p>
+            )}
+
+            {/* Campos autocompletados */}
             <input
               name="nombre"
-              placeholder="Ingrese el nombre del especialista"
+              placeholder="Nombre del especialista"
               value={formik.values.nombre}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
@@ -66,9 +132,10 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
             <input
               name="apellido"
-              placeholder="Ingrese el apellido del especialista"
+              placeholder="Apellido del especialista"
               value={formik.values.apellido}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
@@ -81,30 +148,22 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
-            <Field
-              value={formik.values.especialidad}
-              as="select"
-              onChange={formik.handleChange}
-              name="especialidad"
-              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-            >
-              <option value="" disabled hidden>
-                Seleccione la especialidad
-              </option>
+
+            <Field as="select" name="especialidad" value={formik.values.especialidad} onChange={formik.handleChange} className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]">
+              <option value="">Seleccione la especialidad</option>
               <option value="PSI">Psicología</option>
-              <option value="TER">Terapia ocupacional</option>
-              <option value="PSIPE">Psicopedagogía</option>
-              <option value="PSIQ">Psiquiatría</option>
               <option value="MAS">Masoterapia</option>
-              <option value="TC">Terapia complementaria</option>
-              <option value="NUT">Nutricionista</option>
-              <option value="BIO">Biodanza</option>
+              <option value="DOC">Doctor</option>
+
+              {/* ... otras opciones */}
             </Field>
-            <ErrorMessage
-              name="especialidad"
-              className="text-red-700"
-              component="div"
-            />
+            <span>
+              <ErrorMessage
+                name="especialidad"
+                className=" text-red-700"
+                component="div"
+              />
+            </span>
             <input
               name="codigo_medico"
               placeholder="Ingrese el codigo de médico"
@@ -120,6 +179,7 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
             <input
               name="numero_telefono"
               placeholder="Ingrese el número telefónico del especialista"
@@ -135,6 +195,7 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
             <textarea
 
               name="direccion"
@@ -151,13 +212,16 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
+            {/* Resto del formulario */}
+            {/* ... */}
             <hr className="my-4 border-t-2 border-gray-300" />
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white "
+                className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white"
               >
-                {especialistas ? "Actualizar" : "Crear"}
+                {formik.values.userId ? "Crear" : "Actualizar"}
               </button>
             </div>
           </div>
@@ -166,25 +230,42 @@ export function AddEspecialista(props) {
     </FormikProvider>
   );
 }
-function initialValues(data) {
-  return {
-    nombre: data?.nombre || "",
-    apellido: data?.apellido || "",
-    especialidad: data?.especialidad || "",
-    codigo_medico: data?.codigo_medico || "",
-    numero_telefono: data?.numero_telefono || "",
-    direccion: data?.direccion || "",
-  };
 
+
+
+
+function initialValues(especialista) {
+  if (especialista) {
+    return {
+      nombre: especialista.nombre || '',
+      apellido: especialista.apellido || '',
+      especialidad: especialista.especialidad || '',
+      codigo_medico: especialista.codigo_medico || '',
+      numero_telefono: especialista.numero_telefono || '',
+      direccion: especialista.direccion || '',
+      userId: especialista.userId || '',
+    };
+  } else {
+    return {
+      nombre: '',
+      apellido: '',
+      especialidad: '',
+      codigo_medico: '',
+      numero_telefono: '',
+      direccion: '',
+      userId: '', // Este será el valor seleccionado en el dropdown
+    };
+  }
 }
 function newSchema() {
   return {
-    nombre: Yup.string().required("Por favor, ponga un nombre"),
-    apellido: Yup.string().required(""),
-    especialidad: Yup.string(),
-    codigo_medico: Yup.string(),
-    numero_telefono: Yup.string(),
-    direccion: Yup.string(),
+    userId: Yup.string().required('Debe seleccionar un usuario'),
+    nombre: Yup.string().required('Este campo es obligatorio'),
+    apellido: Yup.string().required('Este campo es obligatorio'),
+    especialidad: Yup.string().required('Este campo es obligatorio'),
+    codigo_medico: Yup.string().required('Este campo es obligatorio'),
+    numero_telefono: Yup.string().required('Este campo es obligatorio'),
+    direccion: Yup.string().required('Este campo es obligatorio'),
   };
 }
 function updateSchema() {
