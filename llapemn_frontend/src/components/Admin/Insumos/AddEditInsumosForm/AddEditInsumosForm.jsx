@@ -47,7 +47,7 @@ export function AddEditInsumosForm(props) {
           <div className="">
             <input
               name="nombreIn"
-              placeholder="Ingrese nombre del Insumo"
+              placeholder="Ingrese nombre del insumo"
               value={formik.values.nombreIn}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -113,7 +113,7 @@ export function AddEditInsumosForm(props) {
               className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
             >
               <option value="" disabled hidden>
-                Seleccione un Tipo
+                Seleccione un tipo
               </option>
               <option value="C">Consuntivo</option>
               <option value="NC">No Consuntivo</option>
@@ -125,7 +125,7 @@ export function AddEditInsumosForm(props) {
             />
             <input
               name="precioUIn"
-              placeholder="Ingrese el precio Unitario"
+              placeholder="Ingrese el precio unitario"
               value={formik.values.precioUIn}
               onChange={formik.handleChange}
               className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
@@ -169,11 +169,11 @@ function initialValues(data) {
 function newSchame() {
   return {
     nombreIn: Yup.string().required(
-      "Porfavor Ingrese un nombre para el Insumo",
+      "Por favor ingrese un nombre para el insumo",
     ),
-    stockIn: Yup.string().required("Porfavor Ingrese el Stock"),
-    tipoIn: Yup.string().required("Porfavor Ingrese un Tipo"),
-    precioUIn: Yup.number().required("Porfavor Ingrese un Precio"),
+    stockIn: Yup.string().required("Por favor ingrese el stock"),
+    tipoIn: Yup.string().required("Por favor ingrese un tipo"),
+    precioUIn: Yup.number().required("Por favor ingrese un precio"),
   };
 }
 function updateSchame() {

@@ -17,7 +17,7 @@ export function TableHistoriall(props) {
 
           <th>Stock </th>
           <th>Fecha</th>
-          <th>Descripcion</th>
+          <th>Descripción</th>
         </tr>
       </thead>
       <tbody className="text-center dark:text-white">

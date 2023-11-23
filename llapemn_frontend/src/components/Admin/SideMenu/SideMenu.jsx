@@ -107,7 +107,7 @@ function MenuLeft(props) {
             }
           >
             <div className="flex flex-row items-center truncate">
-            <GrSchedule />
+              <GrSchedule />
               <p className="truncate pl-2">Calendario</p>
             </div>
           </NavLink>
@@ -124,21 +124,6 @@ function MenuLeft(props) {
             <div className="flex flex-row items-center truncate">
               <FaUserInjured />
               <p className="truncate pl-2">Paciente</p>
-            </div>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/Inventario"}
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]  dark:hover:text-white"
-            }
-          >
-            <div className="flex flex-row items-center truncate">
-              <IoGrid />
-              <p className="truncate pl-2">Inventario</p>
             </div>
           </NavLink>
         </li>
@@ -189,26 +174,11 @@ function MenuLeft(props) {
             </div>
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to={"/Reportes"}
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
-            }
-          >
-            <div className="flex flex-row items-center truncate">
-              <IoReader />
-              <p className="truncate pl-2">Reportes</p>
-            </div>
-          </NavLink>
-        </li>
         <li onClick={logout}>
           <NavLink className="flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:font-bold  dark:hover:text-white">
             <div className="flex flex-row items-center truncate">
               <IoLogOut />
-              <p className="truncate pl-2">Cerrar Sesion</p>
+              <p className="truncate pl-2">Cerrar Sesión</p>
             </div>
           </NavLink>
         </li>

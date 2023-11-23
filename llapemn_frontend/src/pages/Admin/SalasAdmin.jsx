@@ -42,10 +42,10 @@ export function SalasAdmin() {
     openCloseModal();
   };
   const deleteSalas = (data) => {
-    setTitleModal("Eliminar  Sala");
+    setTitleModal("Eliminar Sala");
     setContentModal(
       <DeleteSalasForm
-        titleDelete={`¿Esta Seguro que de desea Eliminar a la ${data.nombre}?`}
+        titleDelete={`¿Está seguro que desea eliminar la sala ${data.nombre}?`}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}

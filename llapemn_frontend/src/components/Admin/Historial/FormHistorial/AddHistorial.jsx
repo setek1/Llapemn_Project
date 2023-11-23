@@ -96,7 +96,7 @@ export function AddHistorial(props) {
 
             <input
               name="id_sala"
-              placeholder="Ingrese nombre de la Sala"
+              placeholder="Ingrese nombre de la sala"
               value={formik.values.id_sala}
               onChange={formik.handleChange}
               className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -120,7 +120,7 @@ export function AddHistorial(props) {
             />
             <input
               name="cantidad"
-              placeholder="cantidad"
+              placeholder="Cantidad"
               value={formik.values.cantidad}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -134,7 +134,7 @@ export function AddHistorial(props) {
             />
             <input
               name="cantidaU"
-              placeholder="cantidad"
+              placeholder="Cantidad"
               value={formik.values.cantidadU}
               onChange={formik.handleChange}
               className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -144,7 +144,7 @@ export function AddHistorial(props) {
 
             <input
               name="operacion"
-              placeholder="Operacion"
+              placeholder="Operación"
               value={formik.values.operacion}
               onChange={formik.handleChange}
               className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
@@ -188,7 +188,7 @@ function newSchame() {
   return {
     id_user: Yup.number(),
     cantidad: Yup.string()
-      .matches(/^[0-9]+$/, "Porfavor solo ingrese numeros")
+      .matches(/^[0-9]+$/, "Por favor solo ingrese números")
       .required("La cantidad debe ser un número."),
     id_insumo: Yup.number(),
     id_sala: Yup.number(),

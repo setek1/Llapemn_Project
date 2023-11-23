@@ -13,7 +13,7 @@ export function TableInventario(props) {
         <thead className="bg-[#F0F0F0] dark:bg-[#2E3C4A]">
           <tr className="dark:bg-[#2E3C4A]">
             <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#2E3C4A]">
-              Sala
+              Nombre
             </th>
 
             <th className="rounded-r-lg">Stock Sala</th>

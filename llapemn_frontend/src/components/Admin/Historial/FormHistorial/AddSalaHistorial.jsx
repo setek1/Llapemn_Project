@@ -61,7 +61,7 @@ export function AddSalaHistorial(props) {
             />
             <input
               name="operacion"
-              placeholder="Operacion"
+              placeholder="Operación"
               value={formik.values.operacion}
               onChange={formik.handleChange}
               className={`hidden w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
