@@ -78,7 +78,7 @@ function MenuLeft(props) {
           >
             <div className="flex flex-row items-center truncate">
               <IoGrid />
-              <p className="truncate pl-2">Productos</p>
+              <p className="truncate pl-2">Insumos</p>
             </div>
           </NavLink>
         </li>
@@ -191,14 +191,17 @@ function MenuLeft(props) {
             {darkMode ? (
               <div className="flex flex-row items-center truncate text-[#CDCDCD]">
                 <CiLight className="text-2xl font-semibold" />
-                <p className="trucate pl-2 text-2xl font-semibold">
+                <p className="w-[130px] truncate pl-2 text-2xl font-semibold">
                   Modo Oscuro
                 </p>
               </div>
             ) : (
               <div className="flex flex-row items-center truncate text-[#59167F]">
                 <IoMdMoon className="text-2xl" />
-                <p className=" pl-2 text-2xl font-semibold "> Modo Normal</p>
+                <p className="w-[130px] truncate pl-2 text-2xl font-semibold ">
+                  {" "}
+                  Modo Normal
+                </p>
               </div>
             )}
           </button>

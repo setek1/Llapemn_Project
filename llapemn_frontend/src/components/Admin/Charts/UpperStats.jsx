@@ -30,7 +30,7 @@ export function UpperStats() {
           )}
         </div>
       </BoxWrapper>
-      
+
       <BoxWrapper>
         <div className=" items-center ">
           <FaCartShopping className="text-3xl text-[#5F27CD]" />
@@ -67,7 +67,7 @@ export function UpperStats() {
           <MdProductionQuantityLimits className="text-3xl text-red-500" />
         </div>
         <div className="items-center pl-1">
-          <span>Insumos escasos</span>
+          <span>Insumos críticos</span>
           {historial && historial.insumos_bajos !== undefined ? (
             <div>
               <strong>{historial.insumos_bajos}</strong>
@@ -78,9 +78,7 @@ export function UpperStats() {
         </div>
       </BoxWrapper>
     </div>
-    
   );
-  
 }
 function BoxWrapper({ children }) {
   return (

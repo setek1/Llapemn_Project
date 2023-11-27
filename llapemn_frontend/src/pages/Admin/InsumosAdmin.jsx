@@ -62,7 +62,7 @@ export function InsumosAdmin() {
     <>
       <HeaderPage
         title="Insumos"
-        btnTitle="Agregar Insumo"
+        btnTitle="Nuevo Insumo"
         btnClick={addInsumo}
       />
 

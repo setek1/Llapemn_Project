@@ -1,6 +1,7 @@
 import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
+import { RiEdit2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export function TableSalas(props) {
@@ -15,7 +16,7 @@ export function TableSalas(props) {
       <table className="mt-5  w-full ">
         <thead className="bg-[#F0F0F0] dark:bg-[#2E3C4A]">
           <tr className="dark:bg-[#2E3C4A] dark:text-white">
-            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#2E3C4A]">
+            <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-center dark:bg-[#2E3C4A]">
               Nombre
             </th>
 
@@ -32,7 +33,11 @@ export function TableSalas(props) {
           {map(salas, (sala, index) => (
             <tr key={index}>
               <td className="pb-6 pr-6 pt-6 text-left">
-                <Link to={`/Salas/${sala.id}`}>{sala.nombre} </Link>
+                <Link to={`/Salas/${sala.id}`}>
+                  <button className="w-full rounded-md bg-[#59167F] p-2 text-white dark:bg-[#B9CC00]">
+                    {sala.nombre}
+                  </button>
+                </Link>
               </td>
 
               <td>{sala.descripcion}</td>
@@ -57,12 +62,12 @@ function Actions(props) {
     <>
       <td>
         <button onClick={() => updateSala(sala)}>
-          <IoBuildOutline />
+          <RiEdit2Fill className="text-[#59167F] dark:text-[#B9CC00]" />
         </button>
       </td>
       <td>
         <button onClick={() => deleteSalas(sala)}>
-          <IoTrashBinOutline />
+          <IoTrashBinOutline className="text-red-500" />
         </button>
       </td>
     </>

@@ -58,7 +58,7 @@ export function Low() {
   return (
     <div className="w-[20rem] rounded-lg border border-gray-200 bg-white p-4 dark:bg-[#2E3C4A]">
       <strong className="font-medium text-gray-700 dark:text-white">
-        Insumos Escasos
+        Insumos Críticos
       </strong>
       <div className="mt-4 flex flex-col gap-3">
         {map(insumos, (insumo, index) => (
@@ -67,12 +67,9 @@ export function Low() {
             className="mb-2 flex w-full gap-5 rounded-lg bg-[#F0F0F0] p-4 dark:bg-[#1A2B38] dark:text-white"
           >
             <div className="w-[20%]">
-              <BiAlarmExclamation className="h-full w-full  object-cover" />
+              <BiAlarmExclamation className="h-full w-full  object-cover text-red-500" />
             </div>
-            <div className="w-[40%]">
-              <p>Nombre</p>
-              {insumo.nombreIn}
-            </div>
+            <div className="flex w-[40%] items-center">{insumo.nombreIn}</div>
             <div className="w-[40%] text-center">
               <p>Cantidad</p>
               {insumo.stockIn}

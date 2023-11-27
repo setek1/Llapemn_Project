@@ -23,7 +23,7 @@ export function SalasAdmin() {
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);
   const addSalas = () => {
-    setTitleModal("Nueva Sala");
+    setTitleModal("Agregar Nueva Sala");
     setContentModal(
       <AddEditSalasForm onClose={openCloseModal} onRefetch={onRefetch} />,
     );
@@ -59,7 +59,7 @@ export function SalasAdmin() {
 
   return (
     <>
-      <HeaderPage title="Salas" btnTitle="Agregar Sala" btnClick={addSalas} />
+      <HeaderPage title="Salas" btnTitle="Nueva Sala" btnClick={addSalas} />
       {loading ? (
         <div className="flex justify-center">
           <Loading />

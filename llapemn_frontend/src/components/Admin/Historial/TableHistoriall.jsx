@@ -12,7 +12,7 @@ export function TableHistoriall(props) {
       <thead className="bg-[#F0F0F0] dark:bg-[#2E3C4A] dark:text-white">
         <tr className="">
           <th className="rounded-l-lg  bg-[#F0F0F0] p-2 text-left dark:bg-[#2E3C4A]">
-            Insumo
+            Nombre
           </th>
 
           <th>Stock </th>

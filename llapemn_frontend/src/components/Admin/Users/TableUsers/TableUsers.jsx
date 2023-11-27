@@ -1,6 +1,7 @@
 import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
+import { RiEdit2Fill } from "react-icons/ri";
 import { HeaderPage } from "../../HeaderPage";
 import { useAuth } from "../../../../hooks";
 
@@ -38,7 +39,9 @@ export function TableUsers(props) {
               <td className="text-white">
                 <span
                   className={`rounded p-1 ${
-                    user.is_active ? "bg-[#59167F]" : "bg-[#AE280B]"
+                    user.is_active
+                      ? "bg-[#59167F] dark:bg-[#B9CC00]"
+                      : "bg-[#AE280B]"
                   }`}
                 >
                   {user.is_active ? "Activo" : "Inactivo"}
@@ -66,12 +69,12 @@ function Actions(props) {
     <>
       <td>
         <button onClick={() => updateUser(user)}>
-          <IoBuildOutline />
+          <RiEdit2Fill className="text-[#59167F] dark:text-[#B9CC00]" />
         </button>
       </td>
       <td>
         <button onClick={() => deleteUser(user)}>
-          <IoTrashBinOutline />
+          <IoTrashBinOutline className="text-red-500" />
         </button>
       </td>
     </>

@@ -13,7 +13,7 @@ export function UsersAdmin() {
   const openCloseModal = () => setshowModal((prev) => !prev);
   //Agregar Usuario
   const addUser = () => {
-    setTtitleModal("Nuevo Usuario");
+    setTtitleModal("Agregar Nuevo Usuario");
     setContentModal(
       <AddEditUserForm onClose={openCloseModal} onRefetch={onRefetch} />,
     );
@@ -62,7 +62,7 @@ export function UsersAdmin() {
     <div>
       <HeaderPage
         title="Trabajadores"
-        btnTitle="Agregar Trabajador"
+        btnTitle="Nuevo Trabajador"
         btnClick={addUser}
       />
       {loading ? (

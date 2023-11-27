@@ -118,10 +118,9 @@ export function Charts1() {
     <div className="flex h-[22rem] flex-1 flex-col rounded-lg border border-gray-200 bg-white p-4 dark:bg-[#2E3C4A] dark:text-white">
       <div className="flex items-center justify-between">
         <strong className="font-medium text-gray-700 dark:text-white">
-          Insumos Usados
+          Insumos Utilizados
         </strong>
-        
-      
+
         <select
           value={years}
           onChange={(event) => setYears(event.target.value)}
@@ -153,7 +152,7 @@ export function Charts1() {
             <Tooltip />
             <Legend />
             <Bar dataKey="Ingresado" fill="#59167F" />
-            <Bar dataKey="Utilizado" fill="#EDEDED" />
+            <Bar dataKey="Utilizado" fill="#D8D8D8" />
           </BarChart>
         </ResponsiveContainer>
       </div>
