@@ -17,6 +17,7 @@ export function TableCita(props) {
             <th>Descripción</th>
             <th>Fecha </th>
             <th>Hora</th>
+            <th>Hora fin</th>
             <th>Estado</th>
             <th>Sala</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
@@ -31,10 +32,11 @@ export function TableCita(props) {
               <td className="pb-6 pr-6 pt-6 text-left">{citas.pa_data.nombre}</td>
 
               <td>{citas.ep_data.first_name}</td>
-              <td>{citas.es_data.first_name}</td>
+              <td>{citas.es_data ? citas.es_data.first_name : 'No especificado'}</td>
               <td>{citas.descripcion}</td>
               <td>{citas.fecha}</td>
               <td>{citas.hora}</td>
+              <td>{citas.hora_fin}</td>
               <td>{citas.estado}</td>
               <td>{citas.sala_cita}</td>
               <Actions
