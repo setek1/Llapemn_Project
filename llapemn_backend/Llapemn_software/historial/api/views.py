@@ -236,7 +236,7 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['GET'])
     def get_A(self, request):
         
-        queryset = Historial.objects.filter(operacion='A').order_by('-fecha')[:5]
+        queryset = Historial.objects.filter(operacion='A').order_by('-fecha', '-hora')[:5]
         serializer = HistorialSerializer(queryset, many=True)
         return Response(serializer.data)
 

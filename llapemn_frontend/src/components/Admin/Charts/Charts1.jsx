@@ -152,7 +152,7 @@ export function Charts1() {
             <Tooltip />
             <Legend />
             <Bar dataKey="Ingresado" fill="#59167F" />
-            <Bar dataKey="Utilizado" fill="#D8D8D8" />
+            <Bar dataKey="Utilizado" fill="#B9CC00" />
           </BarChart>
         </ResponsiveContainer>
       </div>

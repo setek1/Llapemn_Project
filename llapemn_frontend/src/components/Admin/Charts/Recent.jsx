@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 import { map } from "lodash";
 import { HiOutlineArchiveBox } from "react-icons/hi2";
 import { UpperStats } from "./UpperStats";
+import { format, parseISO } from "date-fns";
+import esLocale from "date-fns/locale/es";
 
 export function Recent() {
   const { historial, getHistorial2 } = useHistorial();
+  const fecha = new Date();
+  // Obtener día, mes y año
+  const dia = format(fecha, "d", { locale: esLocale });
+  const mes = format(fecha, "MM", { locale: esLocale });
+  const ano = format(fecha, "yyyy", { locale: esLocale });
 
   useEffect(() => {
     getHistorial2();
@@ -18,9 +25,20 @@ export function Recent() {
       <div>
         <UpperStats />
       </div>
-      <strong className="font-medium text-gray-700 dark:text-white">
-        Añadidos Recientemente
-      </strong>
+      <div className="flex justify-between">
+        <div>
+          <strong className="font-medium text-gray-700 dark:text-white">
+            Añadidos Recientemente
+          </strong>
+        </div>
+
+        <div>
+          <strong className="font-medium text-gray-700 dark:text-white">
+            Fecha actual: {dia}/{mes}/{ano}
+          </strong>
+        </div>
+      </div>
+
       <div className="mt-3 rounded-sm  border-gray-200 dark:text-white">
         {map(historial, (historia, index) => (
           <div
@@ -35,7 +53,7 @@ export function Recent() {
                 <p>Insumo</p>
                 <h1>{historia.insumo_data.nombreIn}</h1>
               </div>
-              <div className="w-[30%]">
+              <div className="w-[25%]">
                 <p>Usuario</p>
                 <h1>
                   {historia.user_data.first_name +
@@ -43,13 +61,29 @@ export function Recent() {
                     historia.user_data.last_name}
                 </h1>
               </div>
-              <div className="w-[30%]  text-center">
-                <p>Cantidad Insumo</p>
+              <div className="w-[10%]  text-center">
+                <p>Cantidad </p>
                 <h1>{historia.cantidad}</h1>
               </div>
-              <div className="w-[20%]">
+              <div className="w-[10%]">
                 <p>Sala</p>
                 <h1>{historia.sala_data.nombre}</h1>
+              </div>
+              <div className="w-[15%]">
+                <p>Fecha</p>
+                <h1>
+                  {historia.fecha_formateada
+                    ? historia.fecha_formateada
+                    : "Fecha no disponible"}
+                </h1>
+              </div>
+              <div className="w-[10%]">
+                <p>Hora</p>
+                <h1>
+                  {historia.hora
+                    ? historia.hora.split(".")[0]
+                    : "Hora no disponible"}
+                </h1>
               </div>
             </>
           </div>

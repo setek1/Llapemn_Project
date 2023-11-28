@@ -5,7 +5,7 @@ import { useInsumos } from "../../../hooks";
 import _ from "lodash";
 
 const RADIAN = Math.PI / 180;
-const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#DC0600", "#59167F", "#B9CC00"];
 
 const renderCustomizedLabel = ({
   cx,

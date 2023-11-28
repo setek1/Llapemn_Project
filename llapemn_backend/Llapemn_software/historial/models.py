@@ -1,5 +1,6 @@
 from django.db import models
-from django.db.models.signals import post_save
+from rest_framework import serializers
+import datetime
 # Create your models here.
 OPER_CHOICES=[
         ('S', 'Suma'),
@@ -16,10 +17,9 @@ class Historial(models.Model):
     operacion=models.CharField(max_length=20, choices=OPER_CHOICES,null=True, blank=True)
     descripcion=models.TextField(null=True, blank=True)
     fecha = models.DateField(auto_now_add=True,null=True, blank=True)
+    hora = models.TimeField(auto_now_add=True,null=True, blank=True)
 
-    def __str__(self):
-        return self.operacion
-
+   
 # def historial_post_save_receiver(sender, instance, created, **kwargs):
 #     if created:
 #         if instance.operacion == 'S':
