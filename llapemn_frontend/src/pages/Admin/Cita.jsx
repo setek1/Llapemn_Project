@@ -10,7 +10,7 @@ export function Cita() {
   const [refetch, setRefetch] = useState(false);
   useEffect(() => {
     getCita();
-  }, []);
+  }, [refetch]);
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);
   const addCita = () => {
@@ -51,7 +51,7 @@ export function Cita() {
     <>
       <HeaderPage
         title="Cita"
-        btnTitle="agregarCita"
+        btnTitle="Agregar Cita"
         btnClick={addCita}
       />
       <TableCita

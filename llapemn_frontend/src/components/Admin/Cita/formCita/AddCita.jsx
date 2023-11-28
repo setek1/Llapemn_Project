@@ -11,6 +11,7 @@ export function AddCita(props) {
   const { getUsers, users } = useUser();
   const { getSalas, salas } = useSalas();
   const { addCita, updateCita } = useCita();
+
   useEffect(() => {
     getPaciente()
 
@@ -44,7 +45,8 @@ export function AddCita(props) {
     // },
     onSubmit: async (formValue) => {
       try {
-        if (citas) {
+        console.log("ID de la cita:", citas?.id);
+        if (citas?.id) {
           await updateCita(citas.id, formValue);
         } else {
           await addCita(formValue);
@@ -54,7 +56,8 @@ export function AddCita(props) {
         onRefetch();
         onClose();
       } catch (error) {
-        console.error(error);
+        console.error("Error al agregar/actualizar la cita:", error);
+
       }
     },
   });
@@ -172,6 +175,8 @@ export function AddCita(props) {
               type="time"
               name="hora"
               placeholder="Ingrese la hora de la cita"
+              min="08:00"
+              max="20:59"
               value={formik.values.hora}
               onChange={formik.handleChange}
               className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
@@ -184,6 +189,27 @@ export function AddCita(props) {
                 component="div"
               />
             </span>
+
+            <input
+              type="time"
+              name="hora_fin"
+              min="08:00"
+              max="20:59"
+              placeholder="Ingrese la hora de finalización de la cita"
+              value={formik.values.hora_fin}
+              onChange={formik.handleChange}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.hora_fin ? "mb-2" : ""}`}
+            />
+            <span>
+              <ErrorMessage
+                name="hora_fin"
+                className=" text-red-700"
+                component="div"
+              />
+            </span>
+
+
+
 
             <Field
               value={formik.values.estado}
@@ -212,7 +238,7 @@ export function AddCita(props) {
                 component="div"
               />
             </span>
-            <textarea
+            <input
 
               name="descripcion"
               placeholder="Ingrese la descripción de la cita"
@@ -224,6 +250,22 @@ export function AddCita(props) {
             <span>
               <ErrorMessage
                 name="descripcion"
+                className=" text-red-700"
+                component="div"
+              />
+            </span>
+            <textarea
+
+              name="diagnostico"
+              placeholder="Ingrese el diagnostico de la cita"
+              value={formik.values.diagnostico}
+              onChange={formik.handleChange}
+              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                }`}
+            />
+            <span>
+              <ErrorMessage
+                name="diagnostico"
                 className=" text-red-700"
                 component="div"
               />
@@ -271,6 +313,8 @@ function initialValues(data) {
     hora: data?.hora || "",
     estado: data?.estado || "",
     sala_cita: data?.sala_cita || "",
+    hora_fin: data?.hora_fin || "",
+    diagnostico: data?.diagnostico || "",
   };
 
 }
@@ -279,15 +323,29 @@ function newSchame() {
     nombre_paciente: Yup.string().required("Por favor, ponga un nombre"),
     especialista_primario: Yup.string().required("Seleccione el especialista primario"),
     especialista_secundario: Yup.string()
-      .notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario")
-      .required("Seleccione el especialista secundario"),
+      .notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario"),
+
     descripcion: Yup.string(),
     fecha: Yup.string(),
     hora: Yup.string()
       .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Ingrese una hora válida en formato HH:mm")
+      .matches(/^(0[8-9]|1[0-9]|20):[0-5][0-9]$/, "La hora debe estar entre las 08:00 y las 20:59")
       .required("La hora es obligatoria"),
+    hora_fin: Yup.string()
+      .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Ingrese una hora válida en formato HH:mm")
+      .matches(/^(0[8-9]|1[0-9]|2[0-1]):[0-5][0-9]$/, "La hora de finalización debe estar entre las 08:00 y las 21:00")
+      .required("La hora de finalización es obligatoria")
+      .test(
+        'is-greater',
+        'La hora de finalización debe ser posterior a la hora de inicio',
+        function (value) {
+          const { hora } = this.parent;
+          return value && hora && value > hora;
+        }
+      ),
     estado: Yup.string(),
     sala_cita: Yup.string(),
+    diagnostico: Yup.string(),
   };
 }
 function updateSchame() {

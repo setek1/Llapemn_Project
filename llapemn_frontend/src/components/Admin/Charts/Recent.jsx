@@ -32,7 +32,7 @@ export function Recent() {
                 <HiOutlineArchiveBox className="text-5xl" />
               </div>
               <div className="w-[20%]">
-                <p>Nombre</p>
+                <p>Insumo</p>
                 <h1>{historia.insumo_data.nombreIn}</h1>
               </div>
               <div className="w-[30%]">
@@ -43,8 +43,8 @@ export function Recent() {
                     historia.user_data.last_name}
                 </h1>
               </div>
-              <div className="w-[20%]  text-center">
-                <p>Cantidad</p>
+              <div className="w-[30%]  text-center">
+                <p>Cantidad Insumo</p>
                 <h1>{historia.cantidad}</h1>
               </div>
               <div className="w-[20%]">

@@ -30,7 +30,7 @@ export function DetalleInsumos() {
   }, [refetch]);
 
   const addHistorial = (data) => {
-    setTitleModal("Ingresar Insumo");
+    setTitleModal("Actualizar Stock");
     setContentModal(
       <AddHistorial
         onClose={openCloseModal}
@@ -71,7 +71,7 @@ export function DetalleInsumos() {
     <>
       <InfHistorial params={id} onRefetch={onRefetch} />
       <div className="flex w-full flex-col">
-        <Button btnTitle={"Agregar Insumo"} btnClick={addHistorial} />
+        <Button btnTitle={"Actualizar Stock"} btnClick={addHistorial} />
         <Button btnTitle={"Utilizar Insumo"} btnClick={RestarHistorial} />
       </div>
       <TableHistoriall historial={historial} />
