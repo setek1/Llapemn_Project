@@ -103,7 +103,13 @@ export function AddEspecialista(props) {
         <form onSubmit={formik.handleSubmit}>
           <div className="">
             {/* Dropdown para seleccionar usuario */}
+
+            <label htmlFor="usuario" className="block text-lg font-bold text-gray-700">
+              Usuario registrado del sistema
+            </label>
             {users ? (
+
+
               <Field as="select" name="userId" onChange={handleUserChange} className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]">
                 <option value="">Seleccione un usuario</option>
                 {users.map((user) => (
@@ -117,6 +123,11 @@ export function AddEspecialista(props) {
             )}
 
             {/* Campos autocompletados */}
+
+            <label htmlFor="nombre" className="block text-lg font-bold text-gray-700">
+              Nombre del especialista
+            </label>
+
             <input
               name="nombre"
               placeholder="Nombre del especialista"
@@ -132,6 +143,10 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
+            <label htmlFor="apellido" className="block text-lg font-bold text-gray-700">
+              Apellido del Paciente
+            </label>
 
             <input
               name="apellido"
@@ -149,6 +164,13 @@ export function AddEspecialista(props) {
               />
             </span>
 
+
+            <label htmlFor="especialidad" className="block text-lg font-bold text-gray-700">
+              Especialidad
+            </label>
+
+
+
             <Field as="select" name="especialidad" value={formik.values.especialidad} onChange={formik.handleChange} className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]">
               <option value="">Seleccione la especialidad</option>
               <option value="PSI">Psicología</option>
@@ -164,6 +186,11 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
+
+            <label htmlFor="codigo_medico" className="block text-lg font-bold text-gray-700">
+              Codigo médico del Especialista
+            </label>
             <input
               name="codigo_medico"
               placeholder="Ingrese el codigo de médico"
@@ -180,6 +207,10 @@ export function AddEspecialista(props) {
               />
             </span>
 
+            <label htmlFor="numero_telefono" className="block text-lg font-bold text-gray-700">
+              Número telefonico del especialista
+            </label>
+
             <input
               name="numero_telefono"
               placeholder="Ingrese el número telefónico del especialista"
@@ -195,6 +226,10 @@ export function AddEspecialista(props) {
                 component="div"
               />
             </span>
+
+            <label htmlFor="dirección" className="block text-lg font-bold text-gray-700">
+              Dirección del especialista
+            </label>
 
             <textarea
 

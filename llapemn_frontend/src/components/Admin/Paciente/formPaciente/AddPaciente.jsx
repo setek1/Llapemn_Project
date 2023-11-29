@@ -46,6 +46,10 @@ export function AddPaciente(props) {
                 {/*Información de contacto*/}
                 <h4 className="text-lg leading-6 font-medium text-gray-900">Información Personal</h4>
                 <br />
+
+                <label htmlFor="nombre" className="block text-lg font-bold text-gray-700">
+                  Nombre del Paciente
+                </label>
                 <input
                   name="nombre"
                   placeholder="Ingrese el nombre del paciente"
@@ -61,6 +65,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="apellido" className="block text-lg font-bold text-gray-700">
+                  Apellido del Paciente
+                </label>
+
                 <input
                   name="apellido"
                   placeholder="Ingrese el apellido del paciente"
@@ -76,6 +85,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+
+                <label htmlFor="dni" className="block text-lg font-bold text-gray-700">
+                  DNI del Paciente
+                </label>
                 <input
                   name="dni"
                   placeholder="Ingrese el dni del paciente"
@@ -91,6 +105,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="fecha_nacimiento" className="block text-lg font-bold text-gray-700">
+                  Fecha de Nacimiento del Paciente
+                </label>
+
                 <input
                   type="date"
                   name="fecha_nacimiento"
@@ -107,6 +126,13 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+
+                <label htmlFor="fecha_nacimiento" className="block text-lg font-bold text-gray-700">
+                  Género del Paciente
+                </label>
+
+
                 <Field
                   value={formik.values.genero}
                   as="select"
@@ -126,6 +152,12 @@ export function AddPaciente(props) {
                   className="text-red-700"
                   component="div"
                 />
+
+
+                <label htmlFor="altura" className="block text-lg font-bold text-gray-700">
+                  Altura del Paciente
+                </label>
+
                 <input
                   name="altura"
                   placeholder="Ingrese la altura del paciente"
@@ -141,6 +173,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="peso" className="block text-lg font-bold text-gray-700">
+                  Peso del Paciente
+                </label>
+
                 <input
                   name="peso"
                   placeholder="Ingrese el peso del paciente"
@@ -156,6 +193,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="edad" className="block text-lg font-bold text-gray-700">
+                  Edad del Paciente
+                </label>
+
                 <input
                   name="edad"
                   placeholder="Ingrese la edad del paciente"
@@ -174,9 +216,14 @@ export function AddPaciente(props) {
 
               </div>
               <div>
+
                 {/*Información de contacto*/}
                 <h4 className="text-lg leading-6 font-medium text-gray-900">Información de Contacto</h4>
                 <br />
+
+                <label htmlFor="direccion" className="block text-lg font-bold text-gray-700">
+                  Dirección del Paciente
+                </label>
                 <input
                   name="direccion"
                   placeholder="Ingrese la direccion del paciente"
@@ -192,6 +239,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+
+                <label htmlFor="telefono" className="block text-lg font-bold text-gray-700">
+                  Teléfono del Paciente
+                </label>
                 <input
                   name="telefono"
                   placeholder="Ingrese el teléfono del paciente"
@@ -207,6 +259,12 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+
+                <label htmlFor="email" className="block text-lg font-bold text-gray-700">
+                  Correo Electronico del Paciente
+                </label>
+
                 <input
                   name="email"
                   placeholder="Ingrese el email del paciente"
@@ -222,6 +280,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="tipo_sangre" className="block text-lg font-bold text-gray-700">
+                  Tipo de Sangre del Paciente
+                </label>
+
                 <Field
                   value={formik.values.tipo_sangre}
                   as="select"
@@ -240,6 +303,11 @@ export function AddPaciente(props) {
                   className="text-red-700"
                   component="div"
                 />
+
+
+                <label htmlFor="medico_referente" className="block text-lg font-bold text-gray-700">
+                  Médico referente del Paciente
+                </label>
                 <input
                   name="medico_referente"
                   placeholder="Ingrese el médico referente"
@@ -255,6 +323,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="telefono_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Teléfono contacto del Paciente
+                </label>
+
                 <input
                   name="telefono_contacto_emergencia"
                   placeholder="Ingrese el número telefónico de emergencia"
@@ -270,6 +343,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+
+                <label htmlFor="nombre_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Nombre contacto del Paciente
+                </label>
                 <input
                   name="nombre_contacto_emergencia"
                   placeholder="Ingrese el nombre de contacto de emergencia"
@@ -285,6 +363,11 @@ export function AddPaciente(props) {
                     component="div"
                   />
                 </span>
+
+                <label htmlFor="relacion_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Relación contacto del Paciente
+                </label>
+
                 <input
                   name="relacion_contacto_emergencia"
                   placeholder="Ingrese la relación familiar del contacto"
@@ -307,6 +390,10 @@ export function AddPaciente(props) {
               {/*Información general del paciente*/}
               <h4 className="text-lg leading-6 font-medium text-gray-900">Información general del paciente</h4>
               <br />
+              <label htmlFor="alergias" className="block text-lg font-bold text-gray-700">
+                Alergias del Paciente
+              </label>
+
               <textarea
                 name="alergias"
                 placeholder="Ingrese alguna alergia previa o en su defecto dejelo en blanco"
@@ -322,6 +409,11 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+              <label htmlFor="medicamentos_actuales" className="block text-lg font-bold text-gray-700">
+                Medicamentos actuales del Paciente
+              </label>
+
               <textarea
                 name="medicamentos_actuales"
                 placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
@@ -337,9 +429,14 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+              <label htmlFor="alergias" className="block text-lg font-bold text-gray-700">
+                Enfermedades previas del Paciente
+              </label>
+
               <textarea
                 name="enfermedades_previas"
-                placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
+                placeholder="Ingrese que enfermedades previas ha tenido el paciente o en su defecto dejelo en blanco"
                 value={formik.values.enfermedades_previas}
                 onChange={formik.handleChange}
                 className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
@@ -352,9 +449,15 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+              <label htmlFor="cirugias_previas" className="block text-lg font-bold text-gray-700">
+                Cirugias del Paciente
+              </label>
+
+
               <textarea
                 name="cirugias_previas"
-                placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
+                placeholder="Ingrese que cirugias que ha tenido el paciente"
                 value={formik.values.cirugias_previas}
                 onChange={formik.handleChange}
                 className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
@@ -367,6 +470,12 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+              <label htmlFor="fecha_ingreso" className="block text-lg font-bold text-gray-700">
+                Fecha de ingreso del Paciente
+              </label>
+
+
               <input
                 type="date"
                 name="fecha_ingreso"
@@ -383,6 +492,11 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+              <label htmlFor="seguro_medico" className="block text-lg font-bold text-gray-700">
+                Seguro Medico del Paciente
+              </label>
+
               <textarea
                 name="seguro_medico"
                 placeholder="Ingrese que seguro medico posee el paciente o en su defecto dejelo en blanco"
@@ -398,6 +512,12 @@ export function AddPaciente(props) {
                   component="div"
                 />
               </span>
+
+
+              <label htmlFor="observaciones" className="block text-lg font-bold text-gray-700">
+                Observaciones del Paciente
+              </label>
+
               <textarea
                 name="observaciones"
                 placeholder="Ingrese que se observa del paciente"
