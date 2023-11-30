@@ -63,7 +63,7 @@ export function AddCita(props) {
           console.log("Actualizando cita existente:", citas.id);
           await updateCita(citas.id, formValue);
         } else {
-          console.log("Agregando nueva cita", formValue);
+          console.log("Agregando nueva cita");
           await addCita(formValue);
         }
 
@@ -211,7 +211,7 @@ export function AddCita(props) {
                 />
               </span>
 
-              {/* <label
+              <label
                 htmlFor="fecha"
                 className="block text-lg font-bold text-gray-700"
               >
@@ -242,7 +242,7 @@ export function AddCita(props) {
                     <select
                       name="hora"
                       onChange={formik.handleChange}
-                      value={formik.values.hora}
+                      value={formik.values.hora.split(":")[0]}
                       className="w-1/2 rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]"
                     >
                       <option value="" disabled>
@@ -320,7 +320,7 @@ export function AddCita(props) {
                           `${currentHourFin}:${selectedMinutesFin}`,
                         );
                       }}
-                      value={formik.values.hora_fin}
+                      value={formik.values.hora_fin.split(":")[1]}
                       className="w-1/2 rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]"
                     >
                       <option value="" disabled>
@@ -334,7 +334,7 @@ export function AddCita(props) {
                     </select>
                   </div>
                 </div>
-              </div> */}
+              </div>
 
               <label
                 htmlFor="estado"
@@ -343,7 +343,7 @@ export function AddCita(props) {
                 Seleccione el estado de la cita actual:
               </label>
 
-              {/* <Field
+              <Field
                 value={formik.values.estado}
                 as="select"
                 onChange={formik.handleChange}
@@ -369,9 +369,9 @@ export function AddCita(props) {
                   className=" text-red-700"
                   component="div"
                 />
-              </span> */}
+              </span>
 
-              {/* <label
+              <label
                 htmlFor="descripcion"
                 className="block text-lg font-bold text-gray-700"
               >
@@ -443,7 +443,7 @@ export function AddCita(props) {
                       {sala.nombre}
                     </option>
                   ))}
-              </Field> */}
+              </Field>
             </div>
             <hr className="my-4 border-t-2 border-gray-300" />
             <div className="flex justify-end">
@@ -461,62 +461,46 @@ export function AddCita(props) {
   );
 }
 function initialValues(data) {
-  console.log("Valores iniciales del formulario:", data);
+  //console.log("Valores iniciales del formulario:", data);
   return {
     nombre_paciente: data?.nombre_paciente || "",
     especialista_primario: data?.especialista_primario || "",
     especialista_secundario: data?.especialista_secundario || "",
     descripcion: data?.descripcion || "",
-    // fecha: data?.fecha || "",
-    // hora: data?.hora || "00:00",
-    // estado: data?.estado || "",
-    // sala_cita: data?.sala_cita || "",
-    // hora_fin: data?.hora_fin || "00:00",
-    // diagnostico: data?.diagnostico || "",
-    // minutos: data?.minutos || "00",
-    // minutos_fin: data?.minutos_fin || "00",
+    fecha: data?.fecha || "",
+    hora: data?.hora || "00:00",
+    estado: data?.estado || "",
+    sala_cita: data?.sala_cita || "",
+    hora_fin: data?.hora_fin || "00:00",
+    diagnostico: data?.diagnostico || "",
+    minutos: data?.minutos || "00",
+    minutos_fin: data?.minutos_fin || "00",
   };
 }
 function newSchame() {
   return {
-    nombre_paciente: Yup.string().required("Por favor, ponga un nombre"),
-    especialista_primario: Yup.string().required(
-      "Seleccione el especialista primario",
-    ),
-    especialista_secundario: Yup.string().notOneOf(
-      [Yup.ref("especialista_primario")],
-      "El especialista secundario no puede ser el mismo que el primario",
-    ),
+    nombre_paciente: Yup.string(), //.required("Por favor, ponga un nombre")
+    especialista_primario: Yup.string(), //.required("Seleccione el especialista primario")
+    especialista_secundario: Yup.string(),
+    //.notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario")
     descripcion: Yup.string(),
     fecha: Yup.string(),
-    hora: Yup.string()
-      .matches(
-        /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        "Ingrese una hora válida en formato HH:mm",
-      )
-      .matches(
-        /^(0[8-9]|1[0-9]|20):[0-5][0-9]$/,
-        "La hora debe estar entre las 08:00 y las 20:59",
-      )
-      .required("La hora es obligatoria"),
-    hora_fin: Yup.string()
-      .matches(
-        /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        "Ingrese una hora válida en formato HH:mm",
-      )
-      .matches(
-        /^(0[8-9]|1[0-9]|2[0-1]):[0-5][0-9]$/,
-        "La hora de finalización debe estar entre las 08:00 y las 21:00",
-      )
-      .required("La hora de finalización es obligatoria")
-      .test(
-        "is-greater",
-        "La hora de finalización debe ser posterior a la hora de inicio",
-        function (value) {
-          const { hora } = this.parent;
-          return value && hora && value > hora;
-        },
-      ),
+    hora: Yup.string(),
+    //.matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Ingrese una hora válida en formato HH:mm")
+    //.matches(/^(0[8-9]|1[0-9]|20):[0-5][0-9]$/, "La hora debe estar entre las 08:00 y las 20:59")
+    //.required("La hora es obligatoria")
+    hora_fin: Yup.string(),
+    //.matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Ingrese una hora válida en formato HH:mm")
+    //.matches(/^(0[8-9]|1[0-9]|2[0-1]):[0-5][0-9]$/, "La hora de finalización debe estar entre las 08:00 y las 21:00")
+    //.required("La hora de finalización es obligatoria")
+    //.test(
+    //  'is-greater',
+    //  'La hora de finalización debe ser posterior a la hora de inicio',
+    //  function (value) {
+    //    const { hora } = this.parent;
+    //    return value && hora && value > hora;
+    //  }
+    //),
     estado: Yup.string(),
     sala_cita: Yup.string(),
     diagnostico: Yup.string(),

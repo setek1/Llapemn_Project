@@ -93,8 +93,8 @@ export function Calendario() {
         );
         const holidayEvents = response.data.map((holiday) => ({
           title: holidayTranslations[holiday.name] || holiday.name,
-          start: new Date(holiday.date),
-          end: new Date(holiday.date),
+          start: new Date(holiday.date + "T00:00:00"), // Agregar horario local
+          end: new Date(holiday.date + "T00:00:00"), // Agregar horario local
           allDay: true,
           holiday: true,
         }));

@@ -7,15 +7,18 @@ import * as Yup from "yup";
 
 export function AddInsumoCita(props) {
   const { loading, insumos, getInsumosBySala } = useInsumos();
-  const { citas, operacion, onRefetch } = props;
+  const { citas, operacion } = props;
+  const [refetch, setRefetch] = useState(false);
+  const onRefetch = () => setRefetch((prev) => !prev);
   const { addHistorial, getHistorialByCita, historial } = useHistorial();
+
   const { auth } = useAuth();
   useEffect(() => {
     getInsumosBySala(citas.sala_cita);
   }, []);
   useEffect(() => {
     getHistorialByCita(citas.id);
-  }, []);
+  }, [refetch]);
   console.log("Insumos en salas", insumos);
   console.log("Historialbycita", historial);
 
