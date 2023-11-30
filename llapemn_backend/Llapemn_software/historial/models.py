@@ -10,6 +10,7 @@ OPER_CHOICES=[
     ]
 class Historial(models.Model):
     id_user=models.ForeignKey('users.User', on_delete=models.CASCADE, null=True, blank=True)
+    id_cita=models.ForeignKey('cita2.Cita2', on_delete=models.CASCADE, null=True, blank=True)
     id_insumo=models.ForeignKey('insumo.Insumo', on_delete=models.CASCADE, null=True, blank=True)
     id_sala=models.ForeignKey('salas.Salas', on_delete=models.CASCADE, null=True, blank=True)
     cantidad=models.IntegerField(null=True, blank=True)

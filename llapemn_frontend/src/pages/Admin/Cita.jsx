@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
-import { HeaderPage, TableCita, AddCita } from "../../components/Admin";
+import {
+  HeaderPage,
+  TableCita,
+  AddCita,
+  AddInsumoCita,
+  TableCitaInsumos,
+} from "../../components/Admin";
 import { useCita } from "../../hooks";
 import { ModalBasic } from "../../components/Common";
+
 export function Cita() {
   const { loading, cita, getCita } = useCita();
   const [showModal, setShowModal] = useState(false);
@@ -15,19 +22,13 @@ export function Cita() {
   const onRefetch = () => setRefetch((prev) => !prev);
   const addCita = () => {
     setTitleModal("Nueva cita");
-    setContentModal(
-      <AddCita onClose={openCloseModal} onRefetch={onRefetch} />,
-    );
+    setContentModal(<AddCita onClose={openCloseModal} onRefetch={onRefetch} />);
     openCloseModal();
   };
   const updateCita = (data) => {
     setTitleModal("Actualizar cita");
     setContentModal(
-      <AddCita
-        onClose={openCloseModal}
-        citas={data}
-        onRefetch={onRefetch}
-      />,
+      <AddCita onClose={openCloseModal} citas={data} onRefetch={onRefetch} />,
     );
     openCloseModal();
   };
@@ -46,18 +47,28 @@ export function Cita() {
     );
     openCloseModal();
   };
+
+  const addInsumoCita = (data) => {
+    setTitleModal("Insumos usados en la sesión");
+    setContentModal(
+      <AddInsumoCita
+        onClose={openCloseModal}
+        onRefetch={onRefetch}
+        citas={data}
+        operacion={"R"}
+      />,
+    );
+    openCloseModal();
+  };
   console.log(cita);
   return (
     <>
-      <HeaderPage
-        title="Cita"
-        btnTitle="Agregar Cita"
-        btnClick={addCita}
-      />
+      <HeaderPage title="Cita" btnTitle="Agregar Cita" btnClick={addCita} />
       <TableCita
         cita={cita}
         updateCita={updateCita}
         deleteCita={deleteCita}
+        addInsumoCita={addInsumoCita}
       />
       <ModalBasic
         isVisible={showModal}

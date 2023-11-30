@@ -3,6 +3,7 @@ import { BiAlarmExclamation } from "react-icons/bi";
 import { useInsumos } from "../../../hooks";
 import { useEffect, useState } from "react";
 import { map } from "lodash";
+import { Link } from "react-router-dom";
 const popularProducts = [
   {
     id: "3432",
@@ -69,7 +70,9 @@ export function Low() {
             <div className="w-[20%]">
               <BiAlarmExclamation className="h-full w-full  object-cover text-red-500" />
             </div>
-            <div className="flex w-[40%] items-center">{insumo.nombreIn}</div>
+            <div className="flex w-[40%] items-center">
+              <Link to={`/Productos/${insumo.id}`}>{insumo.nombreIn}</Link>
+            </div>
             <div className="w-[40%] text-center">
               <p>Cantidad</p>
               {insumo.stockIn}

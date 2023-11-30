@@ -62,7 +62,7 @@ function MenuLeft(props) {
             >
               <div className="flex flex-row items-center truncate">
                 <IoAnalyticsOutline />
-                <p className="truncate pl-2">Dashboard</p>
+                <p className="truncate pl-2">Cuadro de mando</p>
               </div>
             </NavLink>
           </li>
@@ -178,6 +178,21 @@ function MenuLeft(props) {
           </li>
         )}
 
+        <li>
+          <NavLink
+            to={"/FAQ"}
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white "
+                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
+            }
+          >
+            <div className="flex flex-row items-center truncate">
+              <IoCube />
+              <p className="truncate pl-2">FAQ</p>
+            </div>
+          </NavLink>
+        </li>
 
         <li onClick={logout}>
           <NavLink className="flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:font-bold  dark:hover:text-white">

@@ -28,7 +28,7 @@ export function AddHistorial(props) {
       id_sala: history[0].id_sala,
       operacion: operacion,
       cantidad: "",
-      cantidadU: "",
+      cantidadU: 0,
       descripcion: "",
     },
     validationSchema: Yup.object(newSchame()),

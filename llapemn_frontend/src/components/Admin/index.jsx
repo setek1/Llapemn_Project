@@ -10,3 +10,4 @@ export * from "./Historial";
 export * from "./Paciente";
 export * from "./Cita";
 export * from "./Especialista";
+export * from "./FAQ";

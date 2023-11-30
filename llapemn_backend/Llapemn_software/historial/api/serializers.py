@@ -12,4 +12,4 @@ class HistorialSerializer(ModelSerializer):
     fecha_formateada = serializers.DateField(source='fecha', format='%d/%m/%Y', read_only=True)
     class Meta:
         model=Historial
-        fields=['id','id_user','id_insumo','id_sala','cantidad','operacion','descripcion','fecha','hora','insumo_data','user_data','sala_data','fecha_formateada' ]
+        fields=['id','id_user','id_insumo','id_sala','cantidad','operacion','descripcion','fecha','hora','insumo_data','user_data','sala_data','fecha_formateada','id_cita', 'cantidadU']
