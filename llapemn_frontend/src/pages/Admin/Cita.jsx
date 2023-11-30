@@ -10,7 +10,7 @@ import { useCita } from "../../hooks";
 import { ModalBasic } from "../../components/Common";
 
 export function Cita() {
-  const { loading, cita, getCita } = useCita();
+  const { loading, cita, getCita, deleteCita: deleteCitaApi } = useCita();
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
@@ -18,32 +18,41 @@ export function Cita() {
   useEffect(() => {
     getCita();
   }, [refetch]);
-  const openCloseModal = () => setShowModal((prev) => !prev);
-  const onRefetch = () => setRefetch((prev) => !prev);
+
+  const openCloseModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
+  const onRefetch = () => {
+    setRefetch((prev) => !prev);
+  };
   const addCita = () => {
     setTitleModal("Nueva cita");
-    setContentModal(<AddCita onClose={openCloseModal} onRefetch={onRefetch} />);
+    setContentModal(
+      <AddCita onClose={openCloseModal} citas={null} onRefetch={onRefetch} />,
+    );
     openCloseModal();
   };
   const updateCita = (data) => {
-    setTitleModal("Actualizar cita");
     setContentModal(
       <AddCita onClose={openCloseModal} citas={data} onRefetch={onRefetch} />,
     );
     openCloseModal();
   };
-  const deleteCita = (data) => {
-    setTitleModal("Eliminar  citas");
+
+  const handleDeleteCita = async (citaId) => {
+    await deleteCitaApi(citaId); // Asegúrate de usar deleteCitaApi aquí
+    onRefetch();
+    openCloseModal();
+  };
+  const confirmDeleteCita = (citaData) => {
+    setTitleModal("Eliminar cita");
     setContentModal(
-      <AddCita
-        titleDelete={"¿Esta Seguro que de desea Eliminar a la ${data.nombre}?"}
-        btnTitleD="Eliminar"
-        onClose={openCloseModal}
-        onRefetch={onRefetch}
-        citas={data}
-        btnTitleD2="Cerrar"
-        btnClickD2={openCloseModal}
-      />,
+      <>
+        <p>¿Estás seguro de que deseas eliminar la cita?</p>
+        <button onClick={() => handleDeleteCita(citaData.id)}>Eliminar</button>
+        <button onClick={openCloseModal}>Cancelar</button>
+      </>,
     );
     openCloseModal();
   };
@@ -67,8 +76,7 @@ export function Cita() {
       <TableCita
         cita={cita}
         updateCita={updateCita}
-        deleteCita={deleteCita}
-        addInsumoCita={addInsumoCita}
+        deleteCita={confirmDeleteCita}
       />
       <ModalBasic
         isVisible={showModal}

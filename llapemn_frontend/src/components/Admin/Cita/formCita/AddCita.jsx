@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik, ErrorMessage, FormikProvider, Field } from "formik";
 import * as Yup from "yup";
 import { useCita, usePaciente, useUser, useSalas } from "../../../../hooks";
+import { useAuth } from "../../../../hooks";
 import { AddPaciente } from "../../Paciente/formPaciente/AddPaciente";
 import { ModalPaciente2 } from "../../../Common";
 import { useEffect } from 'react'
@@ -21,8 +22,7 @@ export function AddCita(props) {
 
   const addPacienteModal = () => {
     setContentModal(
-      // The AddPaciente component here should NOT have a <form> tag
-      // since it's being rendered inside another form (the AddCita form).
+
       <AddPaciente onClose={openCloseModal} onRefetch={onRefetch} />
     );
     openCloseModal();
@@ -30,17 +30,19 @@ export function AddCita(props) {
 
 
   useEffect(() => {
-    getPaciente()
 
-  }, [])
+    getPaciente();
+  }, []);
+
   useEffect(() => {
-    getUsers()
 
-  }, [])
+    getUsers();
+  }, []);
+
   useEffect(() => {
-    getSalas()
 
-  }, [])
+    getSalas();
+  }, []);
 
 
 
@@ -49,28 +51,18 @@ export function AddCita(props) {
     initialValues: initialValues(citas),
     validationSchema: Yup.object(citas ? updateSchame() : newSchame()),
 
-    // onSubmit: (formValue) => {
-    //   try {
-    //     //if (pacientes) {
-    //     //   await updatePaciente(pacientes.id, formValue);
-    //     //} else {
-    //     console.log("a");
-    //     //}
 
-    //     onRefetch();
-    //     onClose();
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
     onSubmit: async (formValue) => {
       try {
+        console.log("Formulario enviado:", formValue);
         console.log("ID de la cita:", citas?.id);
+
 
 
 
         const horaCompleta = `${formValue.hora}:${formValue.minutos}`;
         const horaFinCompleta = `${formValue.hora_fin}:${formValue.minutos_fin}`;
+
 
         const citaData = {
           ...formValue,
@@ -78,10 +70,17 @@ export function AddCita(props) {
           hora_fin: horaFinCompleta,
         };
 
+        console.log("Datos de la cita a guardar/actualizar:", citaData);
+
+
         if (citas?.id) {
-          await updateCita(citas.id, citaData);
+          console.log("Actualizando cita existente:", citas.id);
+          await updateCita(citas.id, formValue);
+
         } else {
-          await addCita(citaData);
+          console.log("Agregando nueva cita");
+          await addCita(formValue);
+
 
         }
 
@@ -102,11 +101,6 @@ export function AddCita(props) {
     <FormikProvider value={formik}>
       <div style={{ maxHeight: '800px', overflowY: 'scroll' }}>
         <div className="mb-8 flex w-auto justify-center">
-
-
-
-
-
           {showModal && (
             <ModalPaciente2
               isVisible={showModal}
@@ -115,10 +109,6 @@ export function AddCita(props) {
               children={contentModal}
             />
           )}
-
-
-
-
           <form onSubmit={formik.handleSubmit}>
             <div className="">
 
@@ -451,7 +441,9 @@ export function AddCita(props) {
   );
 }
 function initialValues(data) {
+  console.log("Valores iniciales del formulario:", data);
   return {
+
     nombre_paciente: data?.nombre_paciente || "",
     especialista_primario: data?.especialista_primario || "",
     especialista_secundario: data?.especialista_secundario || "",
@@ -473,7 +465,6 @@ function newSchame() {
     especialista_primario: Yup.string().required("Seleccione el especialista primario"),
     especialista_secundario: Yup.string()
       .notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario"),
-
     descripcion: Yup.string(),
     fecha: Yup.string(),
     hora: Yup.string()
