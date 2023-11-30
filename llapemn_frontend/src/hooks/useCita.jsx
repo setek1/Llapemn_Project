@@ -22,7 +22,7 @@ export function useCita() {
     } catch (error) {
       throw error;
     }
-  };
+  }
   const addCita = async (data) => {
     try {
       setLoading(true);

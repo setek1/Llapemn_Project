@@ -62,7 +62,7 @@ function MenuLeft(props) {
             >
               <div className="flex flex-row items-center truncate">
                 <IoAnalyticsOutline />
-                <p className="truncate pl-2">Dashboard</p>
+                <p className="truncate pl-2">Cuadro de mando</p>
               </div>
             </NavLink>
           </li>
@@ -78,7 +78,7 @@ function MenuLeft(props) {
           >
             <div className="flex flex-row items-center truncate">
               <IoGrid />
-              <p className="truncate pl-2">Productos</p>
+              <p className="truncate pl-2">Insumos</p>
             </div>
           </NavLink>
         </li>
@@ -107,7 +107,7 @@ function MenuLeft(props) {
             }
           >
             <div className="flex flex-row items-center truncate">
-            <GrSchedule />
+              <GrSchedule />
               <p className="truncate pl-2">Calendario</p>
             </div>
           </NavLink>
@@ -124,21 +124,6 @@ function MenuLeft(props) {
             <div className="flex flex-row items-center truncate">
               <FaUserInjured />
               <p className="truncate pl-2">Paciente</p>
-            </div>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/Inventario"}
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F]  dark:hover:text-white"
-            }
-          >
-            <div className="flex flex-row items-center truncate">
-              <IoGrid />
-              <p className="truncate pl-2">Inventario</p>
             </div>
           </NavLink>
         </li>
@@ -174,41 +159,46 @@ function MenuLeft(props) {
             </div>
           </NavLink>
         </li>
+
+        {auth.me.is_staff && (
+          <li>
+            <NavLink
+              to={"/Especialista"}
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                  : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
+              }
+            >
+              <div className="flex flex-row items-center truncate">
+                <IoGrid />
+                <p className="truncate pl-2">Especialistas</p>
+              </div>
+            </NavLink>
+          </li>
+        )}
+
         <li>
           <NavLink
-            to={"/Especialista"}
+            to={"/FAQ"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
+                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white "
                 : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
             }
           >
             <div className="flex flex-row items-center truncate">
-              <IoGrid />
-              <p className="truncate pl-2">Especialistas</p>
+              <IoCube />
+              <p className="truncate pl-2">FAQ</p>
             </div>
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to={"/Reportes"}
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center gap-2 p-4 text-2xl font-semibold text-[#59167F] transition-colors dark:font-bold dark:text-white"
-                : "flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:text-white"
-            }
-          >
-            <div className="flex flex-row items-center truncate">
-              <IoReader />
-              <p className="truncate pl-2">Reportes</p>
-            </div>
-          </NavLink>
-        </li>
+
         <li onClick={logout}>
           <NavLink className="flex items-center gap-2 p-4 text-2xl font-semibold text-[#CDCDCD] transition-colors hover:text-[#59167F] dark:hover:font-bold  dark:hover:text-white">
             <div className="flex flex-row items-center truncate">
               <IoLogOut />
-              <p className="truncate pl-2">Cerrar Sesion</p>
+              <p className="truncate pl-2">Cerrar Sesión</p>
             </div>
           </NavLink>
         </li>
@@ -221,14 +211,17 @@ function MenuLeft(props) {
             {darkMode ? (
               <div className="flex flex-row items-center truncate text-[#CDCDCD]">
                 <CiLight className="text-2xl font-semibold" />
-                <p className="trucate pl-2 text-2xl font-semibold">
+                <p className="w-[130px] truncate pl-2 text-2xl font-semibold">
                   Modo Oscuro
                 </p>
               </div>
             ) : (
               <div className="flex flex-row items-center truncate text-[#59167F]">
                 <IoMdMoon className="text-2xl" />
-                <p className=" pl-2 text-2xl font-semibold "> Modo Normal</p>
+                <p className="w-[130px] truncate pl-2 text-2xl font-semibold ">
+                  {" "}
+                  Modo Normal
+                </p>
               </div>
             )}
           </button>

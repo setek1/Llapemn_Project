@@ -10,3 +10,4 @@ export * from "./Paciente";
 export * from "./Cita";
 export * from "./Especialista";
 export * from "./Calendario";
+export * from "./Desarrollo";

@@ -38,391 +38,513 @@ export function AddPaciente(props) {
   return (
     // formulario para ingresar un paciente nuevo
     <FormikProvider value={formik}>
-      <div className="mb-8 flex w-auto justify-center">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="">
-              {/*Información de contacto*/}
-              <h4 className="text-lg leading-6 font-medium text-gray-900">Información Personal</h4>
-              <br />
-              <input
-                name="nombre"
-                placeholder="Ingrese el nombre del paciente"
-                value={formik.values.nombre}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+      <div style={{ maxHeight: '800px', overflowY: 'scroll' }}>
+        <div className="mb-8 flex w-auto justify-center">
+          <form onSubmit={formik.handleSubmit} style={{ width: '100%' }}>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="">
+                {/*Información de contacto*/}
+                <h4 className="text-lg leading-6 font-medium text-gray-900">Información Personal</h4>
+                <br />
+
+                <label htmlFor="nombre" className="block text-lg font-bold text-gray-700">
+                  Nombre del Paciente
+                </label>
+                <input
                   name="nombre"
-                  className=" text-red-700"
-                  component="div"
+                  placeholder="Ingrese el nombre del paciente"
+                  value={formik.values.nombre}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
                 />
-              </span>
-              <input
-                name="apellido"
-                placeholder="Ingrese el apellido del paciente"
-                value={formik.values.apellido}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+                <span>
+                  <ErrorMessage
+                    name="nombre"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="apellido" className="block text-lg font-bold text-gray-700">
+                  Apellido del Paciente
+                </label>
+
+                <input
                   name="apellido"
-                  className=" text-red-700"
-                  component="div"
+                  placeholder="Ingrese el apellido del paciente"
+                  value={formik.values.apellido}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
                 />
-              </span>
-              <input
-                name="dni"
-                placeholder="Ingrese el dni del paciente"
-                value={formik.values.dni}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+                <span>
+                  <ErrorMessage
+                    name="apellido"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+
+                <label htmlFor="dni" className="block text-lg font-bold text-gray-700">
+                  DNI del Paciente
+                </label>
+                <input
                   name="dni"
-                  className=" text-red-700"
-                  component="div"
+                  placeholder="Ingrese el dni del paciente"
+                  value={formik.values.dni}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
                 />
-              </span>
-              <input
-                type="date"
-                name="fecha_nacimiento"
-                placeholder="Ingrese la fecha de nacimiento del paciente"
-                value={formik.values.fecha_nacimiento}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+                <span>
+                  <ErrorMessage
+                    name="dni"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="fecha_nacimiento" className="block text-lg font-bold text-gray-700">
+                  Fecha de Nacimiento del Paciente
+                </label>
+
+                <input
+                  type="date"
                   name="fecha_nacimiento"
-                  className=" text-red-700"
+                  placeholder="Ingrese la fecha de nacimiento del paciente"
+                  value={formik.values.fecha_nacimiento}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="fecha_nacimiento"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+
+                <label htmlFor="fecha_nacimiento" className="block text-lg font-bold text-gray-700">
+                  Género del Paciente
+                </label>
+
+
+                <Field
+                  value={formik.values.genero}
+                  as="select"
+                  onChange={formik.handleChange}
+                  name="genero"
+                  className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+                >
+                  <option value="" disabled hidden>
+                    Seleccione el género
+                  </option>
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">femenino</option>
+                  <option value="otro">Otro</option>
+                </Field>
+                <ErrorMessage
+                  name="genero"
+                  className="text-red-700"
                   component="div"
                 />
-              </span>
-              <Field
-                value={formik.values.genero}
-                as="select"
-                onChange={formik.handleChange}
-                name="genero"
-                className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-              >
-                <option value="" disabled hidden>
-                  Seleccione el género
-                </option>
-                <option value="masculino">Masculino</option>
-                <option value="femenino">femenino</option>
-                <option value="otro">Otro</option>
-              </Field>
-              <ErrorMessage
-                name="genero"
-                className="text-red-700"
-                component="div"
-              />
-              <input
-                name="altura"
-                placeholder="Ingrese la altura del paciente"
-                value={formik.values.altura}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+
+
+                <label htmlFor="altura" className="block text-lg font-bold text-gray-700">
+                  Altura del Paciente
+                </label>
+
+                <input
                   name="altura"
-                  className=" text-red-700"
-                  component="div"
+                  placeholder="Ingrese la altura del paciente"
+                  value={formik.values.altura}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
                 />
-              </span>
-              <input
-                name="peso"
-                placeholder="Ingrese el peso del paciente"
-                value={formik.values.peso}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
+                <span>
+                  <ErrorMessage
+                    name="altura"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="peso" className="block text-lg font-bold text-gray-700">
+                  Peso del Paciente
+                </label>
+
+                <input
                   name="peso"
-                  className=" text-red-700"
+                  placeholder="Ingrese el peso del paciente"
+                  value={formik.values.peso}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="peso"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="edad" className="block text-lg font-bold text-gray-700">
+                  Edad del Paciente
+                </label>
+
+                <input
+                  name="edad"
+                  placeholder="Ingrese la edad del paciente"
+                  value={formik.values.edad}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="edad"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+              </div>
+              <div>
+
+                {/*Información de contacto*/}
+                <h4 className="text-lg leading-6 font-medium text-gray-900">Información de Contacto</h4>
+                <br />
+
+                <label htmlFor="direccion" className="block text-lg font-bold text-gray-700">
+                  Dirección del Paciente
+                </label>
+                <input
+                  name="direccion"
+                  placeholder="Ingrese la direccion del paciente"
+                  value={formik.values.direccion}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="direccion"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+
+                <label htmlFor="telefono" className="block text-lg font-bold text-gray-700">
+                  Teléfono del Paciente
+                </label>
+                <input
+                  name="telefono"
+                  placeholder="Ingrese el teléfono del paciente"
+                  value={formik.values.telefono}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="telefono"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+
+                <label htmlFor="email" className="block text-lg font-bold text-gray-700">
+                  Correo Electronico del Paciente
+                </label>
+
+                <input
+                  name="email"
+                  placeholder="Ingrese el email del paciente"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="email"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="tipo_sangre" className="block text-lg font-bold text-gray-700">
+                  Tipo de Sangre del Paciente
+                </label>
+
+                <Field
+                  value={formik.values.tipo_sangre}
+                  as="select"
+                  onChange={formik.handleChange}
+                  name="tipo_sangre"
+                  className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+                >
+                  <option value="" disabled hidden>Tipo de sangre</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="AB">AB</option>
+                  <option value="O">O</option>
+                </Field>
+                <ErrorMessage
+                  name="tipo_sangre"
+                  className="text-red-700"
                   component="div"
                 />
-              </span>
-              <input
-                name="edad"
-                placeholder="Ingrese la edad del paciente"
-                value={formik.values.edad}
+
+
+                <label htmlFor="medico_referente" className="block text-lg font-bold text-gray-700">
+                  Médico referente del Paciente
+                </label>
+                <input
+                  name="medico_referente"
+                  placeholder="Ingrese el médico referente"
+                  value={formik.values.medico_referente}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="medico_referente"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="telefono_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Teléfono contacto del Paciente
+                </label>
+
+                <input
+                  name="telefono_contacto_emergencia"
+                  placeholder="Ingrese el número telefónico de emergencia"
+                  value={formik.values.telefono_contacto_emergencia}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="telefono_contacto_emergencia"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+
+                <label htmlFor="nombre_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Nombre contacto del Paciente
+                </label>
+                <input
+                  name="nombre_contacto_emergencia"
+                  placeholder="Ingrese el nombre de contacto de emergencia"
+                  value={formik.values.nombre_contacto_emergencia}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="nombre_contacto_emergencia"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+
+                <label htmlFor="relacion_contacto_emergencia" className="block text-lg font-bold text-gray-700">
+                  Relación contacto del Paciente
+                </label>
+
+                <input
+                  name="relacion_contacto_emergencia"
+                  placeholder="Ingrese la relación familiar del contacto"
+                  value={formik.values.relacion_contacto_emergencia}
+                  onChange={formik.handleChange}
+                  className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                    }`}
+                />
+                <span>
+                  <ErrorMessage
+                    name="relacion_contacto_emergencia"
+                    className=" text-red-700"
+                    component="div"
+                  />
+                </span>
+              </div>
+            </div>
+            <hr className="my-4 border-t-2 border-gray-300" />
+            <div>
+              {/*Información general del paciente*/}
+              <h4 className="text-lg leading-6 font-medium text-gray-900">Información general del paciente</h4>
+              <br />
+              <label htmlFor="alergias" className="block text-lg font-bold text-gray-700">
+                Alergias del Paciente
+              </label>
+
+              <textarea
+                name="alergias"
+                placeholder="Ingrese alguna alergia previa o en su defecto dejelo en blanco"
+                value={formik.values.alergias}
                 onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
                   }`}
               />
               <span>
                 <ErrorMessage
-                  name="edad"
+                  name="alergias"
                   className=" text-red-700"
                   component="div"
                 />
               </span>
 
-            </div>
-            <div>
-              {/*Información de contacto*/}
-              <h4 className="text-lg leading-6 font-medium text-gray-900">Información de Contacto</h4>
-              <br />
-              <input
-                name="direccion"
-                placeholder="Ingrese la direccion del paciente"
-                value={formik.values.direccion}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="direccion"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <input
-                name="telefono"
-                placeholder="Ingrese el teléfono del paciente"
-                value={formik.values.telefono}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="telefono"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <input
-                name="email"
-                placeholder="Ingrese el email del paciente"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="email"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <Field
-                value={formik.values.tipo_sangre}
-                as="select"
-                onChange={formik.handleChange}
-                name="tipo_sangre"
-                className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
-              >
-                <option value="" disabled hidden>Tipo de sangre</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="AB">AB</option>
-                <option value="O">O</option>
-              </Field>
-              <ErrorMessage
-                name="tipo_sangre"
-                className="text-red-700"
-                component="div"
-              />
-              <input
-                name="medico_referente"
-                placeholder="Ingrese el médico referente"
-                value={formik.values.medico_referente}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="medico_referente"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <input
-                name="telefono_contacto_emergencia"
-                placeholder="Ingrese el número telefónico de emergencia"
-                value={formik.values.telefono_contacto_emergencia}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="telefono_contacto_emergencia"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <input
-                name="nombre_contacto_emergencia"
-                placeholder="Ingrese el nombre de contacto de emergencia"
-                value={formik.values.nombre_contacto_emergencia}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="nombre_contacto_emergencia"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-              <input
-                name="relacion_contacto_emergencia"
-                placeholder="Ingrese la relación familiar del contacto"
-                value={formik.values.relacion_contacto_emergencia}
-                onChange={formik.handleChange}
-                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                  }`}
-              />
-              <span>
-                <ErrorMessage
-                  name="relacion_contacto_emergencia"
-                  className=" text-red-700"
-                  component="div"
-                />
-              </span>
-            </div>
-          </div>
-          <hr className="my-4 border-t-2 border-gray-300" />
-          <div>
-            {/*Información general del paciente*/}
-            <h4 className="text-lg leading-6 font-medium text-gray-900">Información general del paciente</h4>
-            <br />
-            <textarea
-              name="alergias"
-              placeholder="Ingrese alguna alergia previa o en su defecto dejelo en blanco"
-              value={formik.values.alergias}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
-                name="alergias"
-                className=" text-red-700"
-                component="div"
-              />
-            </span>
-            <textarea
-              name="medicamentos_actuales"
-              placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
-              value={formik.values.medicamentos_actuales}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <label htmlFor="medicamentos_actuales" className="block text-lg font-bold text-gray-700">
+                Medicamentos actuales del Paciente
+              </label>
+
+              <textarea
                 name="medicamentos_actuales"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
+                value={formik.values.medicamentos_actuales}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-            <textarea
-              name="enfermedades_previas"
-              placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
-              value={formik.values.enfermedades_previas}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <span>
+                <ErrorMessage
+                  name="medicamentos_actuales"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+
+              <label htmlFor="alergias" className="block text-lg font-bold text-gray-700">
+                Enfermedades previas del Paciente
+              </label>
+
+              <textarea
                 name="enfermedades_previas"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese que enfermedades previas ha tenido el paciente o en su defecto dejelo en blanco"
+                value={formik.values.enfermedades_previas}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-            <textarea
-              name="cirugias_previas"
-              placeholder="Ingrese que medicamentos toma el paciente o en su defecto dejelo en blanco"
-              value={formik.values.cirugias_previas}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <span>
+                <ErrorMessage
+                  name="enfermedades_previas"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+
+              <label htmlFor="cirugias_previas" className="block text-lg font-bold text-gray-700">
+                Cirugias del Paciente
+              </label>
+
+
+              <textarea
                 name="cirugias_previas"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese que cirugias que ha tenido el paciente"
+                value={formik.values.cirugias_previas}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-            <input
-              type="date"
-              name="fecha_ingreso"
-              placeholder="Ingrese la fecha de ingreso del paciente"
-              value={formik.values.fecha_ingreso}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <span>
+                <ErrorMessage
+                  name="cirugias_previas"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+
+              <label htmlFor="fecha_ingreso" className="block text-lg font-bold text-gray-700">
+                Fecha de ingreso del Paciente
+              </label>
+
+
+              <input
+                type="date"
                 name="fecha_ingreso"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese la fecha de ingreso del paciente"
+                value={formik.values.fecha_ingreso}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] p-2 mb-3 ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-            <textarea
-              name="seguro_medico"
-              placeholder="Ingrese que seguro medico posee el paciente o en su defecto dejelo en blanco"
-              value={formik.values.seguro_medico}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <span>
+                <ErrorMessage
+                  name="fecha_ingreso"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+
+              <label htmlFor="seguro_medico" className="block text-lg font-bold text-gray-700">
+                Seguro Medico del Paciente
+              </label>
+
+              <textarea
                 name="seguro_medico"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese que seguro medico posee el paciente o en su defecto dejelo en blanco"
+                value={formik.values.seguro_medico}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-            <textarea
-              name="observaciones"
-              placeholder="Ingrese que se observa del paciente"
-              value={formik.values.observaciones}
-              onChange={formik.handleChange}
-              className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
-                }`}
-            />
-            <span>
-              <ErrorMessage
+              <span>
+                <ErrorMessage
+                  name="seguro_medico"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+
+
+              <label htmlFor="observaciones" className="block text-lg font-bold text-gray-700">
+                Observaciones del Paciente
+              </label>
+
+              <textarea
                 name="observaciones"
-                className=" text-red-700"
-                component="div"
+                placeholder="Ingrese que se observa del paciente"
+                value={formik.values.observaciones}
+                onChange={formik.handleChange}
+                className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${formik.errors.username ? "" : "mb-2"
+                  }`}
               />
-            </span>
-          </div>
-          <hr className="my-4 border-t-2 border-gray-300" />
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white "
-            >
-              {pacientes ? "Actualizar" : "Crear"}
-            </button>
-          </div>
-        </form>
+              <span>
+                <ErrorMessage
+                  name="observaciones"
+                  className=" text-red-700"
+                  component="div"
+                />
+              </span>
+            </div>
+            <hr className="my-4 border-t-2 border-gray-300" />
+            <div className="flex justify-end">
+              <button
+                type="submit"
+                className="w-full rounded bg-[#59167F] px-4 py-2 font-semibold text-white "
+              >
+                {pacientes ? "Actualizar" : "Crear"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </FormikProvider>
   );
@@ -462,7 +584,7 @@ function newSchame() {
     fecha_nacimiento: Yup.string().required("a"),
     genero: Yup.string().required("a"),
     direccion: Yup.string().required("a"),
-    telefono: Yup.string().required("a"), // Fixed missing parentheses
+    telefono: Yup.string().required("a"),
     email: Yup.string()
       .email("Ingrese un Correo Valido")
       .required("Porfavor Ingrese un Correo")
@@ -474,7 +596,7 @@ function newSchame() {
     peso: Yup.string().required("a"),
     edad: Yup.string().required("a"),
     tipo_sangre: Yup.string().required("a"),
-    medico_referente: Yup.string().required("a"), // Corrected typo
+    medico_referente: Yup.string().required("a"),
     telefono_contacto_emergencia: Yup.string().required("a"),
     nombre_contacto_emergencia: Yup.string().required("a"),
     relacion_contacto_emergencia: Yup.string().required("a"),

@@ -30,7 +30,7 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
     serializer_class=HistorialSerializer
     queryset=Historial.objects.all()
     filter_backends=[DjangoFilterBackend]
-    filterset_fields=['id_insumo']
+    filterset_fields=['id_insumo','id_cita']
     
 
     # @action(detail=False, methods=['post'])
@@ -67,6 +67,7 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
         if request.method == 'POST':
             serializer = HistorialSerializer(data=request.data)
             if serializer.is_valid():
+                print(request.data)
                 # Update descripcion based on Operacion
                 producto_id = serializer.validated_data['id_insumo']
                 insumo = Insumo.objects.get(id=producto_id)
@@ -81,11 +82,19 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
                     insumo.save()
 
                 elif serializer.validated_data['operacion'] == 'R':
-                    serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Resta realizada'
-                    TotalC = insumo.stockIn - serializer.validated_data['cantidad']
-                    serializer.validated_data['cantidad'] = TotalC
-                    insumo.stockIn = TotalC
-                    insumo.save()
+                    if 'id_cita' in serializer.validated_data and serializer.validated_data['id_cita'] is not None:
+                        serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Resta realizada en una cita'
+                        TotalC = insumo.stockIn - serializer.validated_data['cantidad']
+                        serializer.validated_data['cantidad'] = TotalC
+                        insumo.stockIn = TotalC
+                        insumo.save()
+                    else:
+                        serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Resta realizada'
+                        TotalC = insumo.stockIn - serializer.validated_data['cantidad']
+                        serializer.validated_data['cantidad'] = TotalC
+                        insumo.stockIn = TotalC
+                        insumo.save()
+                    
                 elif serializer.validated_data['operacion'] == 'C':
                     serializer.validated_data['descripcion'] = f'{serializer.validated_data["cantidad"]} - Cambio realizada'
                 elif serializer.validated_data['operacion'] == 'A':
@@ -97,7 +106,6 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'detail': 'Método de solicitud no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
     @action(detail=False, methods=['GET'])
     def get_chart(self, request):
         #     year_actual = 2023
@@ -236,7 +244,7 @@ class HistorialApiViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['GET'])
     def get_A(self, request):
         
-        queryset = Historial.objects.filter(operacion='A').order_by('-fecha')[:5]
+        queryset = Historial.objects.filter(operacion='A').order_by('-fecha', '-hora')[:5]
         serializer = HistorialSerializer(queryset, many=True)
         return Response(serializer.data)
 

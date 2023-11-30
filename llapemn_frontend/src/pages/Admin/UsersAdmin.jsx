@@ -13,7 +13,7 @@ export function UsersAdmin() {
   const openCloseModal = () => setshowModal((prev) => !prev);
   //Agregar Usuario
   const addUser = () => {
-    setTtitleModal("Nuevo Usuario");
+    setTtitleModal("Agregar Nuevo Usuario");
     setContentModal(
       <AddEditUserForm onClose={openCloseModal} onRefetch={onRefetch} />,
     );
@@ -35,10 +35,10 @@ export function UsersAdmin() {
 
   //Delete User
   const deleteUser = (data) => {
-    setTtitleModal("Eliminar  Usuario");
+    setTtitleModal("Eliminar Usuario");
     setContentModal(
       <UserDelete
-        titleDelete={`¿Esta Seguro que de desea Eliminar a ${data.first_name} ${data.last_name}?`}
+        titleDelete={`¿Está seguro que desea eliminar a ${data.first_name} ${data.last_name}?`}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}
@@ -62,7 +62,7 @@ export function UsersAdmin() {
     <div>
       <HeaderPage
         title="Trabajadores"
-        btnTitle="Agregar Trabajador"
+        btnTitle="Nuevo Trabajador"
         btnClick={addUser}
       />
       {loading ? (

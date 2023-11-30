@@ -9,6 +9,7 @@ import {
   getHistorialChartYearApi,
   getHistorialYearsApi,
   getHistorialApiUpperData,
+  getHistorialByCitaApi,
 } from "../api/historial";
 import { useAuth } from ".";
 
@@ -114,6 +115,16 @@ export function useHistorial() {
       setError(error);
     }
   };
+  const getHistorialByCita = async (id_cita) => {
+    try {
+      setLoading(true);
+      const response = await getHistorialByCitaApi(id_cita);
+      setLoading(false);
+      setHistorial(response);
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return {
     loading,
@@ -129,5 +140,6 @@ export function useHistorial() {
     getHistorialChartByYear,
     getHistorialChartYearsA,
     getHistorialUpperData,
+    getHistorialByCita,
   };
 }

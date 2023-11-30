@@ -11,6 +11,7 @@ import {
   Cita,
   Especialista,
   Calendario,
+  Desarrollo,
 } from "../pages/Admin/";
 
 const routesAdmin = [
@@ -68,6 +69,11 @@ const routesAdmin = [
     path: "/Calendario",
     layout: AdminLayout,
     component: Calendario,
+  },
+  {
+    path: "/FAQ",
+    layout: AdminLayout,
+    component: Desarrollo,
   },
 ];
 

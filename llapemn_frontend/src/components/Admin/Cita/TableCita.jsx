@@ -1,9 +1,10 @@
 import React from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
+import { LuInbox } from "react-icons/lu";
 
 export function TableCita(props) {
-  const { cita, updateCita, deleteCita } = props;
+  const { cita, updateCita, deleteCita, addInsumoCita } = props;
   return (
     <div className="overflow-x-scroll md:overflow-x-auto">
       <table className="mt-5  w-full ">
@@ -17,8 +18,10 @@ export function TableCita(props) {
             <th>Descripción</th>
             <th>Fecha </th>
             <th>Hora</th>
+            <th>Hora fin</th>
             <th>Estado</th>
             <th>Sala</th>
+            <th>Insumos</th>
             <th className=" bg-[#F0F0F0] dark:bg-[#715084]">Editar</th>
             <th className="rounded-r-lg bg-[#F0F0F0] dark:bg-[#715084]">
               Eliminar
@@ -28,17 +31,24 @@ export function TableCita(props) {
         <tbody className="text-center dark:text-white">
           {map(cita, (citas, index) => (
             <tr key={index}>
-              <td className="pb-6 pr-6 pt-6 text-left">{citas.pa_data.nombre}</td>
+              <td className="pb-6 pr-6 pt-6 text-left">
+                {citas.pa_data.nombre}
+              </td>
 
               <td>{citas.ep_data.first_name}</td>
-              <td>{citas.es_data.first_name}</td>
+              <td>
+                {citas.es_data ? citas.es_data.first_name : "No especificado"}
+              </td>
               <td>{citas.descripcion}</td>
               <td>{citas.fecha}</td>
               <td>{citas.hora}</td>
+              <td>{citas.hora_fin}</td>
               <td>{citas.estado}</td>
               <td>{citas.sala_cita}</td>
+
               <Actions
                 cita={citas}
+                addInsumoCita={addInsumoCita}
                 updateCita={updateCita}
                 deleteCita={deleteCita}
               />
@@ -51,12 +61,16 @@ export function TableCita(props) {
 }
 
 function Actions(props) {
-  const { cita, updateCita, deleteCita } = props;
+  const { cita, updateCita, deleteCita, addInsumoCita } = props;
   return (
     <>
       <td>
+        <button onClick={() => addInsumoCita(cita)}>
+          <LuInbox />
+        </button>
+      </td>
+      <td>
         <button onClick={() => updateCita(cita)}>
-
           <IoBuildOutline />
         </button>
       </td>

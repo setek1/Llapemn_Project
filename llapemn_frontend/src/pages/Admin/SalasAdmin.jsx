@@ -23,7 +23,7 @@ export function SalasAdmin() {
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);
   const addSalas = () => {
-    setTitleModal("Nueva Sala");
+    setTitleModal("Agregar Nueva Sala");
     setContentModal(
       <AddEditSalasForm onClose={openCloseModal} onRefetch={onRefetch} />,
     );
@@ -42,10 +42,10 @@ export function SalasAdmin() {
     openCloseModal();
   };
   const deleteSalas = (data) => {
-    setTitleModal("Eliminar  Sala");
+    setTitleModal("Eliminar Sala");
     setContentModal(
       <DeleteSalasForm
-        titleDelete={`¿Esta Seguro que de desea Eliminar a la ${data.nombre}?`}
+        titleDelete={`¿Está seguro que desea eliminar la sala ${data.nombre}?`}
         btnTitleD="Eliminar"
         onClose={openCloseModal}
         onRefetch={onRefetch}
@@ -59,7 +59,7 @@ export function SalasAdmin() {
 
   return (
     <>
-      <HeaderPage title="Salas" btnTitle="Agregar Sala" btnClick={addSalas} />
+      <HeaderPage title="Salas" btnTitle="Nueva Sala" btnClick={addSalas} />
       {loading ? (
         <div className="flex justify-center">
           <Loading />
