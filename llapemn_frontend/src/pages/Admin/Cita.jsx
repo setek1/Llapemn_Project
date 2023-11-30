@@ -75,6 +75,7 @@ export function Cita() {
         cita={cita}
         updateCita={updateCita}
         deleteCita={confirmDeleteCita}
+        addInsumoCita={addInsumoCita}
       />
       <ModalBasic
         isVisible={showModal}
