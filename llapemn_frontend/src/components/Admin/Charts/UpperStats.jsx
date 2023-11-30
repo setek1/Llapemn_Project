@@ -5,7 +5,6 @@ import { BsFillDoorClosedFill } from "react-icons/bs";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { useHistorial } from "../../../hooks";
 import { useEffect, useState } from "react";
-import { Calendario } from "../../../pages/admin/Calendario";
 
 export function UpperStats() {
   const { getHistorialUpperData, historial, loading } = useHistorial();

@@ -12,7 +12,6 @@ import {
 import { useHistorial } from "../../../hooks";
 import _ from "lodash";
 import { map } from "lodash";
-import { Calendario } from "../../../pages/admin/Calendario";
 const data = [
   {
     name: "Jan",
