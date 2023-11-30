@@ -10,11 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.6.2",
-=======
     "data-fns": "^1.1.0",
->>>>>>> ba61c4dd959a84a30605a1354722e1dff39df3df
     "date-fns": "^2.30.0",
     "formik": "^2.4.3",
     "lodash": "^4.17.21",

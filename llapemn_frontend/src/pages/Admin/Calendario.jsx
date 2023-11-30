@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import moment from 'moment';
-import 'moment/locale/es';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
+import "moment/locale/es";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { getCitaApi } from '../../api/cita';
+import { getCitaApi } from "../../api/cita";
 
-moment.locale('es');
+moment.locale("es");
 const localizer = momentLocalizer(moment);
 
 const EventComponent = ({ event, view }) => {
-  const isMonthView = view === 'month';
+  const isMonthView = view === "month";
   return (
     <div>
       <strong>
         {isMonthView
-          ? `Especialista: ${event.especialista}, Hora: ${moment(event.start).format('LT')}`
+          ? `Especialista: ${event.especialista}, Hora: ${moment(
+              event.start,
+            ).format("LT")}`
           : event.title}
       </strong>
     </div>
@@ -47,19 +49,19 @@ const holidayTranslations = {
   "All Saints": "Día de Todos los Santos",
 };
 const customMessages = {
-  allDay: 'Todo el día',
-  previous: '<',
-  next: '>',
-  today: 'Hoy',
-  month: 'Mes',
-  week: 'Semana',
-  day: 'Día',
-  agenda: 'Agenda',
-  date: 'Fecha',
-  time: 'Hora',
-  event: 'Evento',
-  showMore: total => `+ Ver más (${total})`,
-  noEventsInRange: 'No hay citas por ahora',
+  allDay: "Todo el día",
+  previous: "<",
+  next: ">",
+  today: "Hoy",
+  month: "Mes",
+  week: "Semana",
+  day: "Día",
+  agenda: "Agenda",
+  date: "Fecha",
+  time: "Hora",
+  event: "Evento",
+  showMore: (total) => `+ Ver más (${total})`,
+  noEventsInRange: "No hay citas por ahora",
 };
 
 export function Calendario() {
@@ -71,17 +73,25 @@ export function Calendario() {
     const fetchCitasYFeriados = async () => {
       try {
         const citas = await getCitaApi();
-        const formattedEvents = citas.map(cita => ({
+        const formattedEvents = citas.map((cita) => ({
           id: cita.id,
-          title: `Sala: ${cita.sala_cita}, Paciente: ${cita.pa_data.nombre}, Especialista: ${cita.ep_data.first_name} ${cita.ep_data.last_name}, Hora: ${moment(cita.fecha + 'T' + cita.hora).format('LT')}`,
-          start: new Date(cita.fecha + 'T' + cita.hora),
-          end: new Date(cita.fecha + 'T' + cita.hora),
+          title: `Sala: ${cita.sala_cita}, Paciente: ${
+            cita.pa_data.nombre
+          }, Especialista: ${cita.ep_data.first_name} ${
+            cita.ep_data.last_name
+          }, Hora: ${moment(cita.fecha + "T" + cita.hora).format(
+            "LT",
+          )} - ${moment(cita.fecha + "T" + cita.hora_fin).format("LT")}`,
+          start: new Date(cita.fecha + "T" + cita.hora),
+          end: new Date(cita.fecha + "T" + cita.hora_fin),
           estado: cita.estado,
         }));
 
         const year = new Date().getFullYear();
-        const response = await axios.get(`https://date.nager.at/api/v3/NextPublicHolidays/CL`);
-        const holidayEvents = response.data.map(holiday => ({
+        const response = await axios.get(
+          `https://date.nager.at/api/v3/NextPublicHolidays/CL`,
+        );
+        const holidayEvents = response.data.map((holiday) => ({
           title: holidayTranslations[holiday.name] || holiday.name,
           start: new Date(holiday.date),
           end: new Date(holiday.date),
@@ -93,28 +103,30 @@ export function Calendario() {
           setEvents([...formattedEvents, ...holidayEvents]);
         }
       } catch (error) {
-        console.error('Error al cargar datos', error);
+        console.error("Error al cargar datos", error);
       }
     };
 
     fetchCitasYFeriados();
 
-    return () => { isSubscribed = false; };
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   const getEventColor = (event, start, end, isSelected) => {
     if (event.holiday) {
-      return { style: { backgroundColor: 'lightcoral' } }; // Estilo para días feriados
+      return { style: { backgroundColor: "lightcoral" } }; // Estilo para días feriados
     }
     switch (event.estado) {
-      case 'programada':
-        return { style: { backgroundColor: '#8BC926' } }; //verde 
-      case 'cancelada':
-        return { style: { backgroundColor: '#E5383A' } }; //rojo
-      case 'completada':
-        return { style: { backgroundColor: '#0B4F6C' } }; //azul
-      case 'cambiada':
-        return { style: { backgroundColor: '#885A89' } }; //morado
+      case "programada":
+        return { style: { backgroundColor: "#8BC926" } }; //verde
+      case "cancelada":
+        return { style: { backgroundColor: "#E5383A" } }; //rojo
+      case "completada":
+        return { style: { backgroundColor: "#0B4F6C" } }; //azul
+      case "cambiada":
+        return { style: { backgroundColor: "#885A89" } }; //morado
       default:
         return {};
     }
@@ -124,7 +136,7 @@ export function Calendario() {
     <div className="container mt-4">
       <div className="row">
         <div className="col-12">
-          <div className="calendar-container p-4 bg-gray-100 rounded-lg shadow">
+          <div className="calendar-container rounded-lg bg-gray-100 p-4 shadow">
             <Calendar
               localizer={localizer}
               events={events}
@@ -136,8 +148,7 @@ export function Calendario() {
               }}
               eventPropGetter={getEventColor}
               messages={customMessages}
-              className="text-black rounded-lg"
-              
+              className="rounded-lg text-black"
             />
           </div>
         </div>

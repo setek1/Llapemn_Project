@@ -28,9 +28,7 @@ export function Cita() {
   };
   const addCita = () => {
     setTitleModal("Nueva cita");
-    setContentModal(
-      <AddCita onClose={openCloseModal} citas={null} onRefetch={onRefetch} />,
-    );
+    setContentModal(<AddCita onClose={openCloseModal} onRefetch={onRefetch} />);
     openCloseModal();
   };
   const updateCita = (data) => {
