@@ -47,13 +47,11 @@ export function InfHistorial(props) {
                 </tr>
 
                 <tr className=" border p-4">
-                  <td className="border p-4">Descripcion</td>
+                  <td className="border p-4">Descripción</td>
                   <td className="border p-4">
-                    <br />
                     {ins.descripcionIn !== null
                       ? ins.descripcionIn
                       : "Insumo sin descripción"}
-                    {ins.descripcionIn}
                   </td>
                 </tr>
               </tr>
