@@ -5,7 +5,7 @@ export function HeaderPage(props) {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h2 className="text-xl dark:text-white">{title}</h2>
+        <h2 className="text-xl font-semibold dark:text-white">{title}</h2>
       </div>
 
       <div>

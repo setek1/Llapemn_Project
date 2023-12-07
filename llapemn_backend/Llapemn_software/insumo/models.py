@@ -12,6 +12,8 @@ class Insumo(models.Model):
     tipoIn=models.CharField(max_length=2,choices=TIPO_CHOICES)
     precioUIn=models.IntegerField()
     totalIn=models.IntegerField(null=True, blank=True)
+    marcaIn=models.CharField(max_length=70, null=True, blank=True)
+    descripcionIn=models.TextField(null=True, blank=True)
 
     def __int__(self):
         return self.id
