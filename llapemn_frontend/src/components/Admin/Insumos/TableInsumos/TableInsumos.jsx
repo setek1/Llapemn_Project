@@ -43,8 +43,8 @@ export function TableInsumos(props) {
               <td>{insumo.stockIn}</td>
 
               <td>{estadosI[insumo.tipoIn]}</td>
-              <td>{insumo.precioUIn}</td>
-              <td>{insumo.totalIn}</td>
+              <td>${insumo.precioUIn}</td>
+              <td>${insumo.totalIn}</td>
               <Actions
                 insumo={insumo}
                 updateInsumo={updateInsumo}

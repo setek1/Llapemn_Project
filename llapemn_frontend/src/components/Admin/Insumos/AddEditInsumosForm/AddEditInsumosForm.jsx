@@ -61,6 +61,18 @@ export function AddEditInsumosForm(props) {
                 component="div"
               />
             </span>
+            <input
+              name="marcaIn"
+              placeholder="Ingrese la marca del insumo"
+              value={formik.values.marcaIn}
+              onChange={formik.handleChange}
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            ></input>
+            <ErrorMessage
+              name="marcaIn"
+              className="text-red-700"
+              component="div"
+            />
             <Field
               placeholder="asdsad"
               as="select"
@@ -141,6 +153,19 @@ export function AddEditInsumosForm(props) {
               className="text-red-700"
               component="div"
             />
+
+            <textarea
+              name="descripcionIn"
+              placeholder="Ingrese una descripción"
+              value={formik.values.descripcionIn}
+              onChange={formik.handleChange}
+              className="mb-2 w-full rounded-lg border  border-[#CDCDCD] bg-white px-4  py-2 placeholder-black   focus:outline-none focus:ring-2 focus:ring-[#59167F]"
+            ></textarea>
+            <ErrorMessage
+              name="descripcionIn"
+              className="text-red-700"
+              component="div"
+            />
           </div>
           <hr className="my-4 border-t-2 border-gray-300" />
           <div className="flex justify-end">
@@ -164,6 +189,8 @@ function initialValues(data) {
     stockIn: data?.stockIn || "",
     tipoIn: data?.tipoIn || "",
     precioUIn: data?.precioUIn || "",
+    marcaIn: data?.marcaIn || "",
+    descripcionIn: data?.descripcionIn || "",
   };
 }
 function newSchame() {
@@ -174,6 +201,10 @@ function newSchame() {
     stockIn: Yup.string().required("Por favor ingrese el stock"),
     tipoIn: Yup.string().required("Por favor ingrese un tipo"),
     precioUIn: Yup.number().required("Por favor ingrese un precio"),
+    marcaIn: Yup.string().required("Por favor ingrese una marca"),
+    descripcionIn: Yup.string().required(
+      "Por favor ingrese una descripción de la sala",
+    ),
   };
 }
 function updateSchame() {
@@ -182,5 +213,7 @@ function updateSchame() {
     stockIn: Yup.string().required(),
     tipoIn: Yup.string().required(),
     precioUIn: Yup.number().required(),
+    marcaIn: Yup.string().required(),
+    descripcionIn: Yup.string().required(),
   };
 }
