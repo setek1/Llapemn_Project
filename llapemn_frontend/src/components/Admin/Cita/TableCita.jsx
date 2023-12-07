@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { map } from "lodash";
 import { IoBuildOutline, IoTrashBinOutline } from "react-icons/io5";
 import { LuInbox } from "react-icons/lu";
 
+
 export function TableCita(props) {
   const { cita, updateCita, deleteCita, addInsumoCita } = props;
+  const [globalFilter, setGlobalFilter] = useState('')
+  console.log(globalFilter);
   return (
     <div className="overflow-x-scroll md:overflow-x-auto">
+      <div classname= 'my-2 text-right'>
+        <label>Busqueda : </label>
+        <input type='text'
+        onChange={e => setGlobalFilter(e.target.value)}
+        className={`rounded-lg border border-[#CDCDCD] bg-white px-2 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F]`}
+        placeholder="En progreso...."
+        />
+        
+      </div>
       <table className="mt-5  w-full ">
         <thead className="bg-[#F0F0F0]">
           <tr className="dark:bg-[#715084] dark:text-white">

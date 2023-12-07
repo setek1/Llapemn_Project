@@ -479,8 +479,8 @@ function initialValues(data) {
 }
 function newSchame() {
   return {
-    nombre_paciente: Yup.string(), //.required("Por favor, ponga un nombre")
-    especialista_primario: Yup.string(), //.required("Seleccione el especialista primario")
+    nombre_paciente: Yup.string().required("Por favor, ponga un nombre"),
+    especialista_primario: Yup.string().required("Seleccione el especialista primario"),
     especialista_secundario: Yup.string(),
     //.notOneOf([Yup.ref('especialista_primario')], "El especialista secundario no puede ser el mismo que el primario")
     descripcion: Yup.string(),
