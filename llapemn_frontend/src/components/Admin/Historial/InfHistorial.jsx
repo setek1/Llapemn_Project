@@ -25,11 +25,17 @@ export function InfHistorial(props) {
             {map(insumos, (ins, index) => (
               <tr key={index}>
                 <tr>
-                  <td className="border p-4" rowSpan="3">
+                  <td className="border p-4" rowSpan="5">
                     <BiBox className="text-9xl" />
                   </td>
                   <td className="border p-4">Nombre</td>
                   <td className="border p-4">{ins.nombreIn}</td>
+                </tr>
+                <tr className="border">
+                  <td className="border p-4">Marca</td>
+                  <td className="border p-4">
+                    {ins.marcaIn !== null ? ins.marcaIn : "sin marca"}
+                  </td>
                 </tr>
                 <tr className="border">
                   <td className="border p-4">Cantidad</td>
@@ -38,6 +44,17 @@ export function InfHistorial(props) {
                 <tr className="border">
                   <td className="border p-4">Sala</td>
                   <td className="border p-4">{ins.sala_data.nombre}</td>
+                </tr>
+
+                <tr className=" border p-4">
+                  <td className="border p-4">Descripcion</td>
+                  <td className="border p-4">
+                    <br />
+                    {ins.descripcionIn !== null
+                      ? ins.descripcionIn
+                      : "Insumo sin descripción"}
+                    {ins.descripcionIn}
+                  </td>
                 </tr>
               </tr>
             ))}
