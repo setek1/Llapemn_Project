@@ -399,12 +399,12 @@ export function AddCita(props) {
                 htmlFor="diagnostico"
                 className="block text-lg font-bold text-gray-700"
               >
-                Escriba un diagnostico sobre la cita hecha
+                Escriba un diagnóstico sobre la cita hecha
               </label>
 
               <textarea
                 name="diagnostico"
-                placeholder="Ingrese el diagnostico de la cita"
+                placeholder="Ingrese el diagnóstico de la cita"
                 value={formik.values.diagnostico}
                 onChange={formik.handleChange}
                 className={`w-full rounded-lg border border-[#CDCDCD] bg-white px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-[#59167F] ${
