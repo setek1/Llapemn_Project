@@ -32,31 +32,36 @@ export function TableCita(props) {
           </tr>
         </thead>
         <tbody className="text-center dark:text-white">
-          {map(cita, (citas, index) => (
-            <tr key={index}>
-              <td className="pb-6 pr-6 pt-6 text-left">
-                {citas.pa_data.nombre}
-              </td>
+          {map(cita, (citas, index) => {
+            if (citas.estado === 'cancelada' || citas.estado === 'completada') {
+              return null;
+            }
 
-              <td>{citas.ep_data.first_name}</td>
-              <td>
-                {citas.es_data ? citas.es_data.first_name : "No especificado"}
-              </td>
-              <td>{citas.descripcion}</td>
-              <td>{citas.fecha}</td>
-              <td>{citas.hora}</td>
-              <td>{citas.hora_fin}</td>
-              <td>{citas.estado}</td>
-              <td>{citas.sala_cita}</td>
+            return (
+              <tr key={index}>
+                <td className="pb-6 pr-6 pt-6 text-left">
+                  {citas.pa_data.nombre}
+                </td>
+                <td>{citas.ep_data.first_name}</td>
+                <td>
+                  {citas.es_data ? citas.es_data.first_name : "No especificado"}
+                </td>
+                <td>{citas.descripcion}</td>
+                <td>{citas.fecha}</td>
+                <td>{citas.hora}</td>
+                <td>{citas.hora_fin}</td>
+                <td>{citas.estado}</td>
+                <td>{citas.sala_cita}</td>
 
-              <Actions
-                cita={citas}
-                addInsumoCita={addInsumoCita}
-                updateCita={updateCita}
-                deleteCita={deleteCita}
-              />
-            </tr>
-          ))}
+                <Actions
+                  cita={citas}
+                  addInsumoCita={addInsumoCita}
+                  updateCita={updateCita}
+                  deleteCita={deleteCita}
+                />
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
